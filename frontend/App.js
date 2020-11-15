@@ -13,4 +13,6 @@ export default function App() {
 }
 
 const appJs = styled.View`
-height:100%;`
+        height:100%;
+        width: 100%;
+`

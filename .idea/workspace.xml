@@ -13,15 +13,25 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34f3ec58-04c8-4749-9807-59b7bd3ab184" name="Default Changelist" comment="">
+    <list default="true" id="34f3ec58-04c8-4749-9807-59b7bd3ab184" name="Default Changelist" comment="- Add Globalstyles for moderate sizes">
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/DashboardBody.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/DashboardHeader.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/screens/Dashboard/Dashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/styles/globalstyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/styles/globalstyles.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -57,16 +67,20 @@
     <property name="project.structure.side.proportion" value="0.38390803" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\SecretAllergy\frontend\src\Dashboard" />
+      <recent name="C:\SecretAllergy\frontend\src" />
+    </key>
+  </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -90,8 +104,24 @@
       <workItem from="1605371665323" duration="304000" />
       <workItem from="1605371982870" duration="46000" />
       <workItem from="1605372035843" duration="642000" />
-      <workItem from="1605372687766" duration="999000" />
+      <workItem from="1605372687766" duration="2814000" />
+      <workItem from="1605432893877" duration="361000" />
     </task>
+    <task id="LOCAL-00001" summary="- Dependencies Added:&#10;-- styled components&#10;-- css to react native&#10;-- react native easy grid&#10;-- react native linea gradient&#10;- App Js height + width to 100%">
+      <created>1605373975759</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1605373975759</updated>
+    </task>
+    <task id="LOCAL-00002" summary="- Add Globalstyles for moderate sizes">
+      <created>1605374348224</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1605374348224</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,6 +143,9 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/frontend" />
     </ignored-roots>
+    <MESSAGE value="- Dependencies Added:&#10;-- styled components&#10;-- css to react native&#10;-- react native easy grid&#10;-- react native linea gradient&#10;- App Js height + width to 100%" />
+    <MESSAGE value="- Add Globalstyles for moderate sizes" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Add Globalstyles for moderate sizes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="567" y="317" key="FileChooserDialogImpl" timestamp="1605372267427">
