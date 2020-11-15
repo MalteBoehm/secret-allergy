@@ -13,13 +13,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34f3ec58-04c8-4749-9807-59b7bd3ab184" name="Default Changelist" comment="- Add Globalstyles for moderate sizes">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/DashboardBody.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/DashboardHeader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/screens/Dashboard/Dashboard.js" afterDir="false" />
+    <list default="true" id="34f3ec58-04c8-4749-9807-59b7bd3ab184" name="Default Changelist" comment="- Add Jest + added Jest Document to MD">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/styles/globalstyles.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/styles/globalstyles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,8 +65,9 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\SecretAllergy\frontend\src\Dashboard" />
+      <recent name="C:\SecretAllergy\frontend\src\screens" />
       <recent name="C:\SecretAllergy\frontend\src" />
+      <recent name="C:\SecretAllergy\frontend\src\Dashboard" />
     </key>
   </component>
   <component name="RunManager">
@@ -105,7 +102,7 @@
       <workItem from="1605371982870" duration="46000" />
       <workItem from="1605372035843" duration="642000" />
       <workItem from="1605372687766" duration="2814000" />
-      <workItem from="1605432893877" duration="361000" />
+      <workItem from="1605432893877" duration="1036000" />
     </task>
     <task id="LOCAL-00001" summary="- Dependencies Added:&#10;-- styled components&#10;-- css to react native&#10;-- react native easy grid&#10;-- react native linea gradient&#10;- App Js height + width to 100%">
       <created>1605373975759</created>
@@ -121,7 +118,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605374348224</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="- Add Jest + added Jest Document to MD">
+      <created>1605433391470</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1605433391470</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -145,7 +149,8 @@
     </ignored-roots>
     <MESSAGE value="- Dependencies Added:&#10;-- styled components&#10;-- css to react native&#10;-- react native easy grid&#10;-- react native linea gradient&#10;- App Js height + width to 100%" />
     <MESSAGE value="- Add Globalstyles for moderate sizes" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Add Globalstyles for moderate sizes" />
+    <MESSAGE value="- Add Jest + added Jest Document to MD" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Add Jest + added Jest Document to MD" />
   </component>
   <component name="WindowStateProjectService">
     <state x="567" y="317" key="FileChooserDialogImpl" timestamp="1605372267427">
@@ -192,5 +197,9 @@
       <screen x="94" y="0" width="2658" height="1152" />
     </state>
     <state x="378" y="151" width="1099" height="850" key="new project wizard/94.0.2658.1152/3440.0.2048.1122@94.0.2658.1152" timestamp="1605372451935" />
+    <state x="334" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1605433344387">
+      <screen x="94" y="0" width="2658" height="1152" />
+    </state>
+    <state x="334" y="257" width="672" height="678" key="search.everywhere.popup/94.0.2658.1152/3440.0.2048.1122@94.0.2658.1152" timestamp="1605433344387" />
   </component>
 </project>
