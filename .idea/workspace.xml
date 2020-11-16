@@ -14,8 +14,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="34f3ec58-04c8-4749-9807-59b7bd3ab184" name="Default Changelist" comment="- Add Jest + added Jest Document to MD">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/secret allergy backend/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/secret allergy backend/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/secret allergy backend/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/secret allergy backend/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/secret allergy backend/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/secret allergy backend/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/secret allergy backend/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/secret allergy backend/src/main/java/secretallergy/com/demo/SecretAllergyApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/secret allergy backend/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/secret allergy backend/src/test/java/secretallergy/com/demo/SecretAllergyApplicationTests.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +45,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="C:\Program Files\JetBrains\IntelliJ IDEA 2020.2\plugins\maven\lib\maven3" />
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -65,19 +75,30 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backend" />
       <recent name="C:\SecretAllergy\frontend\src\screens" />
       <recent name="C:\SecretAllergy\frontend\src" />
       <recent name="C:\SecretAllergy\frontend\src\Dashboard" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SecretAllergyApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="backend" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.secretallergy.secretallergy.SecretAllergyApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -103,6 +124,7 @@
       <workItem from="1605372035843" duration="642000" />
       <workItem from="1605372687766" duration="2814000" />
       <workItem from="1605432893877" duration="1036000" />
+      <workItem from="1605516041970" duration="525000" />
     </task>
     <task id="LOCAL-00001" summary="- Dependencies Added:&#10;-- styled components&#10;-- css to react native&#10;-- react native easy grid&#10;-- react native linea gradient&#10;- App Js height + width to 100%">
       <created>1605373975759</created>
@@ -153,6 +175,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="- Add Jest + added Jest Document to MD" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="184" y="109" width="1071" height="706" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605516568064">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="184" y="109" width="1071" height="706" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605516568064" />
     <state x="567" y="317" key="FileChooserDialogImpl" timestamp="1605372267427">
       <screen x="94" y="0" width="2658" height="1152" />
     </state>
@@ -189,13 +215,15 @@
       <screen x="94" y="0" width="2658" height="1152" />
     </state>
     <state width="974" height="309" key="GridCell.Tab.1.right/94.0.2658.1152/3440.0.2048.1122@94.0.2658.1152" timestamp="1605372678030" />
-    <state x="295" y="221" key="SettingsEditor" timestamp="1605372490386">
-      <screen x="94" y="0" width="2658" height="1152" />
+    <state x="268" y="57" key="SettingsEditor" timestamp="1605516535067">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state x="268" y="57" key="SettingsEditor/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605516535067" />
     <state x="295" y="221" key="SettingsEditor/94.0.2658.1152/3440.0.2048.1122@94.0.2658.1152" timestamp="1605372490386" />
-    <state x="378" y="151" width="1099" height="850" key="new project wizard" timestamp="1605372451935">
-      <screen x="94" y="0" width="2658" height="1152" />
+    <state x="154" y="118" width="634" height="665" key="new project wizard" timestamp="1605516469722">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state x="154" y="118" width="634" height="665" key="new project wizard/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605516469722" />
     <state x="378" y="151" width="1099" height="850" key="new project wizard/94.0.2658.1152/3440.0.2048.1122@94.0.2658.1152" timestamp="1605372451935" />
     <state x="334" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1605433344387">
       <screen x="94" y="0" width="2658" height="1152" />
