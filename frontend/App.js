@@ -5,11 +5,10 @@ import styled from 'styled-components/native';
 
 export default function App() {
   return (
-
-      <AppContainer>
-         <Navigator/>
-      </AppContainer>
-  );
+          <AppContainer>
+             <Navigator/>
+          </AppContainer>
+        );
 }
 
 

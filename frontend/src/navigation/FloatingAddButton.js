@@ -3,8 +3,6 @@ import { FloatingAction } from "react-native-floating-action";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 export default function FloatingButton(){
-
-
     return (
             <FloatingAction
                 color='#41bc70'
