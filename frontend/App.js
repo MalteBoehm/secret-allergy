@@ -1,18 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import {Text} from 'react-native';
+import * as React from 'react';
+
+import Navigator from './src/screens/Navigator';
 import styled from 'styled-components/native';
 
 export default function App() {
   return (
-    <appJs >
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </appJs>
+
+      <AppContainer>
+         <Navigator/>
+      </AppContainer>
   );
 }
 
-const appJs = styled.View`
-        height:100%;
-        width: 100%;
+
+const AppContainer = styled.View`
+      height:100%;
+      width: 100%;
 `
