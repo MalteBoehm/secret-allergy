@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { Col, Row, Grid } from "react-native-easy-grid";
 import {moderateScale} from '../../styles/globalstyles';
 import { LinearGradient } from 'expo-linear-gradient';
+import FloatingAddButton from "../../navigation/FloatingAddButton";
 
 
 export default function DashboardScreen(){
@@ -13,11 +14,7 @@ export default function DashboardScreen(){
                     <DashboardText style={{paddingTop:20, color:'white'}}>
                         Dashboard
                     </DashboardText>
-
-
-
-
-                    <Row>
+                    <Row style={dashboardStyle.cols}>
                         <Col size={1}>
                             <DashboardText>
                                 Col1
@@ -39,6 +36,8 @@ export default function DashboardScreen(){
                     <Text>
                         ABC
                     </Text>
+
+                    <FloatingAddButton/>
                 </Row>
             </Grid>
     );
@@ -60,7 +59,12 @@ const dashboardStyle = StyleSheet.create({
             justifyContent: 'space-between',
             flexDirection: 'column',
             backgroundColor: 'blue'
-        }
+        },
+    cols: {
+
+            justifyContent: 'center',
+            flexDirection: 'row'
+    }
     }
 )
 
