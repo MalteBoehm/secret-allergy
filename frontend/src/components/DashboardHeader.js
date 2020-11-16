@@ -50,7 +50,8 @@ const dashboardStyle = StyleSheet.create({
             backgroundColor: 'blue'
         },
         cols: {
-            justifyContent: 'center',
+            marginLeft: 50,
+
             flexDirection: 'row'
         }
     }

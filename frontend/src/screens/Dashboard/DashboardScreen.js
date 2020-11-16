@@ -12,8 +12,8 @@ import DashboardList from "../../components/DashboardList";
 export default function DashboardScreen(){
     return (
             <Grid style={StyledGrid.container}>
-                <DashboardHeader style={StyledGrid.dashboard} size={1} />
-                <DashboardList style={StyledGrid.dashboardList} size={2}/>
+                <DashboardHeader/>
+                <DashboardList/>
                 <FloatingAddButton/>
             </Grid>
     );
@@ -22,18 +22,13 @@ export default function DashboardScreen(){
 const StyledGrid = StyleSheet.create({
     container: {
         display: 'flex',
-        width: '100%',
-        alignItems: 'center',
 
         flexDirection: 'column',
     },
     dashboard: {
-        justifyContent: 'space-between',
         alignContent: 'center',
         flexDirection: 'column',
     },
-    dashboardList: {
-        flexDirection: 'column',
 
-    }
 })
+
