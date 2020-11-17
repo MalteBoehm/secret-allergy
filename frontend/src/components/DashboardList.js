@@ -2,12 +2,8 @@ import {Grid, Row, Col} from "react-native-easy-grid";
 import React, {useState} from 'react';
 import { StyleSheet, ScrollView, Text, View} from 'react-native';
 import styled from 'styled-components/native';
-import { LinearGradient } from 'expo-linear-gradient';
-import FloatingAddButton from "../navigation/FloatingAddButton";
 import {moderateScale} from '../styles/globalstyles';
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Emoji from 'react-native-emoji';
-
 
 
 const BreakfastBox = () => {
@@ -29,7 +25,7 @@ const BreakfastBox = () => {
                     <Row>
                         <Col size={1}><Text><Emoji name="coffee" style={{fontSize: 40}} /></Text></Col>
                         <Col size={4}><Text style={{fontWeight: "bold", fontSize: moderateScale(14, 0.3)}}>Frühstück Hinzufügen</Text></Col>
-                        <Col size={1}><MealBoxButtonStyled title={'+'} onPress={() => alert('This once will go to a Add Meal Screen')} /></Col>
+                        <Col size={1}><MealBoxButtonStyled title={'+'} onPress={ () => alert('This once will go to a Add Meal Screen')} /></Col>
                     </Row>
                     <Row>
                         <Col><Text style={{fontWeight: "bold", fontSize: moderateScale(12, 0.3)}}>{currentBreakfast.name}</Text></Col>
@@ -38,7 +34,7 @@ const BreakfastBox = () => {
                     <Row>
                         <Col>
                             <Text>
-                                {currentBreakfast.allergens.toString().replace(",", ", ")}
+                                {currentBreakfast.allergens?.toString().replace(",", ", ")}
                             </Text>
                      </Col>
                         <Col>
@@ -78,7 +74,7 @@ const MealBox = () => {
                 <Row>
                     <Col>
                         <Text>
-                            {currentMeal.allergens.toString().replace(",", ", ")}
+                            {currentMeal.allergens?.toString().replace(",", ", ")}
                         </Text>
                     </Col>
                     <Col>
@@ -118,7 +114,7 @@ const DinnerBox = () => {
                 <Row>
                     <Col>
                         <Text>
-                            {currentDinner.allergens.toString().replace(",", ", ")}
+                            {currentDinner.allergens?.toString().replace(",", ", ")}
                         </Text>
                     </Col>
                     <Col>
@@ -158,7 +154,7 @@ const SnackBox = () => {
                 <Row>
                     <Col>
                         <Text>
-                            {currentSnack.allergens.toString().replace(",", ", ")}
+                            {currentSnack.allergens?.toString().replace(",", ", ")}
                         </Text>
                     </Col>
                     <Col>
@@ -233,7 +229,7 @@ const MealBoxButtonStyled = styled.Button`
 
 
 
-// todo Icons für Mahlzeiten raussuchen
+
 // const imagesForMeals = [
 //     {
 //         text: "Frühstück",

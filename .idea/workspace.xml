@@ -9,11 +9,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="34f3ec58-04c8-4749-9807-59b7bd3ab184" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/AddMealHeader.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/AddMealList.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/AddMealSuche.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/screens/AddMeal/AddMealScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/excalidraw.excalidraw" beforeDir="false" afterPath="$PROJECT_DIR$/excalidraw.excalidraw" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/DashboardHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/DashboardHeader.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/DashboardList.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/DashboardList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/screens/Dashboard/DashboardScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/screens/Dashboard/DashboardScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/screens/Navigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/screens/Navigator.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +60,7 @@
     <option name="showVisibilityIcons" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth0" value="75" />
@@ -258,41 +267,45 @@
     <option name="LAST_COMMIT_MESSAGE" value="- fixed emojis - removed emojistyles.js" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="184" y="109" width="1071" height="706" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605516568064">
+    <state x="184" y="109" width="1071" height="744" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605620544593">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="184" y="109" width="1071" height="706" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605516568064" />
+    <state x="184" y="109" width="1071" height="744" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605620544593" />
     <state x="321" y="0" width="794" height="900" key="CommitChangelistDialog2" timestamp="1605606288734">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="321" y="0" width="794" height="900" key="CommitChangelistDialog2/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605606288734" />
+    <state x="587" y="217" width="604" height="623" key="EnvironmentVariablesDialog" timestamp="1605620540465">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="587" y="217" width="604" height="623" key="EnvironmentVariablesDialog/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605620540465" />
     <state x="567" y="317" key="FileChooserDialogImpl" timestamp="1605372267427">
       <screen x="94" y="0" width="2658" height="1152" />
     </state>
     <state x="567" y="317" key="FileChooserDialogImpl/94.0.2658.1152/3440.0.2048.1122@94.0.2658.1152" timestamp="1605372267427" />
-    <state width="1015" height="207" key="GridCell.Tab.0.bottom" timestamp="1605527040119">
+    <state width="1174" height="236" key="GridCell.Tab.0.bottom" timestamp="1605612843613">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1015" height="207" key="GridCell.Tab.0.bottom/0.0.1440.900/-185.-1055.2560.1055@0.0.1440.900" timestamp="1605525384382" />
-    <state width="1015" height="207" key="GridCell.Tab.0.bottom/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605527040119" />
+    <state width="1174" height="236" key="GridCell.Tab.0.bottom/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605612843613" />
     <state width="974" height="309" key="GridCell.Tab.0.bottom/94.0.2658.1152/3440.0.2048.1122@94.0.2658.1152" timestamp="1605372678030" />
-    <state width="1015" height="207" key="GridCell.Tab.0.center" timestamp="1605527040118">
+    <state width="1174" height="236" key="GridCell.Tab.0.center" timestamp="1605612843611">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1015" height="207" key="GridCell.Tab.0.center/0.0.1440.900/-185.-1055.2560.1055@0.0.1440.900" timestamp="1605525384380" />
-    <state width="1015" height="207" key="GridCell.Tab.0.center/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605527040118" />
+    <state width="1174" height="236" key="GridCell.Tab.0.center/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605612843611" />
     <state width="974" height="309" key="GridCell.Tab.0.center/94.0.2658.1152/3440.0.2048.1122@94.0.2658.1152" timestamp="1605372678029" />
-    <state width="1015" height="207" key="GridCell.Tab.0.left" timestamp="1605527040117">
+    <state width="1174" height="236" key="GridCell.Tab.0.left" timestamp="1605612843609">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1015" height="207" key="GridCell.Tab.0.left/0.0.1440.900/-185.-1055.2560.1055@0.0.1440.900" timestamp="1605525384379" />
-    <state width="1015" height="207" key="GridCell.Tab.0.left/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605527040117" />
+    <state width="1174" height="236" key="GridCell.Tab.0.left/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605612843609" />
     <state width="974" height="309" key="GridCell.Tab.0.left/94.0.2658.1152/3440.0.2048.1122@94.0.2658.1152" timestamp="1605372678029" />
-    <state width="1015" height="207" key="GridCell.Tab.0.right" timestamp="1605527040118">
+    <state width="1174" height="236" key="GridCell.Tab.0.right" timestamp="1605612843612">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state width="1015" height="207" key="GridCell.Tab.0.right/0.0.1440.900/-185.-1055.2560.1055@0.0.1440.900" timestamp="1605525384381" />
-    <state width="1015" height="207" key="GridCell.Tab.0.right/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605527040118" />
+    <state width="1174" height="236" key="GridCell.Tab.0.right/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605612843612" />
     <state width="974" height="309" key="GridCell.Tab.0.right/94.0.2658.1152/3440.0.2048.1122@94.0.2658.1152" timestamp="1605372678030" />
     <state width="1015" height="207" key="GridCell.Tab.1.bottom" timestamp="1605525384386">
       <screen x="0" y="0" width="1440" height="900" />

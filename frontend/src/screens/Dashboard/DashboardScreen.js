@@ -9,27 +9,13 @@ import DashboardHeader from "../../components/DashboardHeader";
 import DashboardList from "../../components/DashboardList";
 
 
-export default function DashboardScreen(){
+export default function DashboardScreen( ){
     return (
-            <Grid style={StyledGrid.container}>
+            <Grid style={{display:'flex', flexDirection: 'column'}}>
                 <DashboardHeader/>
                 <DashboardList/>
                 <FloatingAddButton/>
             </Grid>
     );
 }
-
-const StyledGrid = StyleSheet.create({
-    container: {
-        display: 'flex',
-        flexDirection: 'column',
-    },
-    dashboard: {
-        alignContent: 'center',
-        flexDirection: 'column',
-        width: '100%'
-
-    },
-
-})
 

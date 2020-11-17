@@ -4,13 +4,10 @@ import styled from 'styled-components/native'
 import { Col, Row, Grid } from "react-native-easy-grid";
 import {moderateScale, scale, verticalScale} from "../styles/globalstyles";
 
-
-
-
-
 export default function DashboardHeader(){
 
     return(
+
             <Row size={1} style={DashboardStyle.container}>
                 <Row>
                     <Text style={{paddingTop:20, color:'white'}}>
@@ -42,6 +39,7 @@ export default function DashboardHeader(){
                     </Col>
                 </Row>
             </Row>
+
     )
 }
 
