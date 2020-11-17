@@ -55,9 +55,9 @@ const BreakfastBox = () => {
 const MealBox = () => {
 
     const [currentMeal, setCurrentMeal] = useState({
-            name: "Omelet",
+            name: "Pizza Salami",
             ingredients: ["Egg", "Milk", "Cheddar Cheese"],
-            allergens: ["Eggs","Lactose"],
+            allergens: ["Gluten","Lactose", "Histamin"],
             sideEffects: {hasSideEffect: true,
                 whichSideEffect: {feelingState:3, headache: 2, stomach: 3},
                 sideEffectsNotes: "Ich habe mich unwohl gefühlt und dazu Kopfschmerzen bekommen. Auch mein Margen spielte verrückt."}
@@ -135,9 +135,9 @@ const DinnerBox = () => {
 const SnackBox = () => {
 
     const [currentSnack, setCurrentSnack] = useState({
-            name: "Omelet",
-            ingredients: ["Egg", "Milk", "Cheddar Cheese"],
-            allergens: ["Eggs","Lactose"],
+            name: "Apfel",
+            ingredients: ["Apfel"],
+            allergens: ["Fructose"],
             sideEffects: {hasSideEffect: true,
                 whichSideEffect: {feelingState:3, headache: 2, stomach: 3},
                 sideEffectsNotes: "Ich habe mich unwohl gefühlt und dazu Kopfschmerzen bekommen. Auch mein Margen spielte verrückt."}

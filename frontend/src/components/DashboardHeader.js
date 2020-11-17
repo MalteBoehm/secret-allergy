@@ -2,31 +2,43 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native'
 import styled from 'styled-components/native'
 import { Col, Row, Grid } from "react-native-easy-grid";
-import {moderateScale} from "../styles/globalstyles";
+import {moderateScale, scale, verticalScale} from "../styles/globalstyles";
+
+
+
+
 
 export default function DashboardHeader(){
 
     return(
-            <Row style={dashboardStyle.container} size={1}>
-                <DashboardText style={{paddingTop:20, color:'white'}}>
+            <Row size={1} style={DashboardStyle.container}>
+                <Row>
+                    <Text style={{paddingTop:20, color:'white'}}>
                     Dashboard
-                </DashboardText>
+                </Text>
+                </Row>
 
-                <Row style={dashboardStyle.cols}>
-                    <Col>
-                        <DashboardText>
-                            Col1
-                        </DashboardText>
+                <Row style={DashboardStyle.cols} >
+                    <Col size={1}>
+                        <View>
+                            <Text style={DashboardStyle.textStyle}>
+                                Col1
+                            </Text>
+                        </View>
                     </Col>
-                    <Col>
-                        <DashboardText>
-                            Col2
-                        </DashboardText>
+                    <Col size={1}>
+                        <View>
+                            <Text style={DashboardStyle.textStyle}>
+                                Col2
+                            </Text>
+                        </View>
                     </Col>
-                    <Col>
-                        <DashboardText>
-                            Col3
-                        </DashboardText>
+                    <Col size={1}>
+                        <View>
+                            <Text style={DashboardStyle.textStyle}>
+                                Col3
+                            </Text>
+                        </View>
                     </Col>
                 </Row>
             </Row>
@@ -35,24 +47,27 @@ export default function DashboardHeader(){
 
 
 
-const DashboardText = styled.Text`
-            fontSize: ${moderateScale(16,0.4)};
-            color:azure;
-            align-content: center;
- `
 
-const dashboardStyle = StyleSheet.create({
+const DashboardStyle = StyleSheet.create({
         container: {
-            width: '100%',
-            alignItems: 'center',
-            justifyContent: 'space-between',
+            display: 'flex',
             flexDirection: 'column',
-            backgroundColor: 'blue'
+            backgroundColor: '#2179ff',
+
         },
         cols: {
-            marginLeft: 50,
 
-            flexDirection: 'row'
-        }
+            display: 'flex',
+            alignItems: 'center',
+            flexDirection: 'row',
+            backgroundColor: '#5073a7',
+            justifyContent:'space-evenly',
+        },
+    textStyle:{
+        fontSize: moderateScale(16,0.4),
+        color:'#ffffff',
+        alignContent: 'center',
+    }
     }
 )
+
