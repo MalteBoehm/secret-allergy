@@ -27,6 +27,7 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.4.tar.gz",
     "react-native-action-button": "^2.8.5",
     "react-native-easy-grid": "^0.2.2",
+    "react-native-emoji": "^1.8.0",
     "react-native-floating-action": "^1.21.0",
     "react-native-gesture-handler": "~1.7.0",
     "react-native-linear-gradient": "^2.5.6",

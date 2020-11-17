@@ -6,7 +6,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import FloatingAddButton from "../navigation/FloatingAddButton";
 import {moderateScale} from '../styles/globalstyles';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import Emoji from '../styles/emojistyles';
+import Emoji from 'react-native-emoji';
 
 
 
@@ -27,7 +27,7 @@ const BreakfastBox = () => {
             <MealBoxStyled>
                 <Grid>
                     <Row>
-                        <Col size={1}><Emoji symbol="☕" label="coffee"/></Col>
+                        <Col size={1}><Text><Emoji name="coffee" style={{fontSize: 40}} /></Text></Col>
                         <Col size={4}><Text style={{fontWeight: "bold", fontSize: moderateScale(14, 0.3)}}>Frühstück Hinzufügen</Text></Col>
                         <Col size={1}><MealBoxButtonStyled title={'+'} onPress={() => alert('This once will go to a Add Meal Screen')} /></Col>
                     </Row>
@@ -67,7 +67,7 @@ const MealBox = () => {
         <MealBoxStyled>
             <Grid>
                 <Row>
-                    <Col size={1}><Emoji symbol="🍕" label="mittagessen"/></Col>
+                    <Col size={1}><Text><Emoji name="pizza" style={{fontSize: 40}} /></Text></Col>
                     <Col size={4}><Text style={{fontWeight: "bold", fontSize: moderateScale(14, 0.3)}}>Mittagessen Hinzufügen</Text></Col>
                     <Col size={1}><MealBoxButtonStyled title={'+'} onPress={() => alert('This once will go to a Add Meal Screen')} /></Col>
                 </Row>
@@ -107,7 +107,7 @@ const DinnerBox = () => {
         <MealBoxStyled>
             <Grid>
                 <Row>
-                    <Col size={1}><Emoji symbol="🍷" label="dinner"/></Col>
+                    <Col size={1}><Text><Emoji name=":wine_glass:" style={{fontSize: 40}} /></Text></Col>
                     <Col size={4}><Text style={{fontWeight: "bold", fontSize: moderateScale(14, 0.3)}}>Abendessen Hinzufügen</Text></Col>
                     <Col size={1}><MealBoxButtonStyled title={'+'} onPress={() => alert('This once will go to a Add Meal Screen')} /></Col>
                 </Row>
@@ -147,12 +147,12 @@ const SnackBox = () => {
         <MealBoxStyled>
             <Grid>
                 <Row>
-                    <Col size={1}><Emoji symbol="🍏" label="snack"/></Col>
+                    <Col size={1}><Text><Emoji name="apple" style={{fontSize: 40}} /></Text></Col>
                     <Col size={4}><Text style={{fontWeight: "bold", fontSize: moderateScale(14, 0.3)}}>Snack hinzufügen</Text></Col>
                     <Col size={1}><MealBoxButtonStyled title={'+'} onPress={() => alert('This once will go to a Add Meal Screen')} /></Col>
                 </Row>
                 <Row>
-                    <Col><Text style={{fontWeight: "bold", fontSize: moderateScale(12, 0.3), wordbreak: "break-all"}}>{currentSnack.name}</Text></Col>
+                    <Col><Text style={{fontWeight: "bold", fontSize: moderateScale(12, 0.3), wordBreak: "break-all"}}>{currentSnack.name}</Text></Col>
                     <Col><Text style={{fontWeight: "bold", fontSize: moderateScale(12, 0.3)}}>Nebenwirkung:</Text></Col>
                 </Row>
                 <Row>

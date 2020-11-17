@@ -22,12 +22,13 @@ export default function DashboardScreen(){
 const StyledGrid = StyleSheet.create({
     container: {
         display: 'flex',
-
         flexDirection: 'column',
     },
     dashboard: {
         alignContent: 'center',
         flexDirection: 'column',
+        width: '100%'
+
     },
 
 })
