@@ -6,6 +6,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import FloatingAddButton from "../navigation/FloatingAddButton";
 import {moderateScale} from '../styles/globalstyles';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import Emoji from '../styles/emojistyles';
 
 
 
@@ -17,7 +18,8 @@ const BreakfastBox = () => {
         allergens: ["Eggs","Lactose"],
         sideEffects: {hasSideEffect: true,
             whichSideEffect: {feelingState:3, headache: 2, stomach: 3},
-            sideEffectsNotes: "Ich habe mich unwohl gefühlt und dazu Kopfschmerzen bekommen. Auch mein Margen spielte verrückt."}}
+            sideEffectsNotes: "Ich habe mich unwohl gefühlt und dazu Kopfschmerzen bekommen. Auch mein Margen spielte verrückt."}
+    }
     );
 
 
@@ -25,23 +27,27 @@ const BreakfastBox = () => {
             <StyledMealBox>
                 <Grid>
                     <Row>
-                        <Col size={1}><Text >Bild</Text></Col>
-                        <Col size={4}><Text>FRÜHSTÜCK Hinzufügen</Text></Col>
-                        <Col size={1}><StyledMealBoxAddButton title={'+'} onPress={() => alert('ABC')} /></Col>
+                        <Col size={1}><Emoji symbol="☕" label="coffee"/></Col>
+                        <Col size={4}><Text style={{fontWeight: "bold", fontSize: moderateScale(16, 0.3)}}>FRÜHSTÜCK Hinzufügen</Text></Col>
+                        <Col size={1}><StyledMealBoxAddButton title={'+'} onPress={() => alert('This once will go to a Add Meal Screen')} /></Col>
                     </Row>
                     <Row>
-                        <Col><Text>{currentBreakfast.name}</Text></Col>
-                        <Col><Text>Nebenwirkung:</Text></Col>
+                        <Col><Text style={{fontWeight: "bold", fontSize: moderateScale(14, 0.3)}}>{currentBreakfast.name}</Text></Col>
+                        <Col><Text style={{fontWeight: "bold", fontSize: moderateScale(14, 0.3)}}>Nebenwirkung:</Text></Col>
                     </Row>
                     <Row>
                         <Col>
                             <Text>
                                 {
-                                    currentBreakfast.allergens.map(allergens =>
-                                    allergens + (allergens.indexOf(allergens) !== allergens.length ? " ," : ""))}
+                                    currentBreakfast.allergens.toString().replace(",", ", ")
+                                }
                             </Text>
                      </Col>
-                        <Col><Text>Scale</Text></Col>
+                        <Col>
+                            <Text>
+                                Scale
+                            </Text>
+                        </Col>
                     </Row>
                 </Grid>
             </StyledMealBox>
@@ -90,7 +96,7 @@ const StyledMealBox = styled.View`
     width:100%;
     min-height: ${moderateScale(125, 0.3)};
     backgroundColor: white;
-    
+
     marginLeft: ${moderateScale(5, 0.2)};
     margin-right: ${moderateScale(5, 0.2)};
     paddingLeft: ${moderateScale(7, 0.2)};
@@ -104,8 +110,10 @@ const StyledMealBox = styled.View`
 
 const StyledMealBoxAddButton = styled.Button`
     background-color: white;
-    
+
 `
+
+
 
 
 // todo Icons für Mahlzeiten raussuchen

@@ -9,10 +9,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="34f3ec58-04c8-4749-9807-59b7bd3ab184" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/src/styles/emojistyles.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/DashboardHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/DashboardHeader.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/DashboardList.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/DashboardList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/screens/Dashboard/DashboardScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/screens/Dashboard/DashboardScreen.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +160,21 @@
       <option name="project" value="LOCAL" />
       <updated>1605542214005</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="- add Button, Meal Item">
+      <created>1605551424782</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1605551424782</updated>
+    </task>
+    <task id="LOCAL-00008" summary="- add excalidraw">
+      <created>1605551481366</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1605551481366</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -214,17 +227,19 @@
     <MESSAGE value="- Add new backend" />
     <MESSAGE value="- Add react-native-floating-action&#10;-- add design and text to DashboardScreen.js" />
     <MESSAGE value="- add refactor components&#10;- add DashboardList.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="- add refactor components&#10;- add DashboardList.js" />
+    <MESSAGE value="- add Button, Meal Item" />
+    <MESSAGE value="- add excalidraw" />
+    <option name="LAST_COMMIT_MESSAGE" value="- add excalidraw" />
   </component>
   <component name="WindowStateProjectService">
     <state x="184" y="109" width="1071" height="706" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605516568064">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="184" y="109" width="1071" height="706" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605516568064" />
-    <state x="321" y="0" width="794" height="900" key="CommitChangelistDialog2" timestamp="1605542213843">
+    <state x="321" y="0" width="794" height="900" key="CommitChangelistDialog2" timestamp="1605551481162">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="321" y="0" width="794" height="900" key="CommitChangelistDialog2/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605542213843" />
+    <state x="321" y="0" width="794" height="900" key="CommitChangelistDialog2/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605551481162" />
     <state x="567" y="317" key="FileChooserDialogImpl" timestamp="1605372267427">
       <screen x="94" y="0" width="2658" height="1152" />
     </state>
@@ -282,10 +297,10 @@
     </state>
     <state x="268" y="57" key="SettingsEditor/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605516535067" />
     <state x="295" y="221" key="SettingsEditor/94.0.2658.1152/3440.0.2048.1122@94.0.2658.1152" timestamp="1605372490386" />
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1605537972773">
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1605551523227">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605537972773" />
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605551523227" />
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1605523333510">
       <screen x="58" y="25" width="1382" height="875" />
     </state>
