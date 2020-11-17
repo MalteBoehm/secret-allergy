@@ -9,11 +9,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="34f3ec58-04c8-4749-9807-59b7bd3ab184" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/navigation/FloatingAddButton.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/screens/Dashboard/DashboardScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/screens/Dashboard/DashboardScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/DashboardHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/DashboardHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/DashboardList.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/DashboardList.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +148,56 @@
       <option name="project" value="LOCAL" />
       <updated>1605516730773</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="- Add react-native-floating-action&#10;-- add design and text to DashboardScreen.js">
+      <created>1605537970110</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1605537970110</updated>
+    </task>
+    <task id="LOCAL-00006" summary="- add refactor components&#10;- add DashboardList.js">
+      <created>1605542214005</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1605542214005</updated>
+    </task>
+    <task id="LOCAL-00007" summary="- add Button, Meal Item">
+      <created>1605551424782</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1605551424782</updated>
+    </task>
+    <task id="LOCAL-00008" summary="- add excalidraw">
+      <created>1605551481366</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1605551481366</updated>
+    </task>
+    <task id="LOCAL-00009" summary="- add coffee emoji style component&#10;- add List Mapping logic">
+      <created>1605601804538</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1605601804538</updated>
+    </task>
+    <task id="LOCAL-00010" summary="- add listdesign&#10;- ready to start adding addMeal Screen to buttons&#10;- missing scale">
+      <created>1605605051162</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1605605051162</updated>
+    </task>
+    <task id="LOCAL-00011" summary="- fixed emojis - removed emojistyles.js">
+      <created>1605606288970</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1605606288971</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -199,17 +248,24 @@
     <MESSAGE value="- Add Globalstyles for moderate sizes" />
     <MESSAGE value="- Add Jest + added Jest Document to MD" />
     <MESSAGE value="- Add new backend" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Add new backend" />
+    <MESSAGE value="- Add react-native-floating-action&#10;-- add design and text to DashboardScreen.js" />
+    <MESSAGE value="- add refactor components&#10;- add DashboardList.js" />
+    <MESSAGE value="- add Button, Meal Item" />
+    <MESSAGE value="- add excalidraw" />
+    <MESSAGE value="- add coffee emoji style component&#10;- add List Mapping logic" />
+    <MESSAGE value="- add listdesign&#10;- ready to start adding addMeal Screen to buttons&#10;- missing scale" />
+    <MESSAGE value="- fixed emojis - removed emojistyles.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="- fixed emojis - removed emojistyles.js" />
   </component>
   <component name="WindowStateProjectService">
     <state x="184" y="109" width="1071" height="706" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605516568064">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="184" y="109" width="1071" height="706" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605516568064" />
-    <state x="321" y="2" key="CommitChangelistDialog2" timestamp="1605516730263">
+    <state x="321" y="0" width="794" height="900" key="CommitChangelistDialog2" timestamp="1605606288734">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="321" y="2" key="CommitChangelistDialog2/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605516730263" />
+    <state x="321" y="0" width="794" height="900" key="CommitChangelistDialog2/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605606288734" />
     <state x="567" y="317" key="FileChooserDialogImpl" timestamp="1605372267427">
       <screen x="94" y="0" width="2658" height="1152" />
     </state>
@@ -267,10 +323,10 @@
     </state>
     <state x="268" y="57" key="SettingsEditor/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605516535067" />
     <state x="295" y="221" key="SettingsEditor/94.0.2658.1152/3440.0.2048.1122@94.0.2658.1152" timestamp="1605372490386" />
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1605516733638">
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1605605058681">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605516733638" />
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605605058681" />
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1605523333510">
       <screen x="58" y="25" width="1382" height="875" />
     </state>
@@ -279,10 +335,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605525788071" />
-    <state x="536" y="369" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605516691357">
+    <state x="536" y="369" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605538080732">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="536" y="369" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605516691357" />
+    <state x="536" y="369" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605538080732" />
     <state x="154" y="118" width="634" height="665" key="new project wizard" timestamp="1605516469722">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
