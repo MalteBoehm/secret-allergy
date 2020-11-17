@@ -9,7 +9,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="34f3ec58-04c8-4749-9807-59b7bd3ab184" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/styles/emojistyles.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/DashboardList.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/DashboardList.js" afterDir="false" />
     </list>
@@ -174,7 +173,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605551481366</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="- add coffee emoji style component&#10;- add List Mapping logic">
+      <created>1605601804538</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1605601804538</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -229,17 +235,18 @@
     <MESSAGE value="- add refactor components&#10;- add DashboardList.js" />
     <MESSAGE value="- add Button, Meal Item" />
     <MESSAGE value="- add excalidraw" />
-    <option name="LAST_COMMIT_MESSAGE" value="- add excalidraw" />
+    <MESSAGE value="- add coffee emoji style component&#10;- add List Mapping logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="- add coffee emoji style component&#10;- add List Mapping logic" />
   </component>
   <component name="WindowStateProjectService">
     <state x="184" y="109" width="1071" height="706" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605516568064">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="184" y="109" width="1071" height="706" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605516568064" />
-    <state x="321" y="0" width="794" height="900" key="CommitChangelistDialog2" timestamp="1605551481162">
+    <state x="321" y="0" width="794" height="900" key="CommitChangelistDialog2" timestamp="1605601804391">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="321" y="0" width="794" height="900" key="CommitChangelistDialog2/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605551481162" />
+    <state x="321" y="0" width="794" height="900" key="CommitChangelistDialog2/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605601804390" />
     <state x="567" y="317" key="FileChooserDialogImpl" timestamp="1605372267427">
       <screen x="94" y="0" width="2658" height="1152" />
     </state>
