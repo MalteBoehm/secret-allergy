@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React from 'react';
 import DashboardScreen from './Dashboard/DashboardScreen';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';

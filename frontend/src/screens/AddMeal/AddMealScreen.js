@@ -7,7 +7,7 @@ import AddMealHeader from '../../components/AddMealHeader';
 import AddMealSuche from '../../components/AddMealSuche';
 import AddMealList from '../../components/AddMealList';
 
-export default function AddMealScreen( {navigation} ){
+export default function AddMealScreen(){
     return (
         <Grid style={StyledGrid.container}>
             <AddMealHeader />
@@ -20,7 +20,7 @@ export default function AddMealScreen( {navigation} ){
 const StyledGrid = StyleSheet.create({
     container: {
         display: 'flex',
-        flexDirection: 'row',
+        flexDirection: 'column',
         backgroundColor: '#cacaca',
         marginTop: moderateScale(25),
     },

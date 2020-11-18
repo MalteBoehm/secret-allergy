@@ -9,17 +9,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="34f3ec58-04c8-4749-9807-59b7bd3ab184" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/AddMealHeader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/AddMealList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/AddMealSuche.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/screens/AddMeal/AddMealScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/excalidraw.excalidraw" beforeDir="false" afterPath="$PROJECT_DIR$/excalidraw.excalidraw" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/DashboardHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/DashboardHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/AddMealHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/AddMealHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/AddMealList.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/AddMealList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/DashboardList.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/DashboardList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/screens/AddMeal/AddMealScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/screens/AddMeal/AddMealScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/screens/Dashboard/DashboardScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/screens/Dashboard/DashboardScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/screens/Navigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/screens/Navigator.js" afterDir="false" />
     </list>
@@ -73,7 +68,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15136719" />
     <property name="project.structure.side.proportion" value="0.38390803" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -85,19 +80,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="SecretAllergyApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="backend" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.secretallergy.secretallergy.SecretAllergyApplication" />
@@ -128,6 +110,7 @@
       <workItem from="1605372687766" duration="2814000" />
       <workItem from="1605432893877" duration="1036000" />
       <workItem from="1605516041970" duration="12064000" />
+      <workItem from="1605705074959" duration="2697000" />
     </task>
     <task id="LOCAL-00001" summary="- Dependencies Added:&#10;-- styled components&#10;-- css to react native&#10;-- react native easy grid&#10;-- react native linea gradient&#10;- App Js height + width to 100%">
       <created>1605373975759</created>
@@ -206,7 +189,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605606288971</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="- added AddMeal - unfinished -&gt; need to work on the list -&gt; starting with hooks And Nav">
+      <created>1605635903372</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1605635903372</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,16 +254,18 @@
     <MESSAGE value="- add coffee emoji style component&#10;- add List Mapping logic" />
     <MESSAGE value="- add listdesign&#10;- ready to start adding addMeal Screen to buttons&#10;- missing scale" />
     <MESSAGE value="- fixed emojis - removed emojistyles.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="- fixed emojis - removed emojistyles.js" />
+    <MESSAGE value="- added AddMeal - unfinished -&gt; need to work on the list -&gt; starting with hooks And Nav" />
+    <option name="LAST_COMMIT_MESSAGE" value="- added AddMeal - unfinished -&gt; need to work on the list -&gt; starting with hooks And Nav" />
   </component>
   <component name="WindowStateProjectService">
     <state x="184" y="109" width="1071" height="744" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605620544593">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="184" y="109" width="1071" height="744" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605620544593" />
-    <state x="321" y="0" width="794" height="900" key="CommitChangelistDialog2" timestamp="1605606288734">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="386" y="-1080" width="794" height="900" key="CommitChangelistDialog2" timestamp="1605635903133">
+      <screen x="-185" y="-1080" width="2560" height="1080" />
     </state>
+    <state x="386" y="-1080" key="CommitChangelistDialog2/0.0.1440.900/-185.-1080.2560.1080@-185.-1080.2560.1080" timestamp="1605635903133" />
     <state x="321" y="0" width="794" height="900" key="CommitChangelistDialog2/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605606288734" />
     <state x="587" y="217" width="604" height="623" key="EnvironmentVariablesDialog" timestamp="1605620540465">
       <screen x="0" y="0" width="1440" height="900" />
@@ -331,14 +323,16 @@
     <state width="1015" height="207" key="GridCell.Tab.1.right/0.0.1440.900/-185.-1055.2560.1055@0.0.1440.900" timestamp="1605525384383" />
     <state width="1015" height="207" key="GridCell.Tab.1.right/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605523165677" />
     <state width="974" height="309" key="GridCell.Tab.1.right/94.0.2658.1152/3440.0.2048.1122@94.0.2658.1152" timestamp="1605372678030" />
-    <state x="268" y="57" key="SettingsEditor" timestamp="1605516535067">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="291" y="-1012" key="SettingsEditor" timestamp="1605691576826">
+      <screen x="-185" y="-1080" width="2560" height="1080" />
     </state>
     <state x="268" y="57" key="SettingsEditor/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605516535067" />
+    <state x="291" y="-1012" key="SettingsEditor/0.25.1440.875/-185.-1080.2560.1080@-185.-1080.2560.1080" timestamp="1605691576826" />
     <state x="295" y="221" key="SettingsEditor/94.0.2658.1152/3440.0.2048.1122@94.0.2658.1152" timestamp="1605372490386" />
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1605605058681">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="384" y="-856" key="Vcs.Push.Dialog.v2" timestamp="1605635905664">
+      <screen x="-185" y="-1080" width="2560" height="1080" />
     </state>
+    <state x="384" y="-856" key="Vcs.Push.Dialog.v2/0.0.1440.900/-185.-1080.2560.1080@-185.-1080.2560.1080" timestamp="1605635905664" />
     <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605605058681" />
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1605523333510">
       <screen x="58" y="25" width="1382" height="875" />
@@ -357,11 +351,12 @@
     </state>
     <state x="154" y="118" width="634" height="665" key="new project wizard/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605516469722" />
     <state x="378" y="151" width="1099" height="850" key="new project wizard/94.0.2658.1152/3440.0.2048.1122@94.0.2658.1152" timestamp="1605372451935" />
-    <state x="130" y="201" width="672" height="530" key="search.everywhere.popup" timestamp="1605530716498">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="186" y="220" width="672" height="516" key="search.everywhere.popup" timestamp="1605694385723">
+      <screen x="62" y="25" width="1378" height="875" />
     </state>
     <state x="130" y="201" width="672" height="530" key="search.everywhere.popup/0.0.1440.900/-185.-1055.2560.1055@0.0.1440.900" timestamp="1605527307955" />
     <state x="130" y="201" width="672" height="530" key="search.everywhere.popup/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605530716498" />
+    <state x="186" y="220" width="672" height="516" key="search.everywhere.popup/62.25.1378.875/-185.-1055.2560.1055@62.25.1378.875" timestamp="1605694385723" />
     <state x="334" y="257" width="672" height="678" key="search.everywhere.popup/94.0.2658.1152/3440.0.2048.1122@94.0.2658.1152" timestamp="1605433344387" />
   </component>
 </project>

@@ -4,7 +4,7 @@ import { StyleSheet, ScrollView, Text, View} from 'react-native';
 
 export default function AddMealList() {
 
-    const [meals, setMeals] = use //todo hier weiter mache
+
     return (
             <Row size={10}>
                 <Text >Liste</Text>

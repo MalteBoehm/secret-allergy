@@ -1,12 +1,36 @@
 import {Grid, Row, Col} from "react-native-easy-grid";
 import React, {useState} from 'react';
-import { StyleSheet, ScrollView, Text, View} from 'react-native';
+import { StyleSheet, ScrollView, Text, View, Button} from 'react-native';
 import styled from 'styled-components/native';
 import {moderateScale} from '../styles/globalstyles';
 import Emoji from 'react-native-emoji';
 
 
-const BreakfastBox = () => {
+
+export default function DashboardList({navigation}){
+    const listItemsToMap = [
+        {
+            id: 1,
+            title: 'Frühstück Hinzufügen',
+            emojiName: 'coffee',
+            state: 'currentBreakfast'
+        },{
+            id: 2,
+            title: 'Mittagessen Hinzufügen',
+            emojiName: 'pizza',
+            state: 'currentMeal'
+        },{
+            id: 3,
+            title: 'Abendessen Hinzufügen',
+            emojiName: ':wine_glass',
+            state: 'currentDinner'
+        },{
+            id: 4,
+            title: 'Snack Hinzufügen',
+            emojiName: 'apple',
+            state: 'currentSnack'
+        }];
+
 
     const [currentBreakfast, setCurrentBreakfast] = useState({
         name: "Omelet",
@@ -15,40 +39,8 @@ const BreakfastBox = () => {
         sideEffects: {hasSideEffect: true,
             whichSideEffect: {feelingState:3, headache: 2, stomach: 3},
             sideEffectsNotes: "Ich habe mich unwohl gefühlt und dazu Kopfschmerzen bekommen. Auch mein Margen spielte verrückt."}
-    }
-    );
+    });
 
-
-    return (
-            <MealBoxStyled>
-                <Grid>
-                    <Row>
-                        <Col size={1}><Text><Emoji name="coffee" style={{fontSize: 40}} /></Text></Col>
-                        <Col size={4}><Text style={{fontWeight: "bold", fontSize: moderateScale(14, 0.3)}}>Frühstück Hinzufügen</Text></Col>
-                        <Col size={1}><MealBoxButtonStyled title={'+'} onPress={ () => alert('This once will go to a Add Meal Screen')} /></Col>
-                    </Row>
-                    <Row>
-                        <Col><Text style={{fontWeight: "bold", fontSize: moderateScale(12, 0.3)}}>{currentBreakfast.name}</Text></Col>
-                        <Col><Text style={{fontWeight: "bold", fontSize: moderateScale(12, 0.3)}}>Nebenwirkung:</Text></Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <Text>
-                                {currentBreakfast.allergens?.toString().replace(",", ", ")}
-                            </Text>
-                     </Col>
-                        <Col>
-                            <Text>
-                                Scale
-                            </Text>
-                        </Col>
-                    </Row>
-                </Grid>
-            </MealBoxStyled>
-    )
-}
-
-const MealBox = () => {
 
     const [currentMeal, setCurrentMeal] = useState({
             name: "Pizza Salami",
@@ -59,36 +51,7 @@ const MealBox = () => {
                 sideEffectsNotes: "Ich habe mich unwohl gefühlt und dazu Kopfschmerzen bekommen. Auch mein Margen spielte verrückt."}
         }
     );
-    return (
-        <MealBoxStyled>
-            <Grid>
-                <Row>
-                    <Col size={1}><Text><Emoji name="pizza" style={{fontSize: 40}} /></Text></Col>
-                    <Col size={4}><Text style={{fontWeight: "bold", fontSize: moderateScale(14, 0.3)}}>Mittagessen Hinzufügen</Text></Col>
-                    <Col size={1}><MealBoxButtonStyled title={'+'} onPress={() => alert('This once will go to a Add Meal Screen')} /></Col>
-                </Row>
-                <Row>
-                    <Col><Text style={{fontWeight: "bold", fontSize: moderateScale(12, 0.3)}}>{currentMeal.name}</Text></Col>
-                    <Col><Text style={{fontWeight: "bold", fontSize: moderateScale(12, 0.3)}}>Nebenwirkung:</Text></Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <Text>
-                            {currentMeal.allergens?.toString().replace(",", ", ")}
-                        </Text>
-                    </Col>
-                    <Col>
-                        <Text>
-                            Scale
-                        </Text>
-                    </Col>
-                </Row>
-            </Grid>
-        </MealBoxStyled>
-    )
-}
 
-const DinnerBox = () => {
 
     const [currentDinner, setCurrentDinner] = useState({
             name: "Spinat mit Fischstäbchen",
@@ -99,36 +62,7 @@ const DinnerBox = () => {
                 sideEffectsNotes: "Ich habe mich unwohl gefühlt und dazu Kopfschmerzen bekommen. Auch mein Margen spielte verrückt."}
         }
     );
-    return (
-        <MealBoxStyled>
-            <Grid>
-                <Row>
-                    <Col size={1}><Text><Emoji name=":wine_glass:" style={{fontSize: 40}} /></Text></Col>
-                    <Col size={4}><Text style={{fontWeight: "bold", fontSize: moderateScale(14, 0.3)}}>Abendessen Hinzufügen</Text></Col>
-                    <Col size={1}><MealBoxButtonStyled title={'+'} onPress={() => alert('This once will go to a Add Meal Screen')} /></Col>
-                </Row>
-                <Row>
-                    <Col><Text style={{fontWeight: "bold", fontSize: moderateScale(12, 0.3)}}>{currentDinner.name}</Text></Col>
-                    <Col><Text style={{fontWeight: "bold", fontSize: moderateScale(12, 0.3)}}>Nebenwirkung:</Text></Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <Text>
-                            {currentDinner.allergens?.toString().replace(",", ", ")}
-                        </Text>
-                    </Col>
-                    <Col>
-                        <Text>
-                            Scale
-                        </Text>
-                    </Col>
-                </Row>
-            </Grid>
-        </MealBoxStyled>
-    )
-}
 
-const SnackBox = () => {
 
     const [currentSnack, setCurrentSnack] = useState({
             name: "Apfel",
@@ -139,54 +73,46 @@ const SnackBox = () => {
                 sideEffectsNotes: "Ich habe mich unwohl gefühlt und dazu Kopfschmerzen bekommen. Auch mein Margen spielte verrückt."}
         }
     );
-    return (
-        <MealBoxStyled>
-            <Grid>
-                <Row>
-                    <Col size={1}><Text><Emoji name="apple" style={{fontSize: 40}} /></Text></Col>
-                    <Col size={4}><Text style={{fontWeight: "bold", fontSize: moderateScale(14, 0.3)}}>Snack hinzufügen</Text></Col>
-                    <Col size={1}><MealBoxButtonStyled title={'+'} onPress={() => alert('This once will go to a Add Meal Screen')} /></Col>
-                </Row>
-                <Row>
-                    <Col><Text style={{fontWeight: "bold", fontSize: moderateScale(12, 0.3), wordBreak: "break-all"}}>{currentSnack.name}</Text></Col>
-                    <Col><Text style={{fontWeight: "bold", fontSize: moderateScale(12, 0.3)}}>Nebenwirkung:</Text></Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <Text>
-                            {currentSnack.allergens?.toString().replace(",", ", ")}
-                        </Text>
-                    </Col>
-                    <Col>
-                        <Text>
-                            Scale
-                        </Text>
-                    </Col>
-                </Row>
-            </Grid>
-        </MealBoxStyled>
-    )
-}
 
-
-
-export default function DashboardList(){
         return(
                 <Row size={2}>
                         <ScrollView>
                             <Grid style={GridListStyled.container}>
-                                <Row>
-                                    <BreakfastBox/>
-                                </Row>
-                                <Row>
-                                    <MealBox/>
-                                </Row>
-                                <Row>
-                                    <DinnerBox/>
-                                </Row>
-                                <Row>
-                                    <SnackBox/>
-                                </Row>
+                                {listItemsToMap.map(item => {
+                                    return(
+                                        <Row>
+                                            <MealBoxStyled>
+                                                <Grid>
+                                                    <Row>
+                                                        <Col size={1}><Text><Emoji name={item.emojiName} style={{fontSize: 40}}/></Text></Col>
+                                                        <Col size={4}><Text style={{fontWeight: "bold", fontSize: moderateScale(14, 0.3)}}>{item.title}</Text></Col>
+                                                        <Col size={1}>
+                                                            <Button title={'+'} onPress={() =>
+                                                                navigation.navigate('AddMeal')}/>
+                                                        </Col>
+                                                    </Row>
+                                                    <Row>
+                                                        <Col><Text style={{fontWeight: "bold", fontSize: moderateScale(12, 0.3)}}>Allergene:</Text></Col>
+                                                        <Col><Text style={{fontWeight: "bold", fontSize: moderateScale(12, 0.3)}}>Nebenwirkung:</Text></Col>
+                                                    </Row>
+                                                    <Row>
+                                                        <Col>
+                                                            <Text>
+                                                                {item.state.allergens?.toString().replace(",", ", ")}
+                                                            </Text>
+                                                        </Col>
+                                                        <Col>
+                                                            <Text>
+                                                                Scale
+                                                            </Text>
+                                                        </Col>
+                                                    </Row>
+                                                </Grid>
+                                            </MealBoxStyled>
+                                        </Row>
+                                    );
+                                })}
+
                             </Grid>
                         </ScrollView>
                 </Row>
