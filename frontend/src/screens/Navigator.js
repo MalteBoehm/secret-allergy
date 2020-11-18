@@ -4,6 +4,7 @@ import DashboardScreen from './Dashboard/DashboardScreen';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {NavigationContainer} from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import StackNavigator from "./StackNavigator";
 
 
 const Tab = createMaterialBottomTabNavigator();
@@ -15,7 +16,7 @@ export default function Navigator() {
             <Tab.Navigator  activeColor='#f0edf6'
                             inactiveColor='#3e2435'
                             barStyle={{ backgroundColor: '#646ea0'}}>
-                <Tab.Screen name="Home" component={DashboardScreen} options={{
+                <Tab.Screen name="Home" component={StackNavigator} options={{
                     tabBarLabel: 'Home',
                     tabBarIcon: ({ color }) => (
                         <MaterialCommunityIcons name="home" color={color} size={25} />

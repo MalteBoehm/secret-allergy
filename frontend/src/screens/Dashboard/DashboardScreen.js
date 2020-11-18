@@ -16,7 +16,6 @@ export default function DashboardScreen({ navigation, route }){
                 <DashboardHeader/>
                 <DashboardList navigation={navigation} route={route}/>
                 <FloatingAddButton/>
-
             </Grid>
     );
 }
