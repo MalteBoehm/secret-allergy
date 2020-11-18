@@ -12,23 +12,19 @@ export default function DashboardList({navigation}){
         {
             id: 1,
             title: 'Frühstück Hinzufügen',
-            emojiName: 'coffee',
-            state: 'currentBreakfast'
+            emojiName: 'coffee'
         },{
             id: 2,
             title: 'Mittagessen Hinzufügen',
-            emojiName: 'pizza',
-            state: 'currentMeal'
+            emojiName: 'pizza'
         },{
             id: 3,
             title: 'Abendessen Hinzufügen',
-            emojiName: ':wine_glass',
-            state: 'currentDinner'
+            emojiName: 'wine_glass'
         },{
             id: 4,
             title: 'Snack Hinzufügen',
-            emojiName: 'apple',
-            state: 'currentSnack'
+            emojiName: 'apple'
         }];
 
 
@@ -74,13 +70,26 @@ export default function DashboardList({navigation}){
         }
     );
 
+    function findAllergens(id){
+        if(id === 1){
+            return currentBreakfast.allergens?.toString().replace(",", ", ")
+        } if(id === 2){
+            return currentMeal.allergens?.toString().replace(",", ", ")
+        } if(id === 3){
+            return currentDinner.allergens?.toString().replace(",", ", ")
+        } if(id === 4){
+            return currentSnack.allergens?.toString().replace(",", ", ")
+        }
+    }
+
+
         return(
                 <Row size={2}>
                         <ScrollView>
                             <Grid style={GridListStyled.container}>
                                 {listItemsToMap.map(item => {
                                     return(
-                                        <Row>
+                                        <Row key={item.id}>
                                             <MealBoxStyled>
                                                 <Grid>
                                                     <Row>
@@ -98,7 +107,7 @@ export default function DashboardList({navigation}){
                                                     <Row>
                                                         <Col>
                                                             <Text>
-                                                                {item.state.allergens?.toString().replace(",", ", ")}
+                                                                {findAllergens(item.id)}
                                                             </Text>
                                                         </Col>
                                                         <Col>
@@ -112,11 +121,9 @@ export default function DashboardList({navigation}){
                                         </Row>
                                     );
                                 })}
-
                             </Grid>
                         </ScrollView>
                 </Row>
-
         );
 }
 
