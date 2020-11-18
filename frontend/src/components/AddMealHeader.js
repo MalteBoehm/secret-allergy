@@ -7,15 +7,17 @@ import {moderateScale} from "../styles/globalstyles";
 import DashboardScreen from "../screens/Dashboard/DashboardScreen";
 import {StackActions as navigate} from "@react-navigation/routers/src/StackRouter";
 
-export default function AddMealHeader({navigation}){
+export default function AddMealHeader( {navigation} ){
 
     return(
             <Row size={1} style={headerStyle.rowStyle}>
                 <Button  type="outline"
                          title={"Zurück"}
+                         onPress={()=> navigation.navigate('Dashboard')}
                 />
                 <Button  type="outline"
                          title={"Mahlzeit erstellen"}
+                         onPress={()=> alert('Once you will be able to create a Meal')}
                  />
             </Row>
 

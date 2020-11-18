@@ -7,10 +7,10 @@ import AddMealHeader from '../../components/AddMealHeader';
 import AddMealSuche from '../../components/AddMealSuche';
 import AddMealList from '../../components/AddMealList';
 
-export default function AddMealScreen(){
+export default function AddMealScreen( {navigation} ){
     return (
         <Grid style={StyledGrid.container}>
-            <AddMealHeader />
+            <AddMealHeader navigation={navigation} />
             <AddMealSuche />
             <AddMealList />
         </Grid>
