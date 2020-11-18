@@ -2,15 +2,15 @@ import React from 'react';
 import { FloatingAction } from "react-native-floating-action";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
-export default function FloatingButton(){
+export default function FloatingButton( {navigation} ){
     return (
             <FloatingAction
                 color='#41bc70'
                 actions={actions}
-                onPressItem={name => {
-                    console.log(`selected button: ${name}`);
-                }}
+                onPressItem={() => navigation.navigate({target})
+                }
             />
+
     );
 }
 
@@ -18,7 +18,8 @@ const actions = [
     {
         text: "Frühstück",
         icon: <MaterialCommunityIcons name="plus"  color='white' size={25} />,
-        name: "bt_accessibility",
+        name: "Dashboard",
+        target: "Dashboard",
         position: 1
     },
     {

@@ -10,9 +10,12 @@
   <component name="ChangeListManager">
     <list default="true" id="34f3ec58-04c8-4749-9807-59b7bd3ab184" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/AddMealHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/AddMealHeader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/AddMealSuche.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/AddMealSuche.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/screens/AddMeal/AddMealScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/screens/AddMeal/AddMealScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/navigation/BottomTabNavigation.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/navigation/FloatingAddButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/navigation/FloatingAddButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/screens/Dashboard/DashboardScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/screens/Dashboard/DashboardScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/screens/Navigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/navigation/Navigator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/screens/StackNavigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/navigation/StackNavigator.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,11 +71,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/src/navigation" />
       <recent name="$PROJECT_DIR$/frontend/src/screens" />
       <recent name="$PROJECT_DIR$/backend" />
       <recent name="C:\SecretAllergy\frontend\src\screens" />
       <recent name="C:\SecretAllergy\frontend\src" />
-      <recent name="C:\SecretAllergy\frontend\src\Dashboard" />
     </key>
   </component>
   <component name="RunManager">
@@ -224,7 +227,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605715353300</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="- fix Navigation in AddMealHeader">
+      <created>1605715955810</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1605715955810</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -286,18 +296,19 @@
     <MESSAGE value="- added Refactoring and new Screen" />
     <MESSAGE value="- add fixed navigation" />
     <MESSAGE value="- fix columns" />
-    <option name="LAST_COMMIT_MESSAGE" value="- fix columns" />
+    <MESSAGE value="- fix Navigation in AddMealHeader" />
+    <option name="LAST_COMMIT_MESSAGE" value="- fix Navigation in AddMealHeader" />
   </component>
   <component name="WindowStateProjectService">
     <state x="184" y="109" width="1071" height="744" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605620544593">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="184" y="109" width="1071" height="744" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605620544593" />
-    <state x="321" y="0" width="794" height="900" key="CommitChangelistDialog2" timestamp="1605715353147">
+    <state x="321" y="0" width="794" height="900" key="CommitChangelistDialog2" timestamp="1605715955677">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="386" y="-1080" key="CommitChangelistDialog2/0.0.1440.900/-185.-1080.2560.1080@-185.-1080.2560.1080" timestamp="1605635903133" />
-    <state x="321" y="0" width="794" height="900" key="CommitChangelistDialog2/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605715353147" />
+    <state x="321" y="0" width="794" height="900" key="CommitChangelistDialog2/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605715955677" />
     <state x="587" y="217" width="604" height="623" key="EnvironmentVariablesDialog" timestamp="1605620540465">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -360,19 +371,20 @@
     <state x="268" y="57" key="SettingsEditor/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605516535067" />
     <state x="291" y="-1012" key="SettingsEditor/0.25.1440.875/-185.-1080.2560.1080@-185.-1080.2560.1080" timestamp="1605691576826" />
     <state x="295" y="221" key="SettingsEditor/94.0.2658.1152/3440.0.2048.1122@94.0.2658.1152" timestamp="1605372490386" />
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1605711375404">
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1605715958178">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="384" y="-856" key="Vcs.Push.Dialog.v2/0.0.1440.900/-185.-1080.2560.1080@-185.-1080.2560.1080" timestamp="1605635905664" />
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605711375404" />
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605715958178" />
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1605523333510">
       <screen x="58" y="25" width="1382" height="875" />
     </state>
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/58.25.1382.875/-185.-1055.2560.1055@58.25.1382.875" timestamp="1605523333510" />
-    <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1605525788071">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="0" y="28" width="1440" height="872" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1605716940918">
+      <screen x="56" y="25" width="1384" height="875" />
     </state>
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605525788071" />
+    <state x="0" y="28" width="1440" height="872" key="com.intellij.history.integration.ui.views.FileHistoryDialog/56.25.1384.875/-185.-1055.2560.1055@56.25.1384.875" timestamp="1605716940918" />
     <state x="536" y="369" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605714225892">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

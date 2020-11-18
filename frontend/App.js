@@ -8,8 +8,8 @@ import AddMealScreen from "./src/screens/AddMeal/AddMealScreen";
 
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import Navigator from "./src/screens/Navigator";
-import StackNavigator from "./src/screens/StackNavigator";
+import Navigator from "./src/navigation/Navigator";
+import StackNavigator from "./src/navigation/StackNavigator";
 
 
 

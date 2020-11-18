@@ -2,8 +2,8 @@ import 'react-native-gesture-handler';
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import createStackNavigator from "@react-navigation/stack/src/navigators/createStackNavigator";
-import DashboardScreen from "./Dashboard/DashboardScreen";
-import AddMealScreen from "./AddMeal/AddMealScreen";
+import DashboardScreen from "../screens/Dashboard/DashboardScreen";
+import AddMealScreen from "../screens/AddMeal/AddMealScreen";
 
 
 
