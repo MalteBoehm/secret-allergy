@@ -61,7 +61,7 @@ const DashboardStyle = StyleSheet.create({
         fontSize: moderateScale(16,0.4),
         color:'#ffffff',
         alignContent: 'center',
-        align: 'center'
+        textAlign: 'center'
     }
     }
 )
