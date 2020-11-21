@@ -12,6 +12,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @SpringBootApplication
@@ -21,55 +23,24 @@ public class SecretAllergyApplication {
 		SpringApplication.run(SecretAllergyApplication.class, args);
 
 
-
-
 		Unirest.setTimeouts(3000, 3000);
 		JSONArray products =
-				Unirest.get("https://de.openfoodfacts.org/cgi/search.pl?search_terms=tortellini&sort_by=unique_scans_n&json=true")
+				Unirest.get("https://de.openfoodfacts.org/cgi/search.pl?search_terms=dazs&sort_by=unique_scans_n&json=true")
 						.header("Accept", "application/json")
 						.header("User-Agent", "Secret-Allergy")
 						.header("Authorization", "Basic bWFsdGViOlhjWVczMTgxMQ==")
-						.asJson().getBody().getObject()
-						.getJSONArray("products");
+						.asJson().getBody().getObject().getJSONArray("products");
 
-		Iterator<Object> arrayliste = products.iterator();
-		Iterable<Object> defg =  ()-> arrayliste;
+		List<Product> newList = new ArrayList<>();
+		for (int i = 0; i < products.length(); i++) {
+			String id = products.getJSONObject(i).getString("_id");
+			String name = products.getJSONObject(i).getString("product_name_de");
+			String imageUrl = products.getJSONObject(i).getString("image_url");
 
-		ArrayList<Product> productlist = new ArrayList<>();
-		StreamSupport.stream(defg.spliterator(),false)
-				.map(element -> (JSONObject)element)
-				.map(element -> productlist.add( new Product(
-													element.getString("_id"),
-													element.getString("product_name"),
-													element.getString("image_thumb_url"))));
+			newList.add(new Product(id, name, imageUrl));
+		}
+		System.out.println(newList.get(0).toString());
 
-
-		ObjectMapper objectMapper = new ObjectMapper();
-
-
-		objectMapper.readValue(products.get(0).toString(), Product.class);
 	}
-
-//
-//		JSONObject productsJSON = products.getBody().getObject();
-//		JSONArray productsArray = productsJSON.getJSONArray("products");
-//
-//
-//		List<Product> myProduct = new ArrayList<>();
-
-//		for(int i = 0; i < productsArray.length(); i++) {
-//
-//			String _id = productsArray.get(i).
-//			 myProduct.add(new Product(productsArray[i].,
-//					 "",
-//					 "",
-//					 ""));
-//
-//		}
-
-
-
-
-
 }
 
