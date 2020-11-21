@@ -1,5 +1,7 @@
 package com.secretallergy.app.service;
 
+import com.mashape.unirest.http.exceptions.UnirestException;
+import com.secretallergy.app.api.OpenFoodFactsApi;
 import com.secretallergy.app.dto.SearchByProductNameDto;
 import com.secretallergy.app.model.Product;
 import org.springframework.stereotype.Service;
@@ -10,10 +12,10 @@ import java.util.Optional;
 
 @Service
 public class MealService {
+    private OpenFoodFactsApi openFoodFactsApi;
 
 
-    public List<Product> searchProductsByNameService(Optional<SearchByProductNameDto> productName) {
-        List<Product> list = new ArrayList<>();
-        return list;
+    public List<Product> searchProductsByNameService(SearchByProductNameDto productName) throws UnirestException {
+        return openFoodFactsApi.searchProductByName(productName);
     }
 }

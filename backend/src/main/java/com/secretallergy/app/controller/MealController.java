@@ -1,6 +1,7 @@
 package com.secretallergy.app.controller;
 
 
+import com.mashape.unirest.http.exceptions.UnirestException;
 import com.secretallergy.app.dto.SearchByProductNameDto;
 import com.secretallergy.app.model.Product;
 import com.secretallergy.app.service.MealService;
@@ -24,10 +25,9 @@ public class MealController {
     }
 
 
-    public List<Product> searchProductsByName(@RequestParam Optional<SearchByProductNameDto> productName) {
-        mealService.searchProductsByNameService(productName);
-
-        return null;
+    public List<Product> searchProductsByName(@RequestParam Optional<SearchByProductNameDto> productName) throws UnirestException {
+        if(productName.get().toString().length() >=3) return mealService.searchProductsByNameService(productName.get());
+        // Todo Antwort
     }
 
 
