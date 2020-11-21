@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,6 +19,7 @@ import java.util.Optional;
 public class MealController {
     private final MealService mealService;
 
+    private List<Product> listIsEmpty = new ArrayList<>(List.of(new Product("x","Kein Produkt gefunden", "keineURL")));
 
     @Autowired
     public MealController(MealService mealService){
@@ -25,9 +27,13 @@ public class MealController {
     }
 
 
-    public List<Product> searchProductsByName(@RequestParam Optional<SearchByProductNameDto> productName) throws UnirestException {
-        if(productName.get().toString().length() >=3) return mealService.searchProductsByNameService(productName.get());
-        // Todo Antwort
+    @RequestMapping
+    public List<Product> searchProductsByName(@RequestParam SearchByProductNameDto productName) throws UnirestException {
+        if(productName.toString().length() >=3) {
+            return mealService.searchProductsByNameService(productName);
+        } else {
+            return listIsEmpty;
+        }
     }
 
 
