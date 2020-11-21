@@ -21,7 +21,6 @@ public class SecretAllergyApplication {
 
 	public static void main(String[] args) throws UnirestException, JsonProcessingException {
 		SpringApplication.run(SecretAllergyApplication.class, args);
-
 	}
 }
 

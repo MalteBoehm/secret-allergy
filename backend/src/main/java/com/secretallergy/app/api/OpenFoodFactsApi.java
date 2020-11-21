@@ -16,6 +16,7 @@ public class OpenFoodFactsApi {
 
     public List<Product> searchProductByName(SearchByProductNameDto productName) throws UnirestException {
         JSONArray products = getUniRestRequest(productName);
+
         List<Product> productList = new ArrayList<>();
         for (int i = 0; i < products.length(); i++) {
             String id = products.getJSONObject(i).getString("_id");
