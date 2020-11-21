@@ -10,7 +10,7 @@ import {StackActions as navigate} from "@react-navigation/routers/src/StackRoute
 export default function AddMealHeader( {navigation} ){
 
     return(
-            <Row size={1} style={headerStyle.rowStyle}>
+            <Row size={0.1} style={headerStyle.rowStyle}>
                 <Button  type="outline"
                          title={"Zurück"}
                          onPress={()=> navigation.navigate('Dashboard')}

@@ -21,7 +21,7 @@ export default function AddMealList() {
     const [data, setData] = useState([]);
     const [error, setError] = useState(null);
 
-    const API_ENDPOINT = 'https://randomuser.me/api/?seed=1&page=1&results=20';
+    const API_ENDPOINT = '';
     useEffect(() => {
         setIsLoading(true);
 
@@ -55,7 +55,7 @@ export default function AddMealList() {
     }
 
     return (
-        <Row size={3}>
+        <Row size={7}>
                 <View style={styles.container}>
                     <Text style={styles.text}>Favorite Contacts</Text>
                     <FlatList
@@ -63,7 +63,6 @@ export default function AddMealList() {
                         keyExtractor={item => item.first}
                         renderItem={({ item }) => (
                             <View style={styles.listItem}>
-
                                 <View style={styles.metaInfo}>
                                     <Text style={styles.title}>{`${item.name.first} ${
                                         item.name.last

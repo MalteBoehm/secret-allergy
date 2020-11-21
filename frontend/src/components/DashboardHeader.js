@@ -8,14 +8,14 @@ export default function DashboardHeader(){
 
     return(
 
-            <Row size={0.5} style={DashboardStyle.container}>
+            <Row size={1} style={DashboardStyle.container}>
                 <Row>
                     <Text style={{color:'white'}}>
                     Dashboard
                 </Text>
                 </Row>
 
-                <Row  size={0.5} style={DashboardStyle.rowWithCols}>
+                <Row  size={1} style={DashboardStyle.rowWithCols}>
                     <Col size={1} style={DashboardStyle.cols}>
                             <Text style={DashboardStyle.textStyle}>
                                 Col1

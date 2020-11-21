@@ -1,0 +1,7 @@
+spring:
+  data:
+    mongodb:
+      database: <database name>
+      host: <localhost>
+      port: <wie in Dockers angegeben / Standard MongoDb-Port 27017>
+
