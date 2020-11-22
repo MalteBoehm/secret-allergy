@@ -23,6 +23,10 @@ public class OpenFoodFactsApi {
     MealService mealService;
 
 
+    public OpenFoodFactsApi(ProductMongoDao productMongoDao, MealService mealService) {
+        this.productMongoDao = productMongoDao;
+        this.mealService = mealService;
+    }
 
     public List<Product> searchProductByName(String productName) throws UnirestException, FileNotFoundException {
         JSONArray products = getUniRestRequest(productName);
