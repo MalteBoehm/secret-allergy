@@ -19,7 +19,7 @@ import java.util.stream.StreamSupport;
 @SpringBootApplication
 public class SecretAllergyApplication {
 
-	public static void main(String[] args) throws UnirestException, JsonProcessingException {
+	public static void main(String[] args)  {
 		SpringApplication.run(SecretAllergyApplication.class, args);
 	}
 }
