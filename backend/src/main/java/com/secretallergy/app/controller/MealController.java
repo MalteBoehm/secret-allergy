@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 
 @RestController
@@ -25,8 +26,8 @@ public class MealController {
     }
 
 
-    @GetMapping({"productName"})
-    public List<Product> searchProductsByName(@RequestParam SearchByProductNameDto productName) throws UnirestException {
+    @GetMapping
+    public List<Product> searchProductsByName(@RequestParam String productName) throws UnirestException, FileNotFoundException {
             return mealService.searchProductsByNameService(productName);
         }
 

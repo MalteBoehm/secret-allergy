@@ -7,20 +7,24 @@ import com.secretallergy.app.model.Product;
 import com.secretallergy.app.service.MealService;
 import lombok.Data;
 import org.json.JSONArray;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 
-@Data
+@Service
 public class OpenFoodFactsApi {
 
     ProductMongoDao productMongoDao;
     MealService mealService;
 
 
-    public List<Product> searchProductByName(SearchByProductNameDto productName) throws UnirestException {
+
+    public List<Product> searchProductByName(String productName) throws UnirestException, FileNotFoundException {
         JSONArray products = getUniRestRequest(productName);
 
         List<Product> productList = new ArrayList<>();
@@ -43,23 +47,25 @@ public class OpenFoodFactsApi {
 
 
     /* Helper Functions*/
-    private JSONArray getUniRestRequest(SearchByProductNameDto productName) throws UnirestException{
-        Unirest.setTimeouts(3000, 3000);
+    private JSONArray getUniRestRequest(String productName) throws UnirestException{
+        Unirest.setTimeouts(5000, 3000);
         return Unirest.get("https://de.openfoodfacts.org/cgi/search.pl?search_terms=" + productName + "&sort_by=unique_scans_n&json=true")
                 .header("Accept", "application/json")
                 .header("User-Agent", "Secret-Allergy")
                 .header("Authorization", "Basic bWFsdGViOlhjWVczMTgxMQ==")
-                .asJson().getBody().getObject().getJSONArray("products");
+                .asJson()
+                .getBody()
+                .getObject()
+                .getJSONArray("products");
     }
 
-    private void checkMongoDbIfProductIsPresentAndAddItIfNotAddItToMongoDb(SearchByProductNameDto productName, List<Product> products)  {
+    private void checkMongoDbIfProductIsPresentAndAddItIfNotAddItToMongoDb(String productName, List<Product> products)  {
         // Init Lists of DB and API -- Compare and Add if needed
-        List<Product> mongoDaoCheck = productMongoDao.findAllByProduct_nameMatchesRegex(productName);
+        List<Product> mongoDaoCheck = productMongoDao.findBy(productName);
         for (Product product: products) {
             if(!mongoDaoCheck.contains(product)){
                 mongoDaoCheck.add(product);
             }
         }
     }
-
 }

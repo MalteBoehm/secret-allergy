@@ -2,55 +2,69 @@ package com.secretallergy.app.service;
 
 import com.mashape.unirest.http.exceptions.UnirestException;
 import com.secretallergy.app.api.OpenFoodFactsApi;
-import com.secretallergy.app.dto.SearchByProductNameDto;
+import com.secretallergy.app.dao.ProductMongoDao;
 import com.secretallergy.app.model.Product;
 
+import org.json.JSONArray;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
+
+
+import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import org.json.simple.JSONObject;
+
 
 
 @Service
 public class MealService {
-
-    private OpenFoodFactsApi openFoodFactsApi;
-
-    JSONParser parser = new JSONParser();
-    protected Object allergenFile = parser.parse( new FileReader("C:/SecretAllergy/backend/data/allergens.json"));
-    JSONObject allergenFileObject = (JSONObject) allergenFile;
-
+    private final ProductMongoDao productMongoDao;
     List<Product> emptyList = new ArrayList<>();
+    private final OpenFoodFactsApi openFoodFactsApi;
+    private final MongoTemplate mongoTemplate;
 
-    public MealService() throws IOException, ParseException {
+
+    @Autowired
+    public MealService(ProductMongoDao productMongoDao, OpenFoodFactsApi openFoodFactsApi, MongoTemplate mongoTemplate) {
+        this.productMongoDao = productMongoDao;
+        this.openFoodFactsApi = openFoodFactsApi;
+        this.mongoTemplate = mongoTemplate;
     }
 
 
-    public List<Product> searchProductsByNameService(SearchByProductNameDto productName) throws UnirestException {
-        if ( productName.toString().length() >= 3 )
+
+    public List<Product> searchProductsByNameService(String productName) throws FileNotFoundException, UnirestException {
+        if ( productName.length() >= 3 )
         {
             return openFoodFactsApi.searchProductByName(productName);
         }
-        else if ( productName.toString().length() <3 )
-        {
+        else {
             return emptyList;
         }
-        return null;
     }
 
 
-    public List<String> checkIngredientsForAllergens(List<String> ingredients_text_de) {
-        List<String> allergens = new ArrayList<>();
-        for (String ingredient: ingredients_text_de) {
-            if(allergenFileObject.containsValue(ingredient)){
-                allergens.add(ingredient);
+    public List<String> checkIngredientsForAllergens(List<String> ingredients_text_de) throws FileNotFoundException {
+        JSONParser parser = new JSONParser();
+        try {
+            Object obj = parser.parse(new FileReader("C:/SecretAllergy/backend/data/allergens.json"));
+            JSONArray jsonObject = (JSONArray) obj;
+            List<String> allergens = new ArrayList<>();
+
+            for (int i = 0; i < jsonObject.length(); i++) {
+                for (String ingredient: ingredients_text_de) {
+                    if(jsonObject.getJSONObject(i).getString("name").contains(ingredient.toUpperCase())){
+                        allergens.add(ingredient);
+                    }
+                }
             }
+            return allergens;
+        }catch(Exception e) {
+            e.printStackTrace();
         }
-        return allergens;
-    }
-}
+    return null;
+}}
 
