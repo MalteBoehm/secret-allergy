@@ -23,17 +23,17 @@ import java.util.List;
 public class MealService {
     private final ProductMongoDao productMongoDao;
     List<Product> emptyList = new ArrayList<>();
-    private  OpenFoodFactsApi openFoodFactsApi;
+    private final OpenFoodFactsApi openFoodFactsApi;
     private final MongoTemplate mongoTemplate;
 
 
 
     @Autowired
     public MealService(ProductMongoDao productMongoDao,
-
+                       OpenFoodFactsApi openFoodFactsApi,
                        MongoTemplate mongoTemplate) {
         this.productMongoDao = productMongoDao;
-
+this.openFoodFactsApi = openFoodFactsApi;
         this.mongoTemplate = mongoTemplate;
     }
 

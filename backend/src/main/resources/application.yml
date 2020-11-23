@@ -1,0 +1,7 @@
+spring:
+  data:
+    mongodb:
+      database: newmongodb
+      host: localhost
+      port: 37017
+

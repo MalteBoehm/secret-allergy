@@ -16,6 +16,6 @@ class MealControllerTest {
         String suchwort = "Kinder Riegel";
 
 
-        System.out.println(mealController.searchProductsByName(suchwort).size());
+        System.out.println(mealController.getProductsByName(suchwort).size());
     }
 }

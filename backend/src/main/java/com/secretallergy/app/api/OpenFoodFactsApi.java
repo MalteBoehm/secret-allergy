@@ -6,6 +6,7 @@ import com.secretallergy.app.model.Product;
 import com.secretallergy.app.service.MealService;
 import lombok.Data;
 import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,23 +19,35 @@ import java.util.List;
 @Service
 public class OpenFoodFactsApi {
 
+    JSONArray products = new JSONArray();
     @Autowired
     public OpenFoodFactsApi() {
     }
 
 
-    public List<Product> searchProductByName(String productName) throws UnirestException, FileNotFoundException {
+
+
+    public List<Product> searchProductByName(String productName) throws UnirestException {
+
         JSONArray products = getUniRestRequest(productName);
 
         List<Product> productList = new ArrayList<>();
+
+
         for (int i = 0; i < products.length(); i++) {
-            String id = products.getJSONObject(i).getString("_id");
-            String name = products.getJSONObject(i).getString("product_name_de");
-            String imageUrl = products.getJSONObject(i).getString("image_url");
 
-            List<String> ingredients_text_de = Arrays.asList(products.getJSONObject(i).getString("ingredients_text_de").split(","));
-//            List<String> allergens = mealService.checkIngredientsForAllergens(ingredients_text_de);
+            var jsonObject = products.getJSONObject(i);
 
+            String id = jsonObject.getString("_id");
+            String name = jsonObject.keySet().contains("product_name_de")? jsonObject.getString("product_name_de")
+                                                                            :jsonObject.getString("product_name");
+            String imageUrl = jsonObject.getString("image_url");
+            ArrayList<String> ingredients_text_de = new ArrayList<>(
+                    Arrays.asList(
+                            jsonObject.keySet().contains("ingredients_text_de")?
+                                jsonObject.getString("ingredients_text_de").split(","):
+                                jsonObject.getString("ingredients_text").split(",")
+                            ));
             productList.add( new Product(id, name, ingredients_text_de, imageUrl) );
         }
 
@@ -47,7 +60,8 @@ public class OpenFoodFactsApi {
 
     /* Helper Functions*/
     private JSONArray getUniRestRequest(String productName) throws UnirestException{
-        Unirest.setTimeouts(5000, 3000);
+        Unirest.setTimeouts(8000, 8000);
+
         return Unirest.get("https://de.openfoodfacts.org/cgi/search.pl?search_terms=" + productName.replace(" ", "%20") +"&sort_by=unique_scans_n&json=true")
                 .header("Accept", "application/json")
                 .header("User-Agent", "Secret-Allergy")
