@@ -41,7 +41,12 @@ public class OpenFoodFactsApi {
             String id = jsonObject.getString("_id");
             String name = jsonObject.keySet().contains("product_name_de")? jsonObject.getString("product_name_de")
                                                                             :jsonObject.getString("product_name");
-            String imageUrl = jsonObject.getString("image_url");
+
+            String imageUrl = jsonObject.keySet().contains("image_url")?
+                                        jsonObject.getString("image_url"):
+                                        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fcommons.wikimedia.org%2Fwiki%2FFile%3ANo_image_available.svg&psig=AOvVaw0OesREmcjsIc9RALEdvReC&ust=1606237628058000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJCZ18yTme0CFQAAAAAdAAAAABAD";
+
+
             ArrayList<String> ingredients_text_de = new ArrayList<>(
                     Arrays.asList(
                             jsonObject.keySet().contains("ingredients_text_de")?
