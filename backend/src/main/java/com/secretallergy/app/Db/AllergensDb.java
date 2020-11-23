@@ -1,5 +1,6 @@
 package com.secretallergy.app.Db;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.util.ObjectBuffer;
 import com.secretallergy.app.model.Allergen;
@@ -9,12 +10,14 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Repository;
 
-import java.awt.*;
-import java.io.*;
+
+import java.io.File;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 @Repository
 public class AllergensDb {
@@ -38,12 +41,12 @@ public class AllergensDb {
         // Jackson
         ObjectMapper mapper = new ObjectMapper();
 //        JSONParser parser = new JSONParser();
-        List<Allergen> allergensList = mapper.readValue(new File("/Users/malte/Desktop/secretAllergy/secret-allergy/backend/data/allergens.json", new TypeReference<List<Allergen>>(){}));
+//        List<Allergen> allergensList = mapper.readValue(new File("/Users/malte/Desktop/secretAllergy/secret-allergy/backend/data/allergens.json", new TypeReference<List<Allergen>>(){}));
 
 
 //        Object asd = mapper.readValue(new File("/Users/malte/Desktop/secretAllergy/secret-allergy/backend/data/allergens.json"), List.class);
 
-        System.out.println(allergensList);
+//        System.out.println(allergensList);
     }
 
 

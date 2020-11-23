@@ -1,34 +1,28 @@
 package com.secretallergy.app.service;
 
 import com.mashape.unirest.http.exceptions.UnirestException;
-import com.secretallergy.app.dto.SearchByProductNameDto;
 import com.secretallergy.app.model.Product;
-import org.json.simple.parser.ParseException;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class MealServiceTest {
 
-    MealService mealService;
+    private final MealService mealService;
+
+    MealServiceTest(MealService mealService) {
+        this.mealService = mealService;
+    }
+
     private final List<String> testIngredients_text_de = new ArrayList<>(List.of(
             "Eidotter", "Eier", "Milch", "ABSADAS", "Butter"
     ));
-
-
-    SearchByProductNameDto searchByProductNameDto;
-
-    MealServiceTest() throws IOException, ParseException {
-    }
 
 
     @Test
@@ -37,7 +31,6 @@ class MealServiceTest {
 
         // GIVEN
         String expectedTrue = "Kinder Riegel";
-
 
         // WHEN
         List<Product> trueResult = mealService.searchProductsByNameService(expectedTrue);
@@ -51,9 +44,9 @@ class MealServiceTest {
     @DisplayName("Should Return empty List, because it has not enough chars")
     void searchProductsByNameServiceShouldReturnEmptyList() throws UnirestException, FileNotFoundException {
         // GIVEN
-        String expectedfalse = "Ki";
+        String expectedFalse = "Ki";
         // WHEN
-        List<Product> falseResult = mealService.searchProductsByNameService(expectedfalse);
+        List<Product> falseResult = mealService.searchProductsByNameService(expectedFalse);
         // THEN
         assertThat( falseResult, is(falseResult.isEmpty() ));
 
@@ -62,9 +55,14 @@ class MealServiceTest {
 
     @Test
     @DisplayName("Should Return a List when a List of String with ingredients is passed")
-    void checkIngredientsForAllergens() {
+    void checkIngredientsForAllergens() throws FileNotFoundException {
 
-        // WHEN
+//        //given
+//        List<String> ingredients = new ArrayList<>(List.of(
+//                "Milch", "Ei"
+//        ));
+//        // WHEN
+//        List<String> abc = mealService.checkIngredientsForAllergens(ingredients);
 
 
     }

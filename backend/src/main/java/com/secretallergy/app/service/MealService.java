@@ -23,16 +23,20 @@ import java.util.List;
 public class MealService {
     private final ProductMongoDao productMongoDao;
     List<Product> emptyList = new ArrayList<>();
-    private final OpenFoodFactsApi openFoodFactsApi;
+    private  OpenFoodFactsApi openFoodFactsApi;
     private final MongoTemplate mongoTemplate;
 
 
+
     @Autowired
-    public MealService(ProductMongoDao productMongoDao, OpenFoodFactsApi openFoodFactsApi, MongoTemplate mongoTemplate) {
+    public MealService(ProductMongoDao productMongoDao,
+
+                       MongoTemplate mongoTemplate) {
         this.productMongoDao = productMongoDao;
-        this.openFoodFactsApi = openFoodFactsApi;
+
         this.mongoTemplate = mongoTemplate;
     }
+
 
 
 
@@ -47,24 +51,25 @@ public class MealService {
     }
 
 
-    public List<String> checkIngredientsForAllergens(List<String> ingredients_text_de) throws FileNotFoundException {
-        JSONParser parser = new JSONParser();
-        try {
-            Object obj = parser.parse(new FileReader("C:/SecretAllergy/backend/data/allergens.json"));
-            JSONArray jsonObject = (JSONArray) obj;
-            List<String> allergens = new ArrayList<>();
-
-            for (int i = 0; i < jsonObject.length(); i++) {
-                for (String ingredient: ingredients_text_de) {
-                    if(jsonObject.getJSONObject(i).getString("name").contains(ingredient.toUpperCase())){
-                        allergens.add(ingredient);
-                    }
-                }
-            }
-            return allergens;
-        }catch(Exception e) {
-            e.printStackTrace();
-        }
-    return null;
-}}
+//    public List<String> checkIngredientsForAllergens(List<String> ingredients_text_de) throws FileNotFoundException {
+//        JSONParser parser = new JSONParser();
+//        try {
+//            Object obj = parser.parse(new FileReader("C:/SecretAllergy/backend/data/allergens.json"));
+//            JSONArray jsonObject = (JSONArray) obj;
+//            List<String> allergens = new ArrayList<>();
+//
+//            for (int i = 0; i < jsonObject.length(); i++) {
+//                for (String ingredient: ingredients_text_de) {
+//                    if(jsonObject.getJSONObject(i).getString("name").contains(ingredient.toUpperCase())){
+//                        allergens.add(ingredient);
+//                    }
+//                }
+//            }
+//            return allergens;
+//        }catch(Exception e) {
+//            e.printStackTrace();
+//        }
+//    return null;
+//}
+}
 

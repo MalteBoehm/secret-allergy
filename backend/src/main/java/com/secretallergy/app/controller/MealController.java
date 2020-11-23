@@ -6,16 +6,14 @@ import com.secretallergy.app.dto.SearchByProductNameDto;
 import com.secretallergy.app.model.Product;
 import com.secretallergy.app.service.MealService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.FileNotFoundException;
+import java.security.Principal;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/meals")
+@RequestMapping("product")
 public class MealController {
     private final MealService mealService;
 
@@ -26,9 +24,11 @@ public class MealController {
     }
 
 
-    @GetMapping
-    public List<Product> searchProductsByName(@RequestParam String productName) throws UnirestException, FileNotFoundException {
-            return mealService.searchProductsByNameService(productName);
+
+    @GetMapping("{products}")
+    public List<Product> searchProductsByName(@PathVariable String products) throws UnirestException, FileNotFoundException {
+            return mealService.searchProductsByNameService(products);
         }
 
 }
+
