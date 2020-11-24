@@ -2,6 +2,7 @@ import React from 'react';
 import { FloatingAction } from "react-native-floating-action";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
+
 export default function FloatingButton( {navigation} ){
     return (
             <FloatingAction
@@ -10,9 +11,9 @@ export default function FloatingButton( {navigation} ){
                 onPressItem={() => navigation.navigate({target})
                 }
             />
-
     );
 }
+
 
 const actions = [
     {
