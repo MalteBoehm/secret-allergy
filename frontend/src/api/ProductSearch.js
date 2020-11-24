@@ -3,17 +3,15 @@ import axios from 'axios';
 
 
 
-const searchProductsUrl = "https://de.openfoodfacts.org/cgi/search.pl?search_terms=";
-const searchProductsParam = "&sort_by=unique_scans_n&json=true";
-
+const searchProductsUrl = "http://localhost:8080/api/product";
 
 const config = {
     method: 'get',
-    url: 'https://de.openfoodfacts.org/cgi/search.pl?search_terms=rewe%tortellini&sort_by=unique_scans_n&json=true',
+    url: searchProductsUrl,
     headers: {
         'Content-Type': 'application/json',
         'User-Agent': 'Secret-Allergy',
-        'Authorization': 'Basic bWFsdGViOlhjWVczMTgxMQ=='
+        'Authorization': ''
     }
 };
 
