@@ -1,8 +1,5 @@
 import axios from 'axios';
 
-
-
-
 const searchProductsUrl = "http://localhost:8080/api/product";
 
 const config = {

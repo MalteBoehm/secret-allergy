@@ -31,9 +31,9 @@ public class MealService {
     @Autowired
     public MealService(ProductMongoDao productMongoDao,
                        OpenFoodFactsApi openFoodFactsApi,
-                       MongoTemplate mongoTemplate) {
+                       MongoTemplate mongoTemplate){
         this.productMongoDao = productMongoDao;
-this.openFoodFactsApi = openFoodFactsApi;
+        this.openFoodFactsApi = openFoodFactsApi;
         this.mongoTemplate = mongoTemplate;
     }
 
@@ -41,35 +41,10 @@ this.openFoodFactsApi = openFoodFactsApi;
 
 
     public List<Product> searchProductsByNameService(String productName) throws FileNotFoundException, UnirestException {
-        if ( productName.length() >= 3 )
-        {
             return openFoodFactsApi.searchProductByName(productName);
         }
-        else {
-            return emptyList;
-        }
-    }
-
-
-//    public List<String> checkIngredientsForAllergens(List<String> ingredients_text_de) throws FileNotFoundException {
-//        JSONParser parser = new JSONParser();
-//        try {
-//            Object obj = parser.parse(new FileReader("C:/SecretAllergy/backend/data/allergens.json"));
-//            JSONArray jsonObject = (JSONArray) obj;
-//            List<String> allergens = new ArrayList<>();
-//
-//            for (int i = 0; i < jsonObject.length(); i++) {
-//                for (String ingredient: ingredients_text_de) {
-//                    if(jsonObject.getJSONObject(i).getString("name").contains(ingredient.toUpperCase())){
-//                        allergens.add(ingredient);
-//                    }
-//                }
-//            }
-//            return allergens;
-//        }catch(Exception e) {
-//            e.printStackTrace();
-//        }
-//    return null;
-//}
 }
+
+
+
 
