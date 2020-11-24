@@ -41,7 +41,8 @@ public class MealService {
 
 
     public List<Product> searchProductsByNameService(String productName) throws FileNotFoundException, UnirestException {
-            return openFoodFactsApi.searchProductByName(productName);
+        System.out.println(openFoodFactsApi.searchProductByName(productName));
+        return openFoodFactsApi.searchProductByName(productName);
         }
 }
 
