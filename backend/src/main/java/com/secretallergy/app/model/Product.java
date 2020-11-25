@@ -19,6 +19,7 @@ public class Product {
     @Id
     private String _id;
     private String product_name;
+    private String brands;
     private List<String> ingredients_text_de;
 //    private List<String> allergens;
     private String image_front_thumb_url;
