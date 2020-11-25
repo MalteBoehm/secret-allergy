@@ -1,6 +1,6 @@
 import {Grid, Row, Col} from "react-native-easy-grid";
 import React, {useState} from 'react';
-import { StyleSheet, ScrollView, Text, View, Button} from 'react-native';
+import { StyleSheet, ScrollView, Text, Button} from 'react-native';
 import styled from 'styled-components/native';
 import {moderateScale} from '../styles/globalstyles';
 import Emoji from 'react-native-emoji';
@@ -148,11 +148,6 @@ const MealBoxStyled = styled.View`
 
     border-color: #a5a5a5;
     borderWidth: 1px;
-`
-
-const MealBoxButtonStyled = styled.Button`
-    background-color: white;
-
 `
 
 

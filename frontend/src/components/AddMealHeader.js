@@ -1,6 +1,6 @@
 import React from 'react';
-import {Grid, Row, Col} from "react-native-easy-grid";
-import { StyleSheet, ScrollView, Text, View} from 'react-native';
+import {Row} from "react-native-easy-grid";
+import { StyleSheet} from 'react-native';
 import { Button } from 'react-native-elements';
 import {moderateScale} from "../styles/globalstyles";
 

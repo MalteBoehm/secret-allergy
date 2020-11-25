@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native'
-import { Col, Row, Grid } from "react-native-easy-grid";
+import { StyleSheet } from 'react-native'
+import { Grid } from "react-native-easy-grid";
 import {moderateScale} from '../../styles/globalstyles';
 import AddMealHeader from '../../components/AddMealHeader';
 import AddMealList from '../../components/AddMealList';

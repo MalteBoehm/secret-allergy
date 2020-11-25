@@ -1,8 +1,7 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native'
-import styled from 'styled-components/native'
-import { Col, Row, Grid } from "react-native-easy-grid";
-import {moderateScale, scale, verticalScale} from "../styles/globalstyles";
+import { StyleSheet, Text } from 'react-native'
+import { Col, Row } from "react-native-easy-grid";
+import {moderateScale} from "../styles/globalstyles";
 
 export default function DashboardHeader(){
 

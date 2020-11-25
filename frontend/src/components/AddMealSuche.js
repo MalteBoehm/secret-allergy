@@ -1,13 +1,11 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {Grid, Row, Col} from "react-native-easy-grid";
+import React, {useState} from 'react';
+import { Row} from "react-native-easy-grid";
 import { SearchBar } from 'react-native-elements';
-import LiveSearchContext from "../context/LiveSearchContext";
 
 export default function AddMealSuche(){
 
     const [mealName, setMealName] = useState();
 
-    const {liveSearchData} = useContext(LiveSearchContext);
     return(
 
             <Row size={0.5}
