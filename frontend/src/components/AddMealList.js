@@ -18,20 +18,7 @@ import AddMealSuche from "./AddMealSuche";
 export default function AddMealList() {
 
     const {liveSearchData} = useContext(LiveSearchContext);
-
-
     const keyExtractor = (item, index) => index.toString()
-
-    const renderItem = ({ item }) => (
-        <ListItem bottomDivider>
-            <Avatar source={{uri: item.image_front_thumb_url}} />
-            <ListItem.Content>
-                <ListItem.Title>{item.product_name}</ListItem.Title>
-                <ListItem.Subtitle>{item.brands}</ListItem.Subtitle>
-            </ListItem.Content>
-            <ListItem.Chevron />
-        </ListItem>
-    )
 
     return (
         <Row size={7}>
@@ -46,6 +33,18 @@ export default function AddMealList() {
         </Row>
     )
 }
+
+
+const renderItem = ({ item }) => (
+    <ListItem bottomDivider>
+        <Avatar source={{uri: item.image_front_thumb_url}} />
+        <ListItem.Content>
+            <ListItem.Title>{item.product_name}</ListItem.Title>
+            <ListItem.Subtitle>{item.brands}</ListItem.Subtitle>
+        </ListItem.Content>
+        <ListItem.Chevron />
+    </ListItem>
+)
 
 const renderSeparator = () => {
     return (

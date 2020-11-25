@@ -81,8 +81,6 @@ export default function DashboardList({navigation}){
             return currentSnack.allergens?.toString().replace(",", ", ")
         }
     }
-
-
         return(
                 <Row size={2}>
                         <ScrollView>
@@ -93,7 +91,7 @@ export default function DashboardList({navigation}){
                                             <MealBoxStyled>
                                                 <Grid>
                                                     <Row>
-                                                        <Col size={1}><Text><Emoji name={item.emojiName} style={{fontSize: 40}}/></Text></Col>
+                                                        <Col size={1}><Text><Emoji name={item.emojiName} style={{fontSize: 45}}/></Text></Col>
                                                         <Col size={4}><Text style={{fontWeight: "bold", fontSize: moderateScale(14, 0.3)}}>{item.title}</Text></Col>
                                                         <Col size={1}>
                                                             <Button title={'+'} onPress={() =>
