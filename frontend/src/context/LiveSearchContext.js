@@ -1,3 +1,2 @@
-import React,{ createContext } from 'react';
-const LiveSearchContext = createContext([]);
-export default LiveSearchContext;
+import React, {createContext} from 'react';
+export const LiveSearchContext = createContext([]);

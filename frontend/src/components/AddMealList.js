@@ -5,7 +5,7 @@ import {
     View,
     FlatList,
 } from 'react-native';
-import LiveSearchContext from "../context/LiveSearchContext";
+import {LiveSearchContext} from "../context/LiveSearchContext";
 import AddMealSuche from "./AddMealSuche";
 
 
@@ -16,7 +16,7 @@ export default function AddMealList() {
     const {liveSearchData} = useContext(LiveSearchContext);
     const keyExtractor = (item, index) => index.toString()
     const renderItem = ({ item }) => (
-        <ListItem bottomDivider>
+        <ListItem style={{color:'black'}} bottomDivider>
             <Avatar source={{uri: item.image_front_thumb_url}} />
             <ListItem.Content>
                 <ListItem.Title>{item.product_name}</ListItem.Title>
