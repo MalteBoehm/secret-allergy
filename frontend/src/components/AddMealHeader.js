@@ -17,7 +17,6 @@ export default function AddMealHeader( {navigation} ){
                          onPress={()=> alert('Once you will be able to create a Meal')}
                  />
             </Row>
-
     )
 }
 

@@ -152,17 +152,3 @@ const MealBoxStyled = styled.View`
 
 
 // todo Farbscale
-
-
-
-
-// const imagesForMeals = [
-//     {
-//         text: "Frühstück",
-//         image: sourceImage(require),
-//     },
-//     {
-//         text: "Mittag",
-//         image: sourceImage(require),
-//     },
-// ];

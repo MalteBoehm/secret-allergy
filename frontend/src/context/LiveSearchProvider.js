@@ -9,7 +9,7 @@ export default function LiveSearchProvider({children}){
     useEffect(()=> {
         getLiveSearchData().then(setLiveSearchData).catch(console.log)
     },[])
-    return (<LiveSearchContext.Provider value={{liveSearchData}}> {children} </LiveSearchContext.Provider>);
+    return (<LiveSearchContext.Provider value={{liveSearchData}} children={children}/>);
 }
 
 
