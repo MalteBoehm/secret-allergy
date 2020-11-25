@@ -1,7 +1,6 @@
 import React, {useContext, useState} from 'react';
 import { Row} from "react-native-easy-grid";
 import { SearchBar } from 'react-native-elements';
-import {LiveSearchContext} from "../context/LiveSearchContext";
 import SearchInputContext from "../context/SearchInputContext";
 
 export default function AddMealSuche(){
@@ -9,9 +8,9 @@ export default function AddMealSuche(){
     const {searchInput, setSearchInput} = useContext(SearchInputContext);
 
 
-    const handler = (input=> {
+    const handler = (input=>
         setSearchInput(input)
-    });
+    );
 
     return(
             <Row size={0.5}

@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import SearchInputContext from "./SearchInputContext";
 
 
 export default function SearchInputProvider({children}){
-    const [searchInput, setSearchInput] = useState();
+    const [searchInput, setSearchInput] = useState("");
     return (<SearchInputContext.Provider value={{searchInput, setSearchInput}} children={children}/>);
 }

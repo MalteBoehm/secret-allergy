@@ -10,7 +10,9 @@ export default function LiveSearchProvider({children}){
 
     const {searchInput} = useContext(SearchInputContext);
     useEffect(()=> {
-        getLiveSearchData(searchInput).then(setLiveSearchData).catch(console.log)
+        searchInput.length > 3 ?
+            getLiveSearchData(searchInput).then(setLiveSearchData).catch(console.log)
+            : ""
     }, [searchInput])
 
     return (<LiveSearchContext.Provider value={{liveSearchData}} children={children}/>);

@@ -5,7 +5,6 @@ import { Button } from 'react-native-elements';
 import {moderateScale} from "../styles/globalstyles";
 
 export default function AddMealHeader( {navigation} ){
-
     return(
             <Row size={0.5} style={headerStyle.rowStyle}>
                 <Button  type="outline"
