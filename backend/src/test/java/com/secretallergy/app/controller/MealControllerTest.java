@@ -44,7 +44,7 @@ class MealControllerTest {
         String product = "gustavo Pizza Margherita";
         String url = "http://localhost:" + port + "/api/product?products="+product;
         List<Product> expectedProduct = List.of(
-                new Product("4260414150449","Pizza Margherita",
+                new Product("4260414150449","Pizza Margherita","Gustavo Gusto",
                         List.of
                 ("53% Teig (_Weizenmehl_",  " Trinkwasser",  " Olivenöl",  " Speisesalz",  " Frischbackhefe)",  " 22% Tomatensoße (Schältomaten",  " Trinkwasser",  " Speisesalz",  " Olivenöl",  " Gewürze)",  " 25% schnittfester _Mozzarella_ (pasteurisierte _Kuhmilch_",  " Salz",  " mikrobieller Labaustauschstoff",
                 " Milchsäurebakterienkulturen)"),"https://static.openfoodfacts.org/images/products/426/041/415/0449/front_de.20.400.jpg"));

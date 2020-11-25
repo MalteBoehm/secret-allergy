@@ -25,6 +25,7 @@ public class MealController {
     }
 
 
+    @CrossOrigin
     @GetMapping()
     public List<Product> getProductsByName(@RequestParam String products) throws FileNotFoundException, UnirestException {
             return mealService.searchProductsByNameService(products);

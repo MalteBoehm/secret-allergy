@@ -1,6 +1,6 @@
 import {Grid, Row, Col} from "react-native-easy-grid";
 import React, {useState} from 'react';
-import { StyleSheet, ScrollView, Text, View, Button} from 'react-native';
+import { StyleSheet, ScrollView, Text, Button} from 'react-native';
 import styled from 'styled-components/native';
 import {moderateScale} from '../styles/globalstyles';
 import Emoji from 'react-native-emoji';
@@ -81,8 +81,6 @@ export default function DashboardList({navigation}){
             return currentSnack.allergens?.toString().replace(",", ", ")
         }
     }
-
-
         return(
                 <Row size={2}>
                         <ScrollView>
@@ -93,7 +91,7 @@ export default function DashboardList({navigation}){
                                             <MealBoxStyled>
                                                 <Grid>
                                                     <Row>
-                                                        <Col size={1}><Text><Emoji name={item.emojiName} style={{fontSize: 40}}/></Text></Col>
+                                                        <Col size={1}><Text><Emoji name={item.emojiName} style={{fontSize: 45}}/></Text></Col>
                                                         <Col size={4}><Text style={{fontWeight: "bold", fontSize: moderateScale(14, 0.3)}}>{item.title}</Text></Col>
                                                         <Col size={1}>
                                                             <Button title={'+'} onPress={() =>
@@ -152,24 +150,5 @@ const MealBoxStyled = styled.View`
     borderWidth: 1px;
 `
 
-const MealBoxButtonStyled = styled.Button`
-    background-color: white;
-
-`
-
 
 // todo Farbscale
-
-
-
-
-// const imagesForMeals = [
-//     {
-//         text: "Frühstück",
-//         image: sourceImage(require),
-//     },
-//     {
-//         text: "Mittag",
-//         image: sourceImage(require),
-//     },
-// ];

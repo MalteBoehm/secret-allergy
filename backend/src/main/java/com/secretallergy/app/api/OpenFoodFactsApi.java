@@ -25,9 +25,6 @@ public class OpenFoodFactsApi {
     public OpenFoodFactsApi() {
     }
 
-
-
-
     public List<Product> searchProductByName(String productName) throws UnirestException {
         JSONArray products = getUniRestRequest(productName);
         List<Product> productList = new ArrayList<>();
@@ -38,6 +35,10 @@ public class OpenFoodFactsApi {
                                     .contains("product_name_de")?
                                             jsonObject.getString("product_name_de")
                                             :jsonObject.getString("product_name");
+            String brands = jsonObject.keySet()
+                    .contains("brands")?
+                    jsonObject.getString("brands")
+                    :jsonObject.getString("Hersteller unbekannt");
             String imageUrl = jsonObject.keySet()
                                         .contains("image_url")?
                                             jsonObject.getString("image_url"):
@@ -49,7 +50,7 @@ public class OpenFoodFactsApi {
                                         jsonObject.getString("ingredients_text_de").split(","):
                                         jsonObject.getString("ingredients_text").split(",")
                             ));
-            productList.add( new Product(id, name, ingredients_text_de, imageUrl) );
+            productList.add( new Product(id, name, brands, ingredients_text_de, imageUrl) );
         }
 //        checkMongoDbIfProductIsPresentAndAddItIfNotAddItToMongoDb(productName, productList);
         return cleanUpStringsOfProductsBeforeReturn(productList);
