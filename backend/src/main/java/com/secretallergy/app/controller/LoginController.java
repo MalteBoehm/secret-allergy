@@ -4,10 +4,7 @@ import com.secretallergy.app.dto.LoginDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.secretallergy.app.security.JwtUtils;
 
 import java.util.HashMap;
@@ -26,11 +23,10 @@ public class LoginController {
     }
 
 
+    @CrossOrigin
     @PostMapping
     public String login(@RequestBody LoginDto loginDto){
     authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword()));
     return jwtUtils.createJwtToken(loginDto.getUsername(), new HashMap<>());
     }
-
-
 }

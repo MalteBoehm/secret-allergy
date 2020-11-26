@@ -17,7 +17,7 @@ public class MongoDbUserDetailsService implements UserDetailsService {
 
     private final AppUserDao userDao;
 
-    @Autowired
+
     public MongoDbUserDetailsService(AppUserDao userDao) {
         this.userDao = userDao;
     }

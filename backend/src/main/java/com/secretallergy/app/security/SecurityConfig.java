@@ -1,7 +1,5 @@
 package com.secretallergy.app.security;
 
-import com.secretallergy.app.security.JwtAuthFilter;
-import com.secretallergy.app.security.MongoDbUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,29 +15,26 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final MongoDbUserDetailsService userDetailsService;
+    private final MongoDbUserDetailsService mongoDbUserDetailsService;
     private final JwtAuthFilter jwtAuthFilter;
 
+
     @Autowired
-    public SecurityConfig(MongoDbUserDetailsService userDetailsService, JwtAuthFilter jwtAuthFilter) {
-        this.userDetailsService = userDetailsService;
+    public SecurityConfig(MongoDbUserDetailsService mongoDbUserDetailsService, JwtAuthFilter jwtAuthFilter) {
+        this.mongoDbUserDetailsService = mongoDbUserDetailsService;
         this.jwtAuthFilter = jwtAuthFilter;
     }
 
+
     @Override
-    protected void configure(HttpSecurity http) throws Exception{
+    protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/**").authenticated()
+                .antMatchers("/api/**").permitAll() //todo back to authenticated() when login is ready
                 .antMatchers("/**")
                 .permitAll().and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
-    }
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-        auth.userDetailsService(userDetailsService);
     }
 
     @Override
@@ -48,10 +43,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManager();
     }
 
-    @Bean
-    public PasswordEncoder getPasswordEncoder(){
-        return new BCryptPasswordEncoder();
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(mongoDbUserDetailsService);
     }
 
-
+    @Bean
+    public PasswordEncoder getPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 }
