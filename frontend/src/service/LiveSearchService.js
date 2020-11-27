@@ -1,15 +1,17 @@
 import axios from "axios";
-import React from 'react';
+
+const header = (token) => ({
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+
 
 const url = "http://192.168.178.76:8080/api/product?products=";
 
-export const getLiveSearchData = (searchInput) =>
-
+export const getLiveSearchData = (token, searchInput) =>
         axios
-            .get(url + searchInput)
+            .get(url + searchInput, header(token))
             .then((response) => response.data)
             .catch((error) => console.log(error));
-
-
-
 
