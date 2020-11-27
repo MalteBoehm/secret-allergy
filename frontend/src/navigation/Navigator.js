@@ -1,10 +1,9 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import DashboardScreen from '../screens/Dashboard/DashboardScreen';
+import DashboardScreen from '../screens/DashboardScreen';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {NavigationContainer} from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import StackNavigator from "./StackNavigator";
 import LoginScreen from "../screens/LoginScreen";
 
 
