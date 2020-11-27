@@ -26,7 +26,7 @@ public class LoginController {
     @CrossOrigin
     @PostMapping
     public String login(@RequestBody LoginDto loginDto){
-    authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword()));
+//    authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword()));
     return jwtUtils.createJwtToken(loginDto.getUsername(), new HashMap<>());
     }
 }

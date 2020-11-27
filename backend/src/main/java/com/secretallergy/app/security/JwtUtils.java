@@ -4,6 +4,7 @@ package com.secretallergy.app.security;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ import java.time.Instant;
 import java.util.Date;
 import java.util.Map;
 
+@Slf4j
 @Service
 public class JwtUtils {
 
@@ -19,6 +21,7 @@ public class JwtUtils {
     private String key;
 
     public String createJwtToken(String username, Map<String,Object> claims){
+     log.debug("createJwtToken(username={},claims={})", username,claims);
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(username)

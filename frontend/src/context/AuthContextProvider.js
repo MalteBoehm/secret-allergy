@@ -1,0 +1,58 @@
+import React, {useEffect, useState} from 'react';
+import AuthContext from './AuthContext';
+import axios from 'axios';
+import jwtDecode from 'jwt-decode';
+import {
+    loadTokenFromLocalStorage ,
+    saveTokenToLocalStorage,
+    loadUserDataFromLocalStorage,
+    saveUserDataToLocalStorage,
+    deleteTokenFromLocalStorage
+    } from '../service/AsyncStorage';
+
+
+export default function ({ children }){
+    const [token, setToken] = useState(loadTokenFromLocalStorage());
+    const [userData, setUserData] = useState(loadUserDataFromLocalStorage());
+
+    useEffect(() => {
+        if (token) {
+            try {
+                const decoded = jwtDecode(token);
+                if (decoded.exp > new Date().getTime() / 1000) {
+                    setUserData(decoded);
+                    saveTokenToLocalStorage(token);
+                    saveUserDataToLocalStorage(decoded);
+                }
+            } catch (e) {
+                console.log(e);
+            }
+        }
+    }, [token]);
+
+    const tokenIsValid = () =>
+        token && userData?.exp > new Date().getTime() / 1000;
+
+    const loginWithUserCredentials = (loginData) =>
+        axios
+            .post('http://192.168.178.76:8080/auth/login', loginData)
+            .then((response) => setToken(response.data));
+
+    const logout = () =>
+        deleteTokenFromLocalStorage();
+
+    return (
+        <AuthContext.Provider
+            value={{
+                token,
+                setToken,
+                logout,
+                tokenIsValid,
+                loginWithUserCredentials,
+                userData,
+            }}
+        >
+            {children}
+        </AuthContext.Provider>
+    );
+}
