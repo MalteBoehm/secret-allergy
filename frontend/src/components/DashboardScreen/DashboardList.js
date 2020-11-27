@@ -2,7 +2,7 @@ import {Grid, Row, Col} from "react-native-easy-grid";
 import React, {useState} from 'react';
 import { StyleSheet, ScrollView, Text, Button} from 'react-native';
 import styled from 'styled-components/native';
-import {moderateScale} from '../styles/globalstyles';
+import {moderateScale} from '../../styles/globalstyles';
 import Emoji from 'react-native-emoji';
 
 

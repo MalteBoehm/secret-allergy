@@ -2,7 +2,7 @@ import React from 'react';
 import {Row} from "react-native-easy-grid";
 import { StyleSheet} from 'react-native';
 import { Button } from 'react-native-elements';
-import {moderateScale} from "../styles/globalstyles";
+import {moderateScale} from "../../styles/globalstyles";
 
 export default function AddMealHeader( {navigation} ){
     return(

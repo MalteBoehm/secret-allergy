@@ -2,8 +2,8 @@ import React from 'react';
 import { StyleSheet } from 'react-native'
 import { Grid } from "react-native-easy-grid";
 import {moderateScale} from '../../styles/globalstyles';
-import AddMealHeader from '../../components/AddMealHeader';
-import AddMealList from '../../components/AddMealList';
+import AddMealHeader from '../../components/AddMealScreen/AddMealHeader';
+import AddMealList from '../../components/AddMealScreen/AddMealList';
 
 export default function AddMealScreen( {navigation} ){
     return (

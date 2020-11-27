@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
 import { Row} from "react-native-easy-grid";
 import { SearchBar } from 'react-native-elements';
-import SearchInputContext from "../context/SearchInputContext";
+import SearchInputContext from "../../context/SearchInputContext";
 
 export default function AddMealSuche(){
 
