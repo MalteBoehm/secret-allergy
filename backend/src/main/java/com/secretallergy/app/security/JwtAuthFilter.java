@@ -41,8 +41,10 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             Claims claims = jwtUtils.parseToken(token);
             if(!jwtUtils.isExpired(claims)){
                 SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(
-                                claims.getSubject(),
-                                "",
+                        "user",
+                        "123",
+//                                claims.getSubject(),
+// todo remove when frontend login works                               "",
                                 Collections.emptyList()
                         )
                 );
