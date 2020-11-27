@@ -1,9 +1,13 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {Header} from 'react-native-elements';
 
 
 export default function LoginHeader(){
     return(
-        <Text h1>Login Header</Text>
+        <Header
+
+            centerComponent={{ text: 'Secret Allergy Login', style: { color: '#fff' } }}
+
+        />
     )
 }
