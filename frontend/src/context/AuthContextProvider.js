@@ -12,8 +12,8 @@ import {
 
 
 export default function ({ children }){
-    const [token, setToken] = useState(loadTokenFromLocalStorage());
-    const [userData, setUserData] = useState(loadUserDataFromLocalStorage());
+    const [token, setToken] = useState( loadTokenFromLocalStorage());
+    const [userData, setUserData] = useState( loadUserDataFromLocalStorage() );
     console.log(token)
 
 

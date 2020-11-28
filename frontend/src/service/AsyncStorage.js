@@ -1,10 +1,12 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useContext} from "react";
+import AuthContext from "../context/AuthContext";
 
 
 
 export const loadTokenFromLocalStorage  = async () => {
     try {
-        const value = await AsyncStorage.getItem("ACCESS_TOKEN")
+        const value = AsyncStorage.getItem('ACCESS_TOKEN')
         console.log(value + " Value of loadTokenFromLocalStorage function")
         if(value !== null) {
             return value;
@@ -18,7 +20,7 @@ export const loadTokenFromLocalStorage  = async () => {
 export const saveTokenToLocalStorage = async (token) => {
     try {
         const jsonValue = JSON.stringify(token)
-        await AsyncStorage.setItem("ACCESS_TOKEN", jsonValue)
+        await AsyncStorage.setItem('ACCESS_TOKEN', jsonValue)
         console.log(jsonValue  + " saveTokenToLocalStorage function")
     } catch (e) {
         console.log('Error saving token to local storage')

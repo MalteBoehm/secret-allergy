@@ -16,16 +16,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34f3ec58-04c8-4749-9807-59b7bd3ab184" name="Default Changelist" comment="-">
+    <list default="true" id="34f3ec58-04c8-4749-9807-59b7bd3ab184" name="Default Changelist" comment="try to get promise">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/context/AuthContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/context/AuthContext.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/context/AuthContextProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/context/AuthContextProvider.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/navigation/FloatingAddButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/navigation/FloatingAddButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/navigation/Navigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/navigation/Navigator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/screens/LoginScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/screens/LoginScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/security/ProtectedRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/security/ProtectedRoute.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/service/AsyncStorage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/service/AsyncStorage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -269,14 +263,7 @@
       <workItem from="1606385479385" duration="62000" />
       <workItem from="1606386211141" duration="742000" />
       <workItem from="1606386980051" duration="2458000" />
-      <workItem from="1606488764318" duration="19654000" />
-    </task>
-    <task id="LOCAL-00003" summary="- Add Jest + added Jest Document to MD">
-      <created>1605433391470</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1605433391470</updated>
+      <workItem from="1606488764318" duration="23132000" />
     </task>
     <task id="LOCAL-00004" summary="- Add new backend">
       <created>1605516730773</created>
@@ -614,7 +601,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606502923645</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="try to get promise">
+      <created>1606562428782</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1606562428783</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -661,7 +655,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/frontend" />
     </ignored-roots>
-    <MESSAGE value="- add fixed Template - Almost ready to implement Backend (Waiting for Design, + Frontend Hooks)" />
     <MESSAGE value="- add constructor to API" />
     <MESSAGE value="- added Allergen Model&#10;- added Jackson Mapper" />
     <MESSAGE value="- fixed things to pass tests and to disable spring security&#10;&#10;- added API test" />
@@ -686,7 +679,8 @@
     <MESSAGE value="- add token to LiveSearchService.js" />
     <MESSAGE value="- add just a few little changes&#10;-- login with backend workspace.xml&#10;-- next commit will be tests" />
     <MESSAGE value="-" />
-    <option name="LAST_COMMIT_MESSAGE" value="-" />
+    <MESSAGE value="try to get promise" />
+    <option name="LAST_COMMIT_MESSAGE" value="try to get promise" />
   </component>
   <component name="WindowStateProjectService">
     <state x="208" y="28" key="#Project_Structure" timestamp="1606386251723">
@@ -981,10 +975,10 @@
     <state x="291" y="-988" width="1289" height="728" key="SettingsEditor/55.25.1385.875/-185.-1055.2560.1055@-185.-1055.2560.1055" timestamp="1606233153730" />
     <state x="588" y="73" width="1338" height="710" key="SettingsEditor/94.0.2658.1152/3440.-140.2048.1122@94.0.2658.1152" timestamp="1606036835395" />
     <state x="295" y="221" key="SettingsEditor/94.0.2658.1152/3440.0.2048.1122@94.0.2658.1152" timestamp="1605372490386" />
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1606380371049">
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1606562440366">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2/-579.-1440.3440.1440/0.0.1440.900@0.0.1440.900" timestamp="1606136645238" />
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2/-579.-1440.3440.1440/0.0.1440.900@0.0.1440.900" timestamp="1606562440366" />
     <state x="384" y="-856" key="Vcs.Push.Dialog.v2/0.0.1440.900/-185.-1080.2560.1080@-185.-1080.2560.1080" timestamp="1605635905664" />
     <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1606380371049" />
     <state x="685" y="239" key="Vcs.Push.Dialog.v2/94.0.2658.1152/3440.-140.2048.1122@94.0.2658.1152" timestamp="1606036841999" />
