@@ -1,20 +1,22 @@
 package com.secretallergy.app.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.ArrayList;
 import java.util.List;
+
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection="products")
-public class Products {
+public class Meal {
     @Id
+    String mealOfUserId;
+    String mealId;
+    String daytime;
     List<Product> products;
+    List<Allergen> allergens;
+    List<SideEffect> sideEffects;
+    int ratingOfSideEffects;
 }
