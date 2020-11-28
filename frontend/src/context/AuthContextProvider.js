@@ -14,11 +14,14 @@ import {
 export default function ({ children }){
     const [token, setToken] = useState(loadTokenFromLocalStorage());
     const [userData, setUserData] = useState(loadUserDataFromLocalStorage());
+    console.log(token)
+
 
     useEffect(() => {
         if (token) {
             try {
                 const decoded = jwtDecode(token);
+                console.log(decoded + " value of decoded token")
                 if (decoded.exp > new Date().getTime() / 1000) {
                     setUserData(decoded);
                     saveTokenToLocalStorage(token);

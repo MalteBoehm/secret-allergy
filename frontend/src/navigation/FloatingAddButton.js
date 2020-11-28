@@ -14,7 +14,6 @@ export default function FloatingButton( {navigation} ){
     );
 }
 
-
 const actions = [
     {
         text: "Frühstück",

@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import Navigator from "../navigation/Navigator";
 import StackNavigator from "../navigation/StackNavigator";
-import LoginScreen from "../screens/LoginScreen";
 import AuthContext from '../context/AuthContext';
 import {NavigationContainer} from "@react-navigation/native";
 
