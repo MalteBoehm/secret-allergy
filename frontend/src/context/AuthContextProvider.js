@@ -1,27 +1,26 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import AuthContext from './AuthContext';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import {
-    loadTokenFromLocalStorage ,
     saveTokenToLocalStorage,
-    loadUserDataFromLocalStorage,
     saveUserDataToLocalStorage,
     deleteTokenFromLocalStorage
     } from '../service/AsyncStorage';
 
 
-export default function ({ children }){
-    const [token, setToken] = useState( loadTokenFromLocalStorage());
-    const [userData, setUserData] = useState( loadUserDataFromLocalStorage() );
-    console.log(token)
-
+export default function ( {children} ) {
+    const [token, setToken] = useState(null);
+    console.log(token + " Das Token")
+    const [userData, setUserData] = useState(null);
+    console.log(userData + " UserData")
 
     useEffect(() => {
         if (token) {
             try {
                 const decoded = jwtDecode(token);
-                console.log(decoded + " value of decoded token")
+                console.log(decoded.toString() + " value of decoded token")
+                console.log(decoded.user)
                 if (decoded.exp > new Date().getTime() / 1000) {
                     setUserData(decoded);
                     saveTokenToLocalStorage(token);
@@ -29,9 +28,10 @@ export default function ({ children }){
                 }
             } catch (e) {
                 console.log(e);
-            }
-        }
+            }}
     }, [token]);
+
+
 
     const tokenIsValid = () =>
         token && userData?.exp > new Date().getTime() / 1000;
@@ -39,11 +39,14 @@ export default function ({ children }){
     const loginWithUserCredentials = (loginData) =>
         axios
             .post('http://192.168.178.76:8080/auth/login', loginData)
-            .then((response) => setToken(response.data));
+            .then((response) => {
+                setToken(response.data)
+            });
 
     const logout = () =>
         deleteTokenFromLocalStorage();
 
+    console.log(tokenIsValid() + " " + token)
     return (
         <AuthContext.Provider
             value={{
@@ -53,8 +56,7 @@ export default function ({ children }){
                 tokenIsValid,
                 loginWithUserCredentials,
                 userData,
-            }}
-        >
+            }}>
             {children}
         </AuthContext.Provider>
     );

@@ -16,10 +16,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34f3ec58-04c8-4749-9807-59b7bd3ab184" name="Default Changelist" comment="try to get promise">
+    <list default="true" id="34f3ec58-04c8-4749-9807-59b7bd3ab184" name="Default Changelist" comment="- trying to fix login">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/context/AuthContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/context/AuthContext.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/context/AuthContextProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/context/AuthContextProvider.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/screens/LoginScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/screens/LoginScreen.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/service/AsyncStorage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/service/AsyncStorage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -263,14 +264,7 @@
       <workItem from="1606385479385" duration="62000" />
       <workItem from="1606386211141" duration="742000" />
       <workItem from="1606386980051" duration="2458000" />
-      <workItem from="1606488764318" duration="23132000" />
-    </task>
-    <task id="LOCAL-00004" summary="- Add new backend">
-      <created>1605516730773</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1605516730773</updated>
+      <workItem from="1606488764318" duration="41867000" />
     </task>
     <task id="LOCAL-00005" summary="- Add react-native-floating-action&#10;-- add design and text to DashboardScreen.js">
       <created>1605537970110</created>
@@ -608,7 +602,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606562428783</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="- trying to fix login">
+      <created>1606572361676</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1606572361677</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -655,7 +656,6 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/frontend" />
     </ignored-roots>
-    <MESSAGE value="- add constructor to API" />
     <MESSAGE value="- added Allergen Model&#10;- added Jackson Mapper" />
     <MESSAGE value="- fixed things to pass tests and to disable spring security&#10;&#10;- added API test" />
     <MESSAGE value="- add brands field to api request + test adaption" />
@@ -680,7 +680,8 @@
     <MESSAGE value="- add just a few little changes&#10;-- login with backend workspace.xml&#10;-- next commit will be tests" />
     <MESSAGE value="-" />
     <MESSAGE value="try to get promise" />
-    <option name="LAST_COMMIT_MESSAGE" value="try to get promise" />
+    <MESSAGE value="- trying to fix login" />
+    <option name="LAST_COMMIT_MESSAGE" value="- trying to fix login" />
   </component>
   <component name="WindowStateProjectService">
     <state x="208" y="28" key="#Project_Structure" timestamp="1606386251723">
@@ -722,9 +723,10 @@
     </state>
     <state x="429" y="287" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1280.800@0.0.1280.800" timestamp="1606071697174" />
     <state x="483" y="323" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1606389394955" />
-    <state x="458" y="201" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606380329774">
+    <state x="458" y="201" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1606588885998">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state x="458" y="201" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/-579.-1440.3440.1440/0.0.1440.900@0.0.1440.900" timestamp="1606588885998" />
     <state x="458" y="201" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1606380329774" />
     <state x="1014" y="-1015" width="733" height="696" key="#xdebugger.evaluate" timestamp="1606147831680">
       <screen x="-579" y="-1440" width="3440" height="1440" />
@@ -975,10 +977,10 @@
     <state x="291" y="-988" width="1289" height="728" key="SettingsEditor/55.25.1385.875/-185.-1055.2560.1055@-185.-1055.2560.1055" timestamp="1606233153730" />
     <state x="588" y="73" width="1338" height="710" key="SettingsEditor/94.0.2658.1152/3440.-140.2048.1122@94.0.2658.1152" timestamp="1606036835395" />
     <state x="295" y="221" key="SettingsEditor/94.0.2658.1152/3440.0.2048.1122@94.0.2658.1152" timestamp="1605372490386" />
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1606562440366">
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2" timestamp="1606572364328">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="320" y="187" key="Vcs.Push.Dialog.v2/-579.-1440.3440.1440/0.0.1440.900@0.0.1440.900" timestamp="1606562440366" />
+    <state x="320" y="187" key="Vcs.Push.Dialog.v2/-579.-1440.3440.1440/0.0.1440.900@0.0.1440.900" timestamp="1606572364328" />
     <state x="384" y="-856" key="Vcs.Push.Dialog.v2/0.0.1440.900/-185.-1080.2560.1080@-185.-1080.2560.1080" timestamp="1605635905664" />
     <state x="320" y="187" key="Vcs.Push.Dialog.v2/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1606380371049" />
     <state x="685" y="239" key="Vcs.Push.Dialog.v2/94.0.2658.1152/3440.-140.2048.1122@94.0.2658.1152" timestamp="1606036841999" />
@@ -996,10 +998,10 @@
     <state x="44" y="78" width="1293" height="720" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/-579.-1415.3440.1415/57.25.1383.875@57.25.1383.875" timestamp="1606466228061" />
     <state x="39" y="69" width="1149" height="640" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1280.800@0.0.1280.800" timestamp="1606463395979" />
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/58.25.1382.875/-185.-1055.2560.1055@58.25.1382.875" timestamp="1605523333510" />
-    <state x="57" y="180" width="1296" height="720" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1606560388598">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="-405" y="-1079" width="1713" height="907" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1606590428018">
+      <screen x="-579" y="-1440" width="3440" height="1440" />
     </state>
-    <state x="57" y="180" width="1296" height="720" key="com.intellij.history.integration.ui.views.FileHistoryDialog/-579.-1440.3440.1440/0.0.1440.900@0.0.1440.900" timestamp="1606560388598" />
+    <state x="-405" y="-1079" width="1713" height="907" key="com.intellij.history.integration.ui.views.FileHistoryDialog/-579.-1440.3440.1440/0.0.1440.900@0.0.1440.900" timestamp="1606590428018" />
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1606324663710" />
     <state x="0" y="28" width="1440" height="872" key="com.intellij.history.integration.ui.views.FileHistoryDialog/56.25.1384.875/-185.-1055.2560.1055@56.25.1384.875" timestamp="1605716940918" />
     <state x="100" y="100" width="1240" height="700" key="com.intellij.history.integration.ui.views.FileHistoryDialog/62.25.1378.875/-185.-1055.2560.1055@62.25.1378.875" timestamp="1606324716576" />
@@ -1029,9 +1031,10 @@
     </state>
     <state x="154" y="118" width="634" height="665" key="new project wizard/0.0.1440.900/-185.-1080.2560.1080@0.0.1440.900" timestamp="1605516469722" />
     <state x="378" y="151" width="1099" height="850" key="new project wizard/94.0.2658.1152/3440.0.2048.1122@94.0.2658.1152" timestamp="1605372451935" />
-    <state x="130" y="201" width="672" height="530" key="search.everywhere.popup" timestamp="1606234706679">
+    <state x="130" y="201" width="672" height="530" key="search.everywhere.popup" timestamp="1606585543992">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state x="130" y="201" width="672" height="530" key="search.everywhere.popup/-579.-1440.3440.1440/0.0.1440.900@0.0.1440.900" timestamp="1606585543992" />
     <state x="116" y="178" width="672" height="472" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1605951200515" />
     <state x="130" y="201" width="672" height="530" key="search.everywhere.popup/0.0.1440.900/-185.-1055.2560.1055@0.0.1440.900" timestamp="1605527307955" />
     <state x="46" y="-839" width="1195" height="636" key="search.everywhere.popup/0.0.1440.900/-185.-1080.2560.1080@-185.-1080.2560.1080" timestamp="1605792226274" />
