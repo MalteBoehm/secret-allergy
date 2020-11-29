@@ -1,6 +1,6 @@
 package com.secretallergy.app.security;
 
-import com.secretallergy.app.dao.AppUserMongoDao;
+import com.secretallergy.app.dao.AppUserDao;
 import com.secretallergy.app.model.AppUser;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,17 +14,18 @@ import java.util.Optional;
 @Service
 public class MongoDbAppUserDetailsService implements UserDetailsService {
 
-    private final AppUserMongoDao userDao;
+    private final AppUserDao userDao;
 
 
-    public MongoDbAppUserDetailsService(AppUserMongoDao userDao) {
+    public MongoDbAppUserDetailsService(AppUserDao userDao) {
         this.userDao = userDao;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<AppUser> userById = userDao.findById(username);
-        if(userById.isEmpty()){
+
+        if (userById.isEmpty()){
             throw new UsernameNotFoundException("user not found");
         }
         return new User(username, userById.get().getPassword(), List.of());

@@ -41,19 +41,20 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         // validate token
         String token = authorization.replace("Bearer ", "").trim();
 
-        UserDetails userWhatever= User.builder()
-                .username("user")
-                .password("123")
-                .authorities(new ArrayList<>())
-                .build();
+//        UserDetails userWhatever= User.builder()
+//                .username("user")
+//                .password("123")
+//                .authorities(new ArrayList<>())
+//                .build();
         try {
             Claims claims = jwtUtils.parseToken(token);
             if(!jwtUtils.isExpired(claims)){
                 SecurityContextHolder.getContext()
-                        .setAuthentication(new UsernamePasswordAuthenticationToken(
-                        userWhatever,null,userWhatever.getAuthorities()
-                        )
-                );
+                        .setAuthentication(
+                                new UsernamePasswordAuthenticationToken(
+                                        claims.getSubject(),
+                                        "",
+                                        Collections.emptyList()));
             }
         }catch (Exception e){
             System.out.println(e);

@@ -12,14 +12,11 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "users")
-@Builder
+@Document(collection = "appUser")
 public class AppUser {
 
     @Id
     private String username;
     private String password;
     private List<Meal> meals;
-
-
 }

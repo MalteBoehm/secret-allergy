@@ -9,11 +9,7 @@ import AuthContextProvider from "./src/context/AuthContextProvider";
 export default function App() {
   return (
       <AuthContextProvider>
-          <SearchInputContextProvider>
-                  <LiveSearchProvider>
-                      <ProtectedRoute/>
-                  </LiveSearchProvider>
-          </SearchInputContextProvider>
+          <ProtectedRoute/>
       </AuthContextProvider>
         )
       }

@@ -15,7 +15,7 @@ const Stack = createStackNavigator();
 export default function StackNavigator(){
     const { tokenIsValid } = useContext(AuthContext);
     return(
-                <Stack.Navigator initialRouteName={tokenIsValid() ? 'Dashboard': 'Login'}
+                <Stack.Navigator initialRouteName={ tokenIsValid() ? 'Dashboard': 'Login'}
                                  screenOptions={{
                                      headerShown: false
                                  }}>
