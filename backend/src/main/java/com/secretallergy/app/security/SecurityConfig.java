@@ -15,13 +15,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final MongoDbUserDetailsService mongoDbUserDetailsService;
+    private final MongoDbAppUserDetailsService mongoDbAppUserDetailsService;
     private final JwtAuthFilter jwtAuthFilter;
 
 
     @Autowired
-    public SecurityConfig(MongoDbUserDetailsService mongoDbUserDetailsService, JwtAuthFilter jwtAuthFilter) {
-        this.mongoDbUserDetailsService = mongoDbUserDetailsService;
+    public SecurityConfig(MongoDbAppUserDetailsService mongoDbAppUserDetailsService, JwtAuthFilter jwtAuthFilter) {
+        this.mongoDbAppUserDetailsService = mongoDbAppUserDetailsService;
         this.jwtAuthFilter = jwtAuthFilter;
     }
 
@@ -45,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(mongoDbUserDetailsService);
+        auth.userDetailsService(mongoDbAppUserDetailsService);
     }
 
     @Bean

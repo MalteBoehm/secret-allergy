@@ -1,8 +1,7 @@
 package com.secretallergy.app.security;
 
-import com.secretallergy.app.dao.AppUserDao;
+import com.secretallergy.app.dao.AppUserMongoDao;
 import com.secretallergy.app.model.AppUser;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -13,12 +12,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class MongoDbUserDetailsService implements UserDetailsService {
+public class MongoDbAppUserDetailsService implements UserDetailsService {
 
-    private final AppUserDao userDao;
+    private final AppUserMongoDao userDao;
 
 
-    public MongoDbUserDetailsService(AppUserDao userDao) {
+    public MongoDbAppUserDetailsService(AppUserMongoDao userDao) {
         this.userDao = userDao;
     }
 
