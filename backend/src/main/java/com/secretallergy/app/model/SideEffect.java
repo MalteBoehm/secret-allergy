@@ -7,18 +7,19 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
+import java.util.Map;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "meals")
-public class Meal {
+@Document(collection = "sideEffect")
+public class SideEffect {
+
     @Id
-    String mealOfUserId;
+    String sideEffectOfUserID;
     String mealId;
     String daytime;
-    List<Product> products;
-    List<Allergen> allergens;
-    List<SideEffect> sideEffects;
-    int ratingOfSideEffects;
+    List<Product>  listOfProductsThatWereConsumed;
+    List<Allergen>listOfAllCombinedAllergens;
+    Map<String, String> sideEffectByIcdAndStrength;
 }
