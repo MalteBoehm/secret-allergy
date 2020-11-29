@@ -40,12 +40,6 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         // validate token
         String token = authorization.replace("Bearer ", "").trim();
-
-//        UserDetails userWhatever= User.builder()
-//                .username("user")
-//                .password("123")
-//                .authorities(new ArrayList<>())
-//                .build();
         try {
             Claims claims = jwtUtils.parseToken(token);
             if(!jwtUtils.isExpired(claims)){

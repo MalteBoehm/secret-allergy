@@ -1,7 +1,7 @@
 spring:
   data:
     mongodb:
-      database: appUser
+      database: allergyApp
       host: localhost
       port: 37017
 

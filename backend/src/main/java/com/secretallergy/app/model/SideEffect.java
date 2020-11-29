@@ -12,7 +12,7 @@ import java.util.Map;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "sideEffect")
+@Document(collection = "sideEffects")
 public class SideEffect {
 
     @Id
