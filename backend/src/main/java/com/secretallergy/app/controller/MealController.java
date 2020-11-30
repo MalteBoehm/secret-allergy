@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.io.FileNotFoundException;
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -27,7 +28,7 @@ public class MealController {
 
     @CrossOrigin
     @GetMapping
-    public List<Product> getProductsByName(@RequestParam String products) throws FileNotFoundException, UnirestException {
+    public List<Product> getProductsByName(@RequestParam String products) throws UnirestException {
             return mealService.searchProductsByNameService(products);
         }
 }

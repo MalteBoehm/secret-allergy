@@ -22,11 +22,11 @@ public class AppUserService {
         this.mongoTemplate = mongoTemplate;
     }
 
-    public List<Meal> getMeals(String username){
-        Optional<AppUser> user = appUserDao.findById(username);
-        if(user.isPresent()){
-            return user.get().getMeals();
-        }
-        throw new UsernameNotFoundException(username+" not found");
-    }
+//    public List<Meal> getMeals(String username){
+//        Optional<AppUser> user = appUserDao.findById(username);
+//        if(user.isPresent()){
+//            return user.get().getMeals();
+//        }
+//        throw new UsernameNotFoundException(username+" not found");
+//    }
 }
