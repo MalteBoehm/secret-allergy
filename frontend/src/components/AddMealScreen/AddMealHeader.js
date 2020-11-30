@@ -22,7 +22,7 @@ export default function AddMealHeader( {navigation, route} ){
                 />
                 <Button  type="solid"
                          title={"Mahlzeit erstellen"}
-                         onPress={()=> alert('Once you will be able to create a Meal ' + userId + " " + "mealParam")}
+                         onPress={()=> alert('Once you will be able to create a Meal ' + userId + " " + mealParam)}
                  />
             </Row>
     )
