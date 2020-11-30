@@ -1,7 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
-
 export const loadTokenFromLocalStorage  = async () => {
     try {
         const value = await AsyncStorage.getItem('ACCESS_TOKEN');

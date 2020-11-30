@@ -5,10 +5,10 @@ import {moderateScale} from '../styles/globalstyles';
 import AddMealHeader from '../components/AddMealScreen/AddMealHeader';
 import AddMealList from '../components/AddMealScreen/AddMealList';
 
-export default function AddMealScreen( {navigation} ){
+export default function AddMealScreen( {navigation, route} ){
     return (
         <Grid style={StyledGrid.container}>
-            <AddMealHeader navigation={navigation} />
+            <AddMealHeader navigation={navigation} route={route} />
             <AddMealList />
         </Grid>
     );

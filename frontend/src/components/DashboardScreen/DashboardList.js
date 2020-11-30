@@ -12,19 +12,23 @@ export default function DashboardList({navigation}){
         {
             id: 1,
             title: 'Frühstück Hinzufügen',
-            emojiName: 'coffee'
+            emojiName: 'coffee',
+            kindOfMeal: 'breakfast'
         },{
             id: 2,
             title: 'Mittagessen Hinzufügen',
-            emojiName: 'pizza'
+            emojiName: 'pizza',
+            kindOfMeal: 'meal'
         },{
             id: 3,
             title: 'Abendessen Hinzufügen',
-            emojiName: 'wine_glass'
+            emojiName: 'wine_glass',
+            kindOfMeal: 'dinner'
         },{
             id: 4,
             title: 'Snack Hinzufügen',
-            emojiName: 'apple'
+            emojiName: 'apple',
+            kindOfMeal: 'snacks'
         }];
 
 
@@ -95,7 +99,7 @@ export default function DashboardList({navigation}){
                                                         <Col size={4}><Text style={{fontWeight: "bold", fontSize: moderateScale(14, 0.3)}}>{item.title}</Text></Col>
                                                         <Col size={1}>
                                                             <Button title={'+'} onPress={() =>
-                                                                navigation.navigate('AddMeal')}/>
+                                                                navigation.navigate('AddMeal', {mealParam: item.kindOfMeal} )}/>
                                                         </Col>
                                                     </Row>
                                                     <Row>
