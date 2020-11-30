@@ -10,8 +10,6 @@ export default function AddMealHeader( {navigation, route} ){
     const {userData} = useContext(AuthContext);
     const userId = userData.sub;
     const { mealParam } = route.params;
-    console.log(mealParam)
-    console.log(userId);
 
 
     return(
@@ -36,6 +34,5 @@ const headerStyle = StyleSheet.create({
         marginRight: moderateScale(10, 0.5),
     },
 })
-
 
 
