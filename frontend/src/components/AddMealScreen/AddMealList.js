@@ -5,7 +5,7 @@ import {
     View,
     FlatList,
 } from 'react-native';
-import {LiveSearchContext} from "../context/LiveSearchContext";
+import {LiveSearchContext} from "../../context/LiveSearchContext";
 import AddMealSuche from "./AddMealSuche";
 
 

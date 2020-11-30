@@ -1,18 +1,21 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
 import createStackNavigator from "@react-navigation/stack/src/navigators/createStackNavigator";
-import DashboardScreen from "../screens/Dashboard/DashboardScreen";
-import AddMealScreen from "../screens/AddMeal/AddMealScreen";
+import DashboardScreen from "../screens/DashboardScreen";
+import AddMealScreen from "../screens/AddMealScreen";
+import LoginScreen from "../screens/LoginScreen";
+import AuthContext from '../context/AuthContext';
+import {useContext} from "react";
 
 
 
 
 const Stack = createStackNavigator();
 
-
 export default function StackNavigator(){
+    const { tokenIsValid } = useContext(AuthContext);
     return(
-                <Stack.Navigator initialRouteName={'Home'}
+                <Stack.Navigator initialRouteName={ tokenIsValid() ? 'Dashboard': 'Login'}
                                  screenOptions={{
                                      headerShown: false
                                  }}>
@@ -21,6 +24,7 @@ export default function StackNavigator(){
                         component={DashboardScreen}
                     />
                     <Stack.Screen name="AddMeal" component={AddMealScreen} />
+                    <Stack.Screen name="Login" component={LoginScreen} />
                 </Stack.Navigator>
     );
 

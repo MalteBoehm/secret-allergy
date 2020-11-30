@@ -1,8 +1,8 @@
 import React from 'react';
 import { Grid } from "react-native-easy-grid";
-import FloatingAddButton from "../../navigation/FloatingAddButton";
-import DashboardHeader from "../../components/DashboardHeader";
-import DashboardList from "../../components/DashboardList";
+import FloatingAddButton from "../navigation/FloatingAddButton";
+import DashboardHeader from "../components/DashboardScreen/DashboardHeader";
+import DashboardList from "../components/DashboardScreen/DashboardList";
 
 export default function DashboardScreen({ navigation }){
     return (

@@ -15,13 +15,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final MongoDbUserDetailsService mongoDbUserDetailsService;
+    private final MongoDbAppUserDetailsService mongoDbAppUserDetailsService;
     private final JwtAuthFilter jwtAuthFilter;
 
 
     @Autowired
-    public SecurityConfig(MongoDbUserDetailsService mongoDbUserDetailsService, JwtAuthFilter jwtAuthFilter) {
-        this.mongoDbUserDetailsService = mongoDbUserDetailsService;
+    public SecurityConfig(MongoDbAppUserDetailsService mongoDbAppUserDetailsService, JwtAuthFilter jwtAuthFilter) {
+        this.mongoDbAppUserDetailsService = mongoDbAppUserDetailsService;
         this.jwtAuthFilter = jwtAuthFilter;
     }
 
@@ -30,9 +30,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/**").permitAll() //todo back to authenticated() when login is ready
-                .antMatchers("/**")
-                .permitAll().and()
+                .antMatchers("/auth/login").permitAll() //todo back to authenticated() when login is ready
+                .antMatchers("/api/product**").permitAll()
+                .antMatchers("/**").authenticated()
+                .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
     }
@@ -45,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(mongoDbUserDetailsService);
+        auth.userDetailsService(mongoDbAppUserDetailsService);
     }
 
     @Bean
