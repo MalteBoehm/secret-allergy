@@ -28,10 +28,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()
+        http.csrf().disable().cors().and()
                 .authorizeRequests()
                 .antMatchers("/auth/login").permitAll() //todo back to authenticated() when login is ready
-                .antMatchers("/api/product**").permitAll()
+                .antMatchers("/api/product**").authenticated()
                 .antMatchers("/**").authenticated()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)

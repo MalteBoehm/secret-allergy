@@ -15,6 +15,7 @@ export default function ( {children} ) {
     const [userData, setUserData] = useState(null);
     console.log(userData + " UserData")
 
+
     useEffect(() => {
         if (token) {
             try {
@@ -55,7 +56,7 @@ export default function ( {children} ) {
                 logout,
                 tokenIsValid,
                 loginWithUserCredentials,
-                userData,
+                userData
             }}>
             {children}
         </AuthContext.Provider>
