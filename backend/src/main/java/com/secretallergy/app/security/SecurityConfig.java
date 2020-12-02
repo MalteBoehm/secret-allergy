@@ -31,7 +31,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable().cors().and()
                 .authorizeRequests()
                 .antMatchers("/auth/login").permitAll() //todo back to authenticated() when login is ready
-                .antMatchers("/api/product**").authenticated()
+                .antMatchers("/api/meal/livesearch**").authenticated()
+                .antMatchers("/api/meal/new**").permitAll()
                 .antMatchers("/**").authenticated()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)

@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.secret-allergy</groupId>
-	<artifactId>app</artifactId>
+	<artifactId>backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>app</name>
 	<description>Backend that manages the Secret Allergy App</description>
@@ -56,16 +56,18 @@
 		</dependency>
 
 
-			<dependency>
-				<groupId>com.mysema.querydsl</groupId>
-				<artifactId>querydsl-mongodb</artifactId>
-				<version>4.3.1</version>
-			</dependency>
-			<dependency>
-				<groupId>com.mysema.querydsl</groupId>
-				<artifactId>querydsl-apt</artifactId>
-				<version>4.3.1</version>
-			</dependency>
+            <!-- https://mvnrepository.com/artifact/com.querydsl/querydsl-mongodb -->
+            <dependency>
+                <groupId>com.querydsl</groupId>
+                <artifactId>querydsl-mongodb</artifactId>
+                <version>4.4.0</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.querydsl/querydsl-apt -->
+            <dependency>
+                <groupId>com.querydsl</groupId>
+                <artifactId>querydsl-apt</artifactId>
+                <version>4.3.1</version>
+            </dependency>
 
 			<!-- Rest  -->
 		<dependency>

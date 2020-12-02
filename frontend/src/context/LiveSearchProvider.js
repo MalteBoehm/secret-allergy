@@ -12,6 +12,7 @@ export default function LiveSearchProvider({children}){
 
     const [liveSearchData, setLiveSearchData] = useState([]);
 
+    const [addMealListOfProducts, setAddMealListOfProducts] = useState([]);
     const { token } = useContext(AuthContext)
     const { searchInput } = useContext(SearchInputContext);
 
@@ -21,5 +22,5 @@ export default function LiveSearchProvider({children}){
             : ""
     }, [searchInput])
 
-    return (<LiveSearchContext.Provider value={{ liveSearchData }} children={children}/>);
+    return (<LiveSearchContext.Provider value={{ liveSearchData, addMealListOfProducts, setAddMealListOfProducts }} children={children}/>);
 }

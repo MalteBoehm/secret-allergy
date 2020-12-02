@@ -1,6 +1,6 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import { Row} from "react-native-easy-grid";
-import { ListItem,Avatar } from 'react-native-elements';
+import { ListItem,Avatar, CheckBox } from 'react-native-elements';
 import {
     View,
     FlatList,
@@ -10,22 +10,44 @@ import AddMealSuche from "./AddMealSuche";
 
 
 
-
 export default function AddMealList() {
+    const {liveSearchData, addMealListOfProducts, setAddMealListOfProducts} = useContext(LiveSearchContext);
 
-    const {liveSearchData} = useContext(LiveSearchContext);
-    const keyExtractor = (item, index) => index.toString()
-    const renderItem = ({ item }) => (
-        <ListItem style={{color:'black'}} bottomDivider>
-            <Avatar source={{uri: item.image_front_thumb_url}} />
-            <ListItem.Content>
-                <ListItem.Title>{item.product_name}</ListItem.Title>
-                <ListItem.Subtitle>{item.brands}</ListItem.Subtitle>
-            </ListItem.Content>
-            <ListItem.Chevron />
-        </ListItem>
-    )
+    const [checked, setChecked] = useState(false);
 
+    const keyExtractor = (item, index) => index.toString();
+    const renderItem = ({item} ) => {
+        let isChecked = false;
+
+        const handleChecked = () =>{
+            if(!addMealListOfProducts.includes(item)){
+                addMealListOfProducts.push(item);
+                isChecked = true;
+                console.log(isChecked);
+            } else {
+                const indexOfItem = addMealListOfProducts.indexOf(item);
+                addMealListOfProducts.splice(indexOfItem);
+                isChecked = false;
+            }};
+
+        return (
+            <ListItem style={{color: 'black'}} bottomDivider component={CheckBox}>
+                <Avatar source={{uri: item.image_front_thumb_url}}/>
+                <ListItem.Content>
+                    <ListItem.Title>{item.product_name}</ListItem.Title>
+                    <ListItem.Subtitle>{item.brands}</ListItem.Subtitle>
+                </ListItem.Content>
+                <CheckBox
+                    right
+                    title='Hinzugefügt'
+                    checkedIcon='check-square-o'
+                    uncheckedIcon='square-o'
+                    checked={true}
+                    onPress={handleChecked}
+                />
+            </ListItem>
+        );
+    }
 
     return (
         <Row size={7}>

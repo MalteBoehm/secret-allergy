@@ -42,18 +42,18 @@ public class OpenFoodFactsApi {
             String imageUrl = jsonObject.keySet()
                                         .contains("image_url")?
                                             jsonObject.getString("image_url"):
-                                            "https://www.google.com/url?sa=i&url=https%3A%2F%2Fcommons.wikimedia.org%2Fwiki%2FFile%3ANo_image_available.svg&psig=AOvVaw0OesREmcjsIc9RALEdvReC&ust=1606237628058000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJCZ18yTme0CFQAAAAAdAAAAABAD";
+                                            "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png";
             ArrayList<String> ingredients_text_de = new ArrayList<>(
                     Arrays.asList(
                             jsonObject.keySet()
                                         .contains("ingredients_text_de")?
-                                        jsonObject.getString("ingredients_text_de").split(","):
-                                        jsonObject.getString("ingredients_text").split(",")
+                                        jsonObject.getString("ingredients_text_de").replaceAll("[0-9]w*|[%|:]w*|[\\s{2}]w*","").split(","):
+                                        jsonObject.getString("ingredients_text").replaceAll("([0-9]w*)|([%|:]w*)|([\\s{2}]w*)","").split(",")
                             ));
             productList.add( new Product(id, name, brands, ingredients_text_de, imageUrl) );
         }
 //        checkMongoDbIfProductIsPresentAndAddItIfNotAddItToMongoDb(productName, productList);
-        return cleanUpStringsOfProductsBeforeReturn(productList);
+        return productList;
     }
 
 
@@ -82,6 +82,7 @@ public class OpenFoodFactsApi {
                 " Produkt",
                 "Überzugsmittel",
                 "Gesamtkakaobestandteile",
+                "aufgeschlossenes",
                 ":",
                 ";",
                 ".",
@@ -92,11 +93,17 @@ public class OpenFoodFactsApi {
                 "%",
                 "0", "1","2","3","4","5","6","7","8","9"));
 
+        List<String> newIngredientsList = new ArrayList<>();
         for (Product currentProduct : productList) {
             currentProduct.getIngredients_text_de()
-                    .forEach(prod-> prod.replaceAll("^ +| +$|( )+", ""));
-            List<String> newIngredientsList = new ArrayList<>();
+                    .forEach(ingredient-> {
 
+                        newIngredientsList.add(ingredient.replaceAll("([0-9]w*)|([%|:]w*)|([\\s{2}]w*)", ""));
+
+                    });
+
+
+            System.out.println(newIngredientsList + "");
 //            for(int x = 0; x < currentProduct.getIngredients_text_de().size(); x++) {
 //
 ////                for(in y = 0; y < currentProduct.getIngredients_text_de().get(x).))

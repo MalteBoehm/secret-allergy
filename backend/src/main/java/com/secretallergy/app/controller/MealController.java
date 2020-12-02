@@ -3,6 +3,8 @@ package com.secretallergy.app.controller;
 
 import com.mashape.unirest.http.exceptions.UnirestException;
 
+import com.secretallergy.app.dto.AddMealDto;
+import com.secretallergy.app.model.Meal;
 import com.secretallergy.app.model.Product;
 import com.secretallergy.app.service.MealService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,7 @@ import java.security.Principal;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/product")
+@RequestMapping(value = "/api/meal")
 public class MealController {
     private final MealService mealService;
 
@@ -27,9 +29,17 @@ public class MealController {
 
 
     @CrossOrigin
-    @GetMapping
+    @GetMapping("/livesearch")
     public List<Product> getProductsByName(@RequestParam String products) throws UnirestException {
             return mealService.searchProductsByNameService(products);
-        }
+    }
+
+
+    @CrossOrigin
+    @PostMapping("/new")
+    public Meal addMealToUser(@RequestBody AddMealDto addMeal){
+        System.out.println(addMeal);
+        return mealService.addMealToUser(addMeal);
+    }
 }
 
