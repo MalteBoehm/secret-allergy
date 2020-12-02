@@ -1,6 +1,7 @@
 ### VS Code ###
 .vscode/
-
+allergens.json
+*/.idea/workspace.xml
 
 ### Frontend ###
 node_modules

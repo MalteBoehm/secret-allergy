@@ -13,7 +13,6 @@ import java.util.List;
 @AllArgsConstructor
 @Document(collection = "allergens")
 public class Allergen {
-    @Id
     List<String> names;
     List<String> englishNames;
     String deFoodCategory;

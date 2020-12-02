@@ -17,8 +17,8 @@ import java.util.List;
 public class Meal {
 
     @Id
-    String mealOfUserId;
     String mealId;
+    String mealOfUserId;
     String date;
     String mealDaytime;
     List<Product> products;

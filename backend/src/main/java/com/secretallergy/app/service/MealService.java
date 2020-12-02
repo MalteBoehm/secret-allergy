@@ -22,26 +22,21 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
 public class MealService {
-    private final ProductMongoDao productMongoDao;
     private final AllergenMongoDao allergenMongo;
     private final MealMongoDao mealMongo;
     private final OpenFoodFactsApi openFoodFactsApi;
-    private final MongoTemplate mongoTemplate;
     private final IdUtils idUtils;
 
 
     @Autowired
-    public MealService(ProductMongoDao productMongoDao, AllergenMongoDao allergenMongo, MealMongoDao mealMongo, OpenFoodFactsApi openFoodFactsApi, MongoTemplate mongoTemplate, IdUtils idUtils) {
-        this.productMongoDao = productMongoDao;
+    public MealService(AllergenMongoDao allergenMongo, MealMongoDao mealMongo, OpenFoodFactsApi openFoodFactsApi, IdUtils idUtils) {
         this.allergenMongo = allergenMongo;
         this.mealMongo = mealMongo;
         this.openFoodFactsApi = openFoodFactsApi;
-        this.mongoTemplate = mongoTemplate;
         this.idUtils = idUtils;
     }
 
@@ -75,32 +70,15 @@ public class MealService {
     public List<Allergen> addAllergens(AddMealDto addMealDto){
 
         List<Allergen> allergens = new ArrayList<>();
-
         addMealDto.getAddMealListOfProducts().forEach(product -> {
             for (int i = 0; i < product.getIngredients_text_de().size(); i++) {
-                String[] shit = product.getIngredients_text_de().get(i).split(" ");
-                List<String> theNewShit = new ArrayList<>();
-                // Andersherum im string allergene suchen und nicht in den allergenen den strings
-                for (String s: theNewShit) {
-                    allergenMongo.findAll().forEach(allergen -> {
-                        Arrays.stream(allergen.getNames().toArray()).map(el -> {
-                                    if(s.toLowerCase().contains(el.toString().toLowerCase())){
-                                        return allergens.add((Allergen) el);
-                                    }else {
-                                        return null;
-                                    }
-                        }
-                                );
-
-                        }
-                    );
-                    }
+                List<String> newList = Arrays.asList(product.getIngredients_text_de().get(i));
+                for (String searchWord: newList) {
+                    allergens.addAll(allergenMongo.findAllergenByName("^"+searchWord));
                 }
+            }
         });
-
-        System.out.println(allergens +"");
         return allergens;
-
     }
 }
 

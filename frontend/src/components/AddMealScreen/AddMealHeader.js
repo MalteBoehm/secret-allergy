@@ -23,7 +23,6 @@ export default function AddMealHeader( {navigation, route} ){
                 <Button  type="solid"
                          title={"Mahlzeit erstellen"}
                          onPress={()=> {
-                             alert(addMealListOfProducts.length)
                              createMeal(userId, mealParam, addMealListOfProducts);
                              setAddMealListOfProducts([]);
                          }}

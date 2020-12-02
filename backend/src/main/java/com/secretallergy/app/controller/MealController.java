@@ -38,7 +38,6 @@ public class MealController {
     @CrossOrigin
     @PostMapping("/new")
     public Meal addMealToUser(@RequestBody AddMealDto addMeal){
-        System.out.println(addMeal);
         return mealService.addMealToUser(addMeal);
     }
 }
