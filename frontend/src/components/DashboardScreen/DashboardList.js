@@ -155,4 +155,3 @@ const MealBoxStyled = styled.View`
 `
 
 
-// todo Farbscale

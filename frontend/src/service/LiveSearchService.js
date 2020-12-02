@@ -1,13 +1,12 @@
 import axios from "axios";
 
-
 const header = (token) => ({
     headers: {
         Authorization: `Bearer ${token}`,
     },
 });
 
-const url = "http://192.168.178.76:8080/api/meal/livesearch?products=";
+const url = 'http://192.168.178.41:8080/api/meal/livesearch?products=';
 
 export const getLiveSearchData = (searchInput, token) =>
         axios
@@ -16,7 +15,7 @@ export const getLiveSearchData = (searchInput, token) =>
             .catch((error) => console.log(error));
 
 
-const mealUrl = "http://192.168.178.76:8080/api/meal/new"; //todoMeal Controller
+const mealUrl = 'http://192.168.178.41:8080/api/meal/new';
 
 export const createMeal = (userId, mealParam, addMealListOfProducts, token) => {
     console.log({userId, mealParam, addMealListOfProducts})

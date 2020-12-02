@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import AuthContext from './AuthContext';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
@@ -39,7 +39,7 @@ export default function ( {children} ) {
 
     const loginWithUserCredentials = (loginData) =>
         axios
-            .post('http://192.168.178.76:8080/auth/login', loginData)
+            .post('http://192.168.178.41:8080/auth/login', loginData)
             .then((response) => {
                 setToken(response.data)
             });

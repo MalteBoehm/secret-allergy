@@ -44,6 +44,7 @@ public class OpenFoodFactsApi {
                                         jsonObject.getString("ingredients_text_de").replaceAll("([0-9])w*|([-%:.?])w*|([\\s{2}])w*|[()_-]w*","").split(","):
                                         jsonObject.getString("ingredients_text").replaceAll("([0-9])w*|([-%:.?])w*|([\\s{2}])w*|[()_-]w*","").split(",")
                             ));
+            System.out.println(ingredients_text_de);
             productList.add( new Product(id, name, brands, ingredients_text_de, imageUrl) );
         }
         return productList;

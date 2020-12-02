@@ -41,7 +41,6 @@ public class MealService {
     }
 
     public List<Product> searchProductsByNameService(String productName) throws  UnirestException {
-        System.out.println(openFoodFactsApi.searchProductByName(productName));
         return openFoodFactsApi.searchProductByName(productName);
         }
 

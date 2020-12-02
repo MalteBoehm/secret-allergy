@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().cors().and()
                 .authorizeRequests()
-                .antMatchers("/auth/login").permitAll() //todo back to authenticated() when login is ready
+                .antMatchers("/auth/login").permitAll()
                 .antMatchers("/api/meal/livesearch**").authenticated()
                 .antMatchers("/api/meal/new**").permitAll()
                 .antMatchers("/**").authenticated()
