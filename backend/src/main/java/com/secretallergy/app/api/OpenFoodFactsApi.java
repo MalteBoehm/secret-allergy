@@ -1,19 +1,13 @@
 package com.secretallergy.app.api;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import com.secretallergy.app.dao.ProductMongoDao;
 import com.secretallergy.app.model.Product;
-import com.secretallergy.app.service.MealService;
-import lombok.Data;
 import org.json.JSONArray;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 
@@ -42,18 +36,18 @@ public class OpenFoodFactsApi {
             String imageUrl = jsonObject.keySet()
                                         .contains("image_url")?
                                             jsonObject.getString("image_url"):
-                                            "https://www.google.com/url?sa=i&url=https%3A%2F%2Fcommons.wikimedia.org%2Fwiki%2FFile%3ANo_image_available.svg&psig=AOvVaw0OesREmcjsIc9RALEdvReC&ust=1606237628058000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJCZ18yTme0CFQAAAAAdAAAAABAD";
+                                            "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png";
             ArrayList<String> ingredients_text_de = new ArrayList<>(
                     Arrays.asList(
                             jsonObject.keySet()
                                         .contains("ingredients_text_de")?
-                                        jsonObject.getString("ingredients_text_de").split(","):
-                                        jsonObject.getString("ingredients_text").split(",")
+                                        jsonObject.getString("ingredients_text_de").replaceAll("([0-9])w*|([-%:.?])w*|([\\s{2}])w*|[()_-]w*","").split(","):
+                                        jsonObject.getString("ingredients_text").replaceAll("([0-9])w*|([-%:.?])w*|([\\s{2}])w*|[()_-]w*","").split(",")
                             ));
+            System.out.println(ingredients_text_de);
             productList.add( new Product(id, name, brands, ingredients_text_de, imageUrl) );
         }
-//        checkMongoDbIfProductIsPresentAndAddItIfNotAddItToMongoDb(productName, productList);
-        return cleanUpStringsOfProductsBeforeReturn(productList);
+        return productList;
     }
 
 
@@ -72,6 +66,9 @@ public class OpenFoodFactsApi {
 
 
     private List<Product> cleanUpStringsOfProductsBeforeReturn(List<Product> productList) {
+
+        //todo filter -> begriffe replaceAll ""
+        //todo filter -> regex replaceAll Sonderzeichen
         List<String> filter = new ArrayList<>(List.of(
                 "Teig",
                 "Konservierungsstoff",
@@ -82,6 +79,7 @@ public class OpenFoodFactsApi {
                 " Produkt",
                 "Überzugsmittel",
                 "Gesamtkakaobestandteile",
+                "aufgeschlossenes",
                 ":",
                 ";",
                 ".",
@@ -92,50 +90,15 @@ public class OpenFoodFactsApi {
                 "%",
                 "0", "1","2","3","4","5","6","7","8","9"));
 
+        List<String> newIngredientsList = new ArrayList<>();
         for (Product currentProduct : productList) {
             currentProduct.getIngredients_text_de()
-                    .forEach(prod-> prod.replaceAll("^ +| +$|( )+", ""));
-            List<String> newIngredientsList = new ArrayList<>();
+                    .forEach(ingredient-> {
 
-//            for(int x = 0; x < currentProduct.getIngredients_text_de().size(); x++) {
-//
-////                for(in y = 0; y < currentProduct.getIngredients_text_de().get(x).))
-//                String ingredient = currentProduct.getIngredients_text_de().get(x);
-//                if(ingredient.startsWith(" ")) {
-//                    ingredient.replaceFirst(" ","");
-//                    }
-//                if(ingredient.contains("  ")) {
-//                    ingredient.replace("  ","");
-//                }
-//
-//
-//            }
-                  {
-
-            }
-
-//            currentProduct.setIngredients_text_de(newIngredientsList);
-            }
+                        newIngredientsList.add(ingredient.replaceAll("([0-9]w*)|([%|:]w*)|([\\s{2}-]w*)", ""));
+                    });
+        }
         return productList;
     }
 
-
-
-
-        // todo  klammern aus den Ingredients löschen
-        // zweichfache leerzeichen nach beginn löschen
-        // Unterstriche  vor wörtern löschen
-        // digit digit % löschen
-
-
-
-//    private void checkMongoDbIfProductIsPresentAndAddItIfNotAddItToMongoDb(String productName, List<Product> products)  {
-//        // Init Lists of DB and API -- Compare and Add if needed
-//        List<Product> mongoDaoCheck = productMongoDao.findBy(productName);
-//        for (Product product: products) {
-//            if(!mongoDaoCheck.contains(product)){
-//                mongoDaoCheck.add(product);
-//            }
-//        }
-//    }
 }

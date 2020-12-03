@@ -1,8 +1,7 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 import { Row} from "react-native-easy-grid";
 import { SearchBar } from 'react-native-elements';
 import SearchInputContext from "../../context/SearchInputContext";
-import { loadTokenFromLocalStorage } from '../../service/AsyncStorage';
 
 
 
