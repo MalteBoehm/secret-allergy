@@ -1,0 +1,5 @@
+"semi": true
+"singleQUote": true,
+"tabWidth": 4 ,
+"useTabs": false,
+"trailingComma": "es5"
