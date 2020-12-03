@@ -5,7 +5,6 @@ import AuthContext from '../context/AuthContext';
 import {NavigationContainer} from "@react-navigation/native";
 import LiveSearchProvider from "../context/LiveSearchProvider";
 import SearchInputContextProvider from "../context/SearchInputContextProvider";
-import AuthContextProvider from "../context/AuthContextProvider";
 
 export default function ProtectedRoute(props) {
     const { tokenIsValid } = useContext(AuthContext);

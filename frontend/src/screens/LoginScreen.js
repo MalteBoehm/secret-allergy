@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {View, ActivityIndicator} from 'react-native';
-import LoginHeader from "../components/LoginScreen/LoginHeader";
-import LoginForm from "../components/LoginScreen/LoginForm";
+import LoginHeader from "./LoginScreen/LoginHeader";
+import LoginForm from "./LoginScreen/LoginForm";
 import AuthContext from "../context/AuthContext";
 import {
     loadTokenFromLocalStorage ,
@@ -18,7 +18,6 @@ export default function LoginScreen () {
                 loadTokenFromLocalStorage().
                 then(value=> {
                     setToken(value);
-                    console.log(value + " LoginScreen")
                 });
             }
             setIsLoading(false);
