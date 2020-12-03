@@ -50,7 +50,7 @@ class MealServiceTest {
 
     Product mockProduct1 = Product.builder()
             ._id("1")
-            .product_name("Kinder")
+            .product_name("Kinsder")
             .brands("Rewe")
             .image_front_thumb_url("www.thumbnail.de")
             .ingredients_text_de(ingredients)
