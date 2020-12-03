@@ -12,7 +12,9 @@ export default function AddMealHeader( {navigation, route} ){
     const {userData} = useContext(AuthContext);
     const userId = userData.sub;
     const { mealParam } = route.params;
+
     const {addMealListOfProducts, setAddMealListOfProducts} = useContext(LiveSearchContext);
+
 
     return(
             <Row size={0.5} style={headerStyle.rowStyle}>
@@ -39,6 +41,5 @@ const headerStyle = StyleSheet.create({
         marginRight: moderateScale(10, 0.5),
     },
 })
-
 
 
