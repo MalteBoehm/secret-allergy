@@ -1,183 +1,134 @@
-import { Grid, Row, Col } from "react-native-easy-grid";
+import { Grid, Row } from "react-native-easy-grid";
 import React, { useContext, useEffect, useState } from "react";
-import { StyleSheet, ScrollView, Text, Button } from "react-native";
+import { StyleSheet, ScrollView } from "react-native";
 import styled from "styled-components/native";
 import { moderateScale } from "../../styles/globalstyles";
-import Emoji from "react-native-emoji";
-import { getAllTodayMeals } from "../../service/LiveSearchService";
 import AuthContext from "../../context/AuthContext";
+import { getAllTodayMeals } from "../../service/LiveSearchService";
+import DashboardMealHeader from "./components/DashboardMealHeader";
+import DashboardMealAllergens from "./components/DashboardMealAllergens";
 
 export default function DashboardList({ navigation }) {
-  const {userData, token} = useContext(AuthContext);
-  const userId = userData.sub;
+    const { userData, token } = useContext(AuthContext);
+    const userId = userData.sub;
 
-  const listItemsToMap = [
-    {
-      id: 1,
-      title: "Frühstück Hinzufügen",
-      emojiName: "coffee",
-      kindOfMeal: "breakfast",
-    }, {
-      id: 2,
-      title: "Mittagessen Hinzufügen",
-      emojiName: "pizza",
-      kindOfMeal: "meal",
-    }, {
-      id: 3,
-      title: "Abendessen Hinzufügen",
-      emojiName: "wine_glass",
-      kindOfMeal: "dinner",
-    }, {
-      id: 4,
-      title: "Snack Hinzufügen",
-      emojiName: "apple",
-      kindOfMeal: "snacks",
-    }];
+    const [todaysBreakfast, setTodaysBreakfast] = useState([]);
+    const [todaysMeal, setTodaysMeal] = useState([]);
+    const [todaysDinner, setTodaysDinner] = useState([]);
+    const [todaysSnack, setTodaysSnack] = useState([]);
 
-  const [todaysMeals, setTodayMeals] = useState({})
-  const [breakfast] = useState();
+    useEffect(() => {
+        console.log(token);
+        console.log(userId);
+        getAllTodayMeals(userId, token).then((meals) => {
+            setTodaysBreakfast(meals.filter(meal => meal.mealDaytime === "breakfast"));
+            setTodaysMeal(meals.filter(meal => meal.mealDaytime === "meal"));
+            setTodaysDinner(meals.filter(meal => meal.mealDaytime === "dinner"));
+            setTodaysSnack(meals.filter(meal => meal.mealDaytime === "snack"));
+        }).catch(console.log);
+    }, []);
 
-  const [ meal, dinner, snack] = useState();
-  useEffect(()=>{
-    setTodayMeals(getAllTodayMeals(userId, token));
+    useEffect(() => {
+        console.log(todaysBreakfast);
+    }, [todaysBreakfast]);
+
+    function findAllergens(id) {
+        if (id === 1) {
+            return todaysBreakfast.allergens?.toString().replace(",", ", ");
+        }
+        if (id === 2) {
+            return todaysMeal.allergens?.toString().replace(",", ", ");
+        }
+        if (id === 3) {
+            return todaysDinner.allergens?.toString().replace(",", ", ");
+        }
+        if (id === 4) {
+            return todaysSnack.allergens?.toString().replace(",", ", ");
+        }
     }
-  )
 
-  const [currentBreakfast, setCurrentBreakfast] = useState({
-    name: "Omelet",
-    ingredients: ["Egg", "Milk", "Cheddar Cheese"],
-    allergens: ["Eggs", "Lactose"],
-    sideEffects: {
-      hasSideEffect: true,
-      whichSideEffect: { feelingState: 3, headache: 2, stomach: 3 },
-      sideEffectsNotes: "Ich habe mich unwohl gefühlt und dazu Kopfschmerzen bekommen. Auch mein Margen spielte verrückt.",
-    },
-  });
+    const listItemsToMap = [
+        {
+            id: 1,
+            title: "Frühstück",
+            emojiName: "coffee",
+            kindOfMeal: "breakfast",
+            mapObject: todaysBreakfast,
+        }, {
+            id: 2,
+            title: "Mittagessen",
+            emojiName: "pizza",
+            kindOfMeal: "meal",
+            mapObject: todaysMeal,
+        }, {
+            id: 3,
+            title: "Abendessen",
+            emojiName: "wine_glass",
+            kindOfMeal: "dinner",
+            mapObject: todaysDinner,
+        }, {
+            id: 4,
+            title: "Snack",
+            emojiName: "apple",
+            kindOfMeal: "snacks",
+            mapObject: todaysSnack,
+        }];
 
-
-  const [currentMeal, setCurrentMeal] = useState({
-      name: "Pizza Salami",
-      ingredients: ["Egg", "Milk", "Cheddar Cheese"],
-      allergens: ["Gluten", "Lactose", "Histamin"],
-      sideEffects: {
-        hasSideEffect: true,
-        whichSideEffect: { feelingState: 3, headache: 2, stomach: 3 },
-        sideEffectsNotes: "Ich habe mich unwohl gefühlt und dazu Kopfschmerzen bekommen. Auch mein Margen spielte verrückt.",
-      },
-    },
-  );
-
-
-  const [currentDinner, setCurrentDinner] = useState({
-      name: "Spinat mit Fischstäbchen",
-      ingredients: ["Seelachsfilet", "Panade", "Spinat", "Milch"],
-      allergens: ["Gluten", "Lactose"],
-      sideEffects: {
-        hasSideEffect: true,
-        whichSideEffect: { feelingState: 3, headache: 2, stomach: 3 },
-        sideEffectsNotes: "Ich habe mich unwohl gefühlt und dazu Kopfschmerzen bekommen. Auch mein Margen spielte verrückt.",
-      },
-    },
-  );
-
-
-  const [currentSnack, setCurrentSnack] = useState({
-      name: "Apfel",
-      ingredients: ["Apfel"],
-      allergens: ["Fructose"],
-      sideEffects: {
-        hasSideEffect: true,
-        whichSideEffect: { feelingState: 3, headache: 2, stomach: 3 },
-        sideEffectsNotes: "Ich habe mich unwohl gefühlt und dazu Kopfschmerzen bekommen. Auch mein Margen spielte verrückt.",
-      },
-    },
-  );
-
-  function findAllergens(id) {
-    if (id === 1) {
-      return currentBreakfast.allergens?.toString().replace(",", ", ");
-    }
-    if (id === 2) {
-      return currentMeal.allergens?.toString().replace(",", ", ");
-    }
-    if (id === 3) {
-      return currentDinner.allergens?.toString().replace(",", ", ");
-    }
-    if (id === 4) {
-      return currentSnack.allergens?.toString().replace(",", ", ");
-    }
-  }
-
-  return (
-    <Row size={2}>
-      <ScrollView>
-        <Grid style={GridListStyled.container}>
-          {listItemsToMap.map(item => {
-            return (
-              <Row key={item.id}>
-                <MealBoxStyled>
-                  <Grid>
-                    <Row>
-                      <Col size={1}><Text><Emoji name={item.emojiName} style={{ fontSize: 45 }} /></Text></Col>
-                      <Col size={4}><Text
-                        style={{ fontWeight: "bold", fontSize: moderateScale(14, 0.3) }}>{item.title}</Text></Col>
-                      <Col size={1}>
-                        <Button title={"+"} onPress={() =>
-                          navigation.navigate("AddMeal", { mealParam: item.kindOfMeal })} />
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col><Text
-                        style={{ fontWeight: "bold", fontSize: moderateScale(12, 0.3) }}>Allergene:</Text></Col>
-                      <Col><Text
-                        style={{ fontWeight: "bold", fontSize: moderateScale(12, 0.3) }}>Nebenwirkung:</Text></Col>
-                    </Row>
-                    <Row>
-                      <Col>
-                        <Text>
-                          {findAllergens(item.id)}
-                        </Text>
-                      </Col>
-                      <Col>
-                        <Text>
-                          Scale
-                        </Text>
-                      </Col>
-                    </Row>
-                  </Grid>
-                </MealBoxStyled>
-              </Row>
-            );
-          })}
-        </Grid>
-      </ScrollView>
-    </Row>
-  );
+    return (
+      <Row size={2}>
+          <ScrollView>
+              <Grid style={GridListStyled.container}>
+                  {listItemsToMap.map(item => {
+                      const products = item.mapObject?.map(meal => meal.products?.map(product => product.product_name)).flat();
+                      const allergens = item.mapObject?.map(meal => meal.allergens?.map(allergen => allergen.names)).flat();
+                      return (
+                        <Row key={item.id}>
+                            <MealBoxStyled>
+                                <Grid>
+                                    <Row size={2}>
+                                        <DashboardMealHeader
+                                          item={item}
+                                          navigation={navigation}
+                                          products={products}
+                                          allergens={allergens}
+                                        />
+                                    </Row>
+                                    <Row size={1}>
+                                        <DashboardMealAllergens allergens={allergens} />
+                                    </Row>
+                                </Grid>
+                            </MealBoxStyled>
+                        </Row>
+                      );
+                  })}
+              </Grid>
+          </ScrollView>
+      </Row>
+    );
 }
 
 
 const GridListStyled = StyleSheet.create({
-  container: {
-    flexDirection: "column",
-    backgroundColor: "#8a92a35c",
-  },
+    container: {
+        display: "flex",
+        flexDirection: "column",
+        backgroundColor: "#8a92a35c",
+        justifyContent: "space-between",
+        marginLeft: moderateScale(5, 0.2),
+        marginRight: moderateScale(5, 0.2),
+        paddingTop: moderateScale(1, 0.2),
+        paddingBottom: moderateScale(7, 0.2),
+    },
 });
 
 
 const MealBoxStyled = styled.View`
+  display: flex;
   width: 100%;
-  min-height: ${moderateScale(125, 0.3)};
-  backgroundColor: white;
-
-  marginLeft: ${moderateScale(5, 0.2)};
-  margin-right: ${moderateScale(5, 0.2)};
-  paddingLeft: ${moderateScale(7, 0.2)};
-  paddingRight: ${moderateScale(7, 0.2)};
-  padding-top: ${moderateScale(7, 0.2)};
-  padding-bottom: ${moderateScale(7, 0.2)};
-
+  min-height: ${moderateScale(180, 0.3)};
+  background-color: white;
   border-color: #a5a5a5;
-  borderWidth: 1px;
+  justify-content: stretch;
+  border-width: 1px;
 `;
-
 

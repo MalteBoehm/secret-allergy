@@ -1,67 +1,82 @@
-import React from 'react';
-import { StyleSheet, Text } from 'react-native'
+import React from "react";
+import { StyleSheet } from "react-native";
+import { Text } from "react-native-elements";
 import { Col, Row } from "react-native-easy-grid";
-import {moderateScale} from "../../styles/globalstyles";
+import { moderateScale } from "../../styles/globalstyles";
+import { LinearGradient } from "expo-linear-gradient";
 
-export default function DashboardHeader(){
+export default function DashboardHeader() {
 
-    return(
+    return (
+      <Row size={1} style={DashboardStyle.container}>
+          <LinearGradient
+            style={DashboardStyle.container}
+            colors={["rgb(0,121,91)", "transparent"]}>
 
-            <Row size={1} style={DashboardStyle.container}>
-                <Row>
-                    <Text style={{color:'white'}}>
-                    Dashboard
-                </Text>
-                </Row>
+              <Row size={0.4}>
+                  <Text h1 style={{
+                      textAlign: "center",
+                      justifyContent: "center",
+                      color: "white",
+                      paddingTop: moderateScale(18, 0.5),
+                  }}>
+                      Secret Allergy
+                  </Text>
+              </Row>
 
-                <Row  size={1} style={DashboardStyle.rowWithCols}>
-                    <Col size={1} style={DashboardStyle.cols}>
-                            <Text style={DashboardStyle.textStyle}>
-                                Col1
-                            </Text>
-                    </Col>
-                    <Col size={1} style={DashboardStyle.cols}>
-                            <Text style={DashboardStyle.textStyle}>
-                                Col2
-                            </Text>
-                    </Col>
-                    <Col size={1}  style={DashboardStyle.cols}>
-                            <Text style={DashboardStyle.textStyle}>
-                                Col3
-                            </Text>
-                    </Col>
-                </Row>
-            </Row>
-
-    )
+              <Row size={0.6} style={DashboardStyle.rowWithCols}>
+                  <Col size={1} style={DashboardStyle.cols}>
+                      <Text style={DashboardStyle.textStyle}>
+                          4 Mahlzeiten
+                      </Text>
+                  </Col>
+                  <Col size={1} style={DashboardStyle.cols}>
+                      <Text style={DashboardStyle.textStyle}>
+                          18 Allergene
+                      </Text>
+                  </Col>
+                  <Col size={1} style={DashboardStyle.cols}>
+                      <Text style={DashboardStyle.textStyle}>
+                          0 Nebenwirkungen
+                      </Text>
+                  </Col>
+              </Row>
+          </LinearGradient>
+      </Row>
+    );
 }
 
 
 const DashboardStyle = StyleSheet.create({
-        container: {
-            display: 'flex',
-            flexDirection: 'column',
-            backgroundColor: '#2179ff',
-            alignItems: 'center',
+      container: {
+          display: "flex",
+          flexDirection: "column",
+          backgroundColor: "#2bbf9c",
+          alignItems: "center",
+          justifyContent: "center",
+          height: "100%",
+          width: "100%",
 
-        },
-        rowWithCols:{
-            width: '100%',
-            flexDirection: 'row',
+      },
+      rowWithCols: {
+          width: "100%",
+          flexDirection: "row",
+          borderBottomColor: "#383938",
+          borderBottomWidth: 1,
 
-        },
-        cols: {
-            backgroundColor: '#5073a7',
-            justifyContent:'center',
-            textAlign: 'center'
-        },
+      },
+      cols: {
 
-    textStyle:{
-        fontSize: moderateScale(16,0.4),
-        color:'#ffffff',
-        alignContent: 'center',
-        textAlign: 'center'
-    }
-    }
-)
+          justifyContent: "center",
+          textAlign: "center",
+      },
+
+      textStyle: {
+          fontSize: moderateScale(12, 0.4),
+          color: "#ffffff",
+          alignContent: "center",
+          textAlign: "center",
+      },
+  },
+);
 
