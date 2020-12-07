@@ -16,7 +16,6 @@ export default function DashboardContextProvider({ children }) {
 
     useEffect(() => {
         getAllTodayMeals(userId, token).then((meals) => {
-            console.log(token);
             setTodaysBreakfast(meals.filter(meal => meal.mealDaytime === "breakfast"));
             setTodaysMeal(meals.filter(meal => meal.mealDaytime === "meal"));
             setTodaysDinner(meals.filter(meal => meal.mealDaytime === "dinner"));
