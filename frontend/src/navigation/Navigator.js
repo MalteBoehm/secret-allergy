@@ -1,18 +1,21 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, { useContext } from "react";
 import DashboardScreen from '../screens/DashboardScreen';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import StackNavigator from "./StackNavigator";
+import DashboardContextProvider from "../context/DashboardContextProvider";
+import AuthContext from "../context/AuthContext";
 
 
 const Tab = createMaterialBottomTabNavigator();
 
 
 export default function Navigator() {
-
+    const {token, userData} = useContext(AuthContext);
 
     return (
+      <DashboardContextProvider token={token} userData={userData}>
                 <Tab.Navigator  activeColor='#f0edf6'
                                 inactiveColor='#0e4253'
                                 barStyle={{ backgroundColor: '#2a7694'}}>
@@ -41,5 +44,6 @@ export default function Navigator() {
                         ),
                     }}/>
                 </Tab.Navigator>
+          </DashboardContextProvider>
     );
 }
