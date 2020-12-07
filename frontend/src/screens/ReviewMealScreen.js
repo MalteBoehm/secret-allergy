@@ -3,6 +3,7 @@ import { Grid, Row } from "react-native-easy-grid";
 import { StyleSheet } from "react-native";
 import { moderateScale } from "../styles/globalstyles";
 import ReviewMealScreenHeader from "./ReviewMealScreen/ReviewMealScreenHeader";
+import ReviewMealScreenModal from "./ReviewMealScreen/ReviewMealScreenModal";
 
 
 export default function ReviewMealScreen({ navigation, route }) {
@@ -13,6 +14,7 @@ export default function ReviewMealScreen({ navigation, route }) {
               <ReviewMealScreenHeader navigation={navigation} currentMeal={currentMeal} allergens={allergens} />
           </Row>
           <Row size={3}>
+              <ReviewMealScreenModal/>
           </Row>
       </Grid>
     );
