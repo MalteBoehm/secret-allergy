@@ -63,7 +63,6 @@ export default function DashboardList({ navigation }) {
                                           item={item}
                                           navigation={navigation}
                                           products={products}
-                                          allergens={allergens}
                                         />
                                     </Row>
                                     <Row size={1} style={GridListStyled.component}>
@@ -74,6 +73,8 @@ export default function DashboardList({ navigation }) {
                                         <DashboardMealSideEffects hasSideEffects={hasSideEffects}
                                                                   checkSideEffects={checkSideEffectsArray}
                                                                   navigation={navigation}
+                                                                  products={products}
+                                                                  allergens={allergens}
                                                                   item={item}
 
                                         />
