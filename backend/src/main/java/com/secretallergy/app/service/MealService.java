@@ -17,11 +17,10 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -62,7 +61,9 @@ public class MealService {
                         .date(date.format(currentDate))
                         .mealDaytime(addMealDto.getMealParam())
                         .products(addMealDto.getAddMealListOfProducts())
-                        .allergens(addAllergens(addMealDto))
+                        .allergens(addAllergens(addMealDto).stream()
+                                .distinct()
+                                .collect(Collectors.toList()))
                         .hasSideEffect(false)
                         .sideEffects(emptyListOfSideEffects)
                         .ratingOfSideEffects(0)
@@ -82,20 +83,27 @@ public class MealService {
 
         addMealDto.getAddMealListOfProducts().forEach(product -> {
             for (int i = 0; i < product.getIngredients_text_de().size(); i++) {
-
-
                 List<String> ingredientsOfProduct = filterIngredients(List.of(product.getIngredients_text_de().get(i)));
+                System.out.println(ingredientsOfProduct + "");
                 for (String searchWord : ingredientsOfProduct) {
-                    allergens.addAll(allergenMongo.findAllergensByNames(searchWord));
+                    Optional<List<Allergen>> searchAllergensInDb = Optional.of(allergenMongo.findAllergensByNamesMatchesRegex(searchWord));
+
+                    for (int ia = 0; ia < searchAllergensInDb.get().size(); ia++) {
+                        if (searchAllergensInDb.get().get(ia).getNames().get(0).equals("")) {
+                            return;
+                        } else {
+                            System.out.println(allergens.add(searchAllergensInDb.get().get(ia)));
+                        }
+                    }
+                    ;
                 }
             }
         });
-        return allergens;
+        return allergens.stream().distinct().collect(Collectors.toList());
     }
 
 
     private List<String> filterIngredients(List<String> ingredientsOfProduct) {
-        List<String> listOfFilteredIngredients = new ArrayList<>();
         ArrayList<String> filterWords = new ArrayList<>(List.of(
                 "Teig",
                 "Konservierungsstoff",
@@ -127,17 +135,29 @@ public class MealService {
                 ")",
                 "(",
                 "%",
-                "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "Wasser", "Gesamtfettgehalt", "davon", "und","aufgeschlossenes"));
+                "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "Wasser", "Gesamtfettgehalt", "davon", "und", "aufgeschlossenes", "     ","Säuerungsmittel"));
 
+        List<String> checkForDuplicatesList = new ArrayList<>();
         for (String ingredient : ingredientsOfProduct) {
-            System.out.println(ingredientsOfProduct +"");
+            String cleanedIngredient = ingredient.replaceAll("^[\s]w*|(\s{2,})w*|$([\s])w*","");
             for (String filterWord : filterWords) {
-                if (!ingredient.strip().equalsIgnoreCase(filterWord)) {
-                    listOfFilteredIngredients.add(ingredient);
+                if (!cleanedIngredient.equalsIgnoreCase(filterWord)) {
+                    if (cleanedIngredient.length() > 3) {
+                        if (!checkForDuplicatesList.contains(cleanedIngredient)) {
+                            checkForDuplicatesList.add(cleanedIngredient);
+                        }
+                    }
                 }
             }
         }
-        return listOfFilteredIngredients.stream().distinct().collect(Collectors.toList());
+        List<String> uniqueList = new ArrayList<>(checkForDuplicatesList);
+        List<String> cleanList = new ArrayList<>();
+        for (String item : uniqueList) {
+            if (!item.isEmpty()) {
+                cleanList.add(item);
+            }
+        }
+        return cleanList;
     }
 }
 

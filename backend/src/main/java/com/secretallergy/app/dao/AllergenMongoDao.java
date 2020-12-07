@@ -8,6 +8,10 @@ import java.util.List;
 
 public interface AllergenMongoDao extends PagingAndSortingRepository<Allergen, String> {
 
-   @Query("{ 'names' : { $regex : ?0 , $options : 'i' }}")
-   List<Allergen> findAllergenByName(String regex);
+   /*@Query("{ 'names' : { $regex : ?0 , $options : 'i,m' }, $and:[ { 'laktose': { $gt: ?1 } }, { 'gluten': { $gt: ?2 } ,{ 'histamin': { $gt: ?3 } } ] }")*/
+   /*List<Allergen> findAllergenByName(String regex, int laktose, int gluten, int histamin);*/
+
+   List<Allergen> findAllergensByNamesAndLaktoseIsGreaterThanOrGlutenIsGreaterThanOrHistaminGreaterThan(String name, int histamine,int gluten,int lactose);
+
+   List<Allergen> findAllergensByNamesMatchesRegex(String name);
 }
