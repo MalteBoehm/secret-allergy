@@ -25,7 +25,10 @@ export default function ReviewMealScreenHeader({ currentMeal, allergens }) {
     return (
       <Grid>
           <Row size={1} style={ReviewMealScreenHeaderStyled.headerWithButton}>
-              <Button title={"Beschwerden Hinzufügen"} onPress={() => alert("1")} />
+              <View style={ReviewMealScreenHeaderStyled.createSideEffectButton}>
+                  <Button title={"Beschwerden Hinzufügen"} onPress={() => alert("1")}  />
+              </View>
+
           </Row>
           <Row style={ReviewMealScreenHeaderStyled.titleContainer}>
               <Text style={ReviewMealScreenHeaderStyled.title}>
@@ -88,6 +91,9 @@ export default function ReviewMealScreenHeader({ currentMeal, allergens }) {
 const ReviewMealScreenHeaderStyled = StyleSheet.create({
     container: {
         width: "100%"
+    },
+    createSideEffectButton: {
+        justifyContent: "center",
     },
     titleContainer: {
         marginTop: 10
