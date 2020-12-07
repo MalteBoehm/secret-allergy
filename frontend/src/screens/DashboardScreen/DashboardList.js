@@ -7,45 +7,12 @@ import AuthContext from "../../context/AuthContext";
 import { getAllTodayMeals } from "../../service/LiveSearchService";
 import DashboardMealHeader from "./components/DashboardMealHeader";
 import DashboardMealAllergens from "./components/DashboardMealAllergens";
+import DashboardMealSideEffects from "./components/DashboardMealSideEffects";
+import DashboardContext from "../../context/DashboardContext";
 
 export default function DashboardList({ navigation }) {
-    const { userData, token } = useContext(AuthContext);
-    const userId = userData.sub;
+    const { todaysBreakfast, todaysMeal, todaysDinner, todaysSnack } = useContext(DashboardContext);
 
-    const [todaysBreakfast, setTodaysBreakfast] = useState([]);
-    const [todaysMeal, setTodaysMeal] = useState([]);
-    const [todaysDinner, setTodaysDinner] = useState([]);
-    const [todaysSnack, setTodaysSnack] = useState([]);
-
-    useEffect(() => {
-        console.log(token);
-        console.log(userId);
-        getAllTodayMeals(userId, token).then((meals) => {
-            setTodaysBreakfast(meals.filter(meal => meal.mealDaytime === "breakfast"));
-            setTodaysMeal(meals.filter(meal => meal.mealDaytime === "meal"));
-            setTodaysDinner(meals.filter(meal => meal.mealDaytime === "dinner"));
-            setTodaysSnack(meals.filter(meal => meal.mealDaytime === "snack"));
-        }).catch(console.log);
-    }, []);
-
-    useEffect(() => {
-        console.log(todaysBreakfast);
-    }, [todaysBreakfast]);
-
-    function findAllergens(id) {
-        if (id === 1) {
-            return todaysBreakfast.allergens?.toString().replace(",", ", ");
-        }
-        if (id === 2) {
-            return todaysMeal.allergens?.toString().replace(",", ", ");
-        }
-        if (id === 3) {
-            return todaysDinner.allergens?.toString().replace(",", ", ");
-        }
-        if (id === 4) {
-            return todaysSnack.allergens?.toString().replace(",", ", ");
-        }
-    }
 
     const listItemsToMap = [
         {
@@ -74,18 +41,24 @@ export default function DashboardList({ navigation }) {
             mapObject: todaysSnack,
         }];
 
+
     return (
       <Row size={2}>
           <ScrollView>
               <Grid style={GridListStyled.container}>
                   {listItemsToMap.map(item => {
-                      const products = item.mapObject?.map(meal => meal.products?.map(product => product.product_name)).flat();
-                      const allergens = item.mapObject?.map(meal => meal.allergens?.map(allergen => allergen.names)).flat();
+
+                      const products = item.mapObject.map(meal => meal.products?.map(product => product.product_name)).flat();
+                      const allergens = item.mapObject.map(meal => meal.allergens?.map(allergen => allergen.names)).flat();
+                      const hasSideEffects = item.mapObject.hasSideEffect;
+                      const hasAllergens = item.mapObject.allergens;
+                      const checkSideEffectsArray = item.mapObject.sideEffects;
+
                       return (
-                        <Row key={item.id}>
+                        <Row key={item.id} style={MealStyled.card}>
                             <MealBoxStyled>
                                 <Grid>
-                                    <Row size={2}>
+                                    <Row size={1}>
                                         <DashboardMealHeader
                                           item={item}
                                           navigation={navigation}
@@ -93,8 +66,17 @@ export default function DashboardList({ navigation }) {
                                           allergens={allergens}
                                         />
                                     </Row>
-                                    <Row size={1}>
-                                        <DashboardMealAllergens allergens={allergens} />
+                                    <Row size={1} style={GridListStyled.component}>
+                                        <DashboardMealAllergens allergens={allergens} hasAllergens={hasAllergens}
+                                        />
+                                    </Row>
+                                    <Row size={1} style={GridListStyled.lastComponent}>
+                                        <DashboardMealSideEffects hasSideEffects={hasSideEffects}
+                                                                  checkSideEffects={checkSideEffectsArray}
+                                                                  navigation={navigation}
+                                                                  item={item}
+
+                                        />
                                     </Row>
                                 </Grid>
                             </MealBoxStyled>
@@ -106,18 +88,31 @@ export default function DashboardList({ navigation }) {
       </Row>
     );
 }
+const MealStyled = StyleSheet.create({
+    card: {
 
+        marginVertical: moderateScale(4),
+        marginBottom: moderateScale(4),
+        marginHorizontal: moderateScale(5),
+        backgroundColor: "#ffffff",
+        borderStyle: "solid",
+        borderColor: "#d0d0d0",
+        shadowRadius: 2,
+    },
+});
 
 const GridListStyled = StyleSheet.create({
     container: {
         display: "flex",
-        flexDirection: "column",
-        backgroundColor: "#8a92a35c",
+        backgroundColor: "rgb(255,255,255)",
         justifyContent: "space-between",
-        marginLeft: moderateScale(5, 0.2),
-        marginRight: moderateScale(5, 0.2),
         paddingTop: moderateScale(1, 0.2),
         paddingBottom: moderateScale(7, 0.2),
+    }, component: {
+        paddingTop: moderateScale(10),
+    }, lastComponent: {
+        paddingTop: moderateScale(15),
+        marginBottom: moderateScale(10),
     },
 });
 
@@ -126,9 +121,7 @@ const MealBoxStyled = styled.View`
   display: flex;
   width: 100%;
   min-height: ${moderateScale(180, 0.3)};
-  background-color: white;
-  border-color: #a5a5a5;
   justify-content: stretch;
-  border-width: 1px;
+
 `;
 

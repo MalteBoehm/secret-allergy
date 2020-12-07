@@ -1,39 +1,55 @@
-import React from "react";
-import { Row, Col } from "react-native-easy-grid";
-import { FlatList, Text } from "react-native";
+import React, { useContext } from "react";
+import { Row, Col, Grid } from "react-native-easy-grid";
+import { FlatList, StyleSheet, Text, View } from "react-native";
 import { moderateScale } from "../../../styles/globalstyles";
 import styled from "styled-components/native";
+import { ListItem } from "react-native-elements";
 
-export default function DashboardMealAllergens({ allergens }) {
+export default function DashboardMealAllergens({ hasAllergens, allergens }) {
+    const Separator = () => <View style={AllergensStyled.separator} />;
 
     return (
-      <Row style={{ paddingTop: 15 }}>
-          <Col>
-              <Row style={{ justifyContent: "center" }}>
-                  <Text
-                    style={{
-                        fontWeight: "bold",
-                        fontSize: moderateScale(12, 0.3),
-                    }}>Allergene:
-                  </Text>
-              </Row>
-              <Row>
-                  <FlatList
-                    data={allergens}
-                    keyExtractor={item => item}
-                    horizontal={true}
-                    renderItem={({ item }) => <Text>{item}</Text>}
-                  />
-              </Row>
-          </Col>
-      </Row>
+      <Grid style={{ justifyContent: "center" }}>
+          <Row>
+              <Col>
+                  <Row style={{ justifyContent: "center" }}>
+                      <Text
+                        style={{
+                            fontWeight: "bold",
+                            fontSize: moderateScale(12, 0.3),
+                        }}>Allergene:
+                      </Text>
+                  </Row>
+                  <Row style={{ alignSelf: "center" }}>
+
+                      <FlatList contentContainerStyle={{ justifyContent: "spaceAround" }}
+                                data={allergens}
+
+                                keyExtractor={item => item.toString()}
+                                renderItem={({ item }) =>
+                                  <ListItem  containerStyle={{ padding: 5 }}>
+                                      <ListItem.Content>
+                                          <Text>{`\u2022`} {item}</Text>
+                                      </ListItem.Content>
+                                  </ListItem>}
+                                horizontal={true}
+                      />
+
+                  </Row>
+              </Col>
+          </Row>
+          <Separator/>
+      </Grid>
     );
 
 
 }
 
-const ImageStyled = styled.Image`
-  width: ${moderateScale(45, 0.2)};
-  height: ${moderateScale(45, 0.2)};
-  align-self: flex-end;
-`;
+const AllergensStyled = StyleSheet.create({
+    separator: {
+        marginVertical: 8,
+        borderBottomColor: "#e3e3e3",
+        borderBottomWidth: StyleSheet.hairlineWidth,
+    },
+})
+

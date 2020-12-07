@@ -44,6 +44,7 @@ export default function AddMealList() {
           uncheckedIcon="square-o"
           checked={true}
           onPress={handleChecked}
+
         />
       </ListItem>
     );

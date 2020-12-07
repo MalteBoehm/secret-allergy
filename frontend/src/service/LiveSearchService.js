@@ -23,11 +23,10 @@ export const createMeal = (userId, mealParam, addMealListOfProducts, token) => {
 };
 
 
-
-export const getAllTodayMeals = (userId, token) => {
-  const getAllMealsUrl = "http://localhost:8080/api/meal/getall?user=";
+const getAllMealsUrl = "http://localhost:8080/api/meal/getall?user=";
+export const getAllTodayMeals = (userId, token) =>
   axios
     .get(getAllMealsUrl + userId , header(token))
     .then((response) => response.data)
     .catch((error) => console.log(error));
-};
+
