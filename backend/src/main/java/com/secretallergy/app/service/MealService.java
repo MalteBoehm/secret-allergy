@@ -150,13 +150,6 @@ public class MealService {
                 }
             }
         }
-        List<String> uniqueList = new ArrayList<>(checkForDuplicatesList);
-        List<String> cleanList = new ArrayList<>();
-        for (String item : uniqueList) {
-            if (!item.isEmpty()) {
-                cleanList.add(item);
-            }
-        }
-        return cleanList;
+        return checkForDuplicatesList.stream().filter(item -> !item.isEmpty())
     }
 }
