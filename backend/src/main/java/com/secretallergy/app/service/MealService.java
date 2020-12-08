@@ -73,7 +73,7 @@ public class MealService {
     public List<Meal> getTodaysMealsOfUser(String userId) {
         LocalDate date = LocalDate.now();
         DateTimeFormatter currentDate = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        return mealMongo.findMealByDateIsAndMealOfUserId(date.format(currentDate), user);
+        return mealMongo.findMealByDateIsAndMealOfUserId(date.format(currentDate), userId);
     }
 
 
@@ -150,6 +150,13 @@ public class MealService {
                 }
             }
         }
-        return checkForDuplicatesList.stream().filter(item -> !item.isEmpty())
+        List<String> uniqueList = new ArrayList<>(checkForDuplicatesList);
+        List<String> cleanList = new ArrayList<>();
+        for (String item : uniqueList) {
+            if (!item.isEmpty()) {
+                cleanList.add(item);
+            }
+        }
+        return cleanList;
     }
 }

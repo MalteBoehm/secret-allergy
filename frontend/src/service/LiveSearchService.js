@@ -34,6 +34,6 @@ export const getAllTodayMeals = (userId, token) =>
 const updateSideEffectsInMealUrl = "http://192.168.178.41:8080/api/meal/sideeffectupdate";
 export const updateSideEffectsInMeal = (userId, createdSideEffectDto, token) => {
     axios
-      .put(createSideEffectsToMealUrl, { userId, createdSideEffectDto }, header(token))
+      .put(updateSideEffectsInMealUrl, { userId, createdSideEffectDto }, header(token))
       .then((response) => response.data);
 };

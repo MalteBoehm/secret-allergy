@@ -36,7 +36,7 @@ public class MealController {
     @CrossOrigin
     @GetMapping("/livesearch")
     public List<Product> getProductsByName(@RequestParam String products) throws UnirestException {
-            return mealService.searchProductsByNameService(products);
+        return mealService.searchProductsByNameService(products);
     }
 
 
@@ -53,7 +53,6 @@ public class MealController {
         if(user.isEmpty()){
             return List.of();
         }
-        return mealService.getTodayMealsOfUser(user.get());
+        return mealService.getTodaysMealsOfUser(user.get());
     }
 }
-
