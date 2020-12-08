@@ -86,7 +86,7 @@ public class MealService {
                 List<String> ingredientsOfProduct = filterIngredients(List.of(product.getIngredients_text_de().get(i)));
                 System.out.println(ingredientsOfProduct + "");
                 for (String searchWord : ingredientsOfProduct) {
-                    Optional<List<Allergen>> searchAllergensInDb = Optional.of(allergenMongo.findAllergensByNamesMatchesRegex(searchWord));
+                    Optional<List<Allergen>> searchAllergensInDb = Optional.of(allergenMongo.findAllergensByNamesMatchesRegex(searchWord.trim()));
 
                     for (int ia = 0; ia < searchAllergensInDb.get().size(); ia++) {
                         if (searchAllergensInDb.get().get(ia).getNames().get(0).equals("")) {
