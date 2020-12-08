@@ -24,6 +24,5 @@ public class Meal {
     List<Product> products;
     List<Allergen> allergens;
     Boolean hasSideEffect;
-    List<SideEffect> sideEffects;
-    double ratingOfSideEffects;
+    List<SideEffects> sideEffects;
 }
