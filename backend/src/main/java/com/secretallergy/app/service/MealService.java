@@ -6,14 +6,14 @@ import com.secretallergy.app.dao.AllergenMongoDao;
 import com.secretallergy.app.dao.MealMongoDao;
 import com.secretallergy.app.dao.ProductMongoDao;
 import com.secretallergy.app.dto.AddMealDto;
-import com.secretallergy.app.model.Allergen;
-import com.secretallergy.app.model.Meal;
-import com.secretallergy.app.model.Product;
-
-import com.secretallergy.app.model.SideEffect;
+import com.secretallergy.app.dto.AddSideEffectsDto;
+import com.secretallergy.app.model.*;
+import org.springframework.data.mongodb.core.MongoOperations;
 import com.secretallergy.app.utils.IdUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 
@@ -52,7 +52,7 @@ public class MealService {
         LocalDate date = LocalDate.now();
         DateTimeFormatter currentDate = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
-        List<SideEffect> emptyListOfSideEffects = new ArrayList<>();
+        List<SideEffects> emptyListOfSideEffects = new ArrayList<>();
 
         return mealMongo.save(
                 Meal.builder()
@@ -66,7 +66,6 @@ public class MealService {
                                 .collect(Collectors.toList()))
                         .hasSideEffect(false)
                         .sideEffects(emptyListOfSideEffects)
-                        .ratingOfSideEffects(0)
                         .build());
     }
 
