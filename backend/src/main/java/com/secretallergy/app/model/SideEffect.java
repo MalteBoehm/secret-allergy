@@ -17,9 +17,11 @@ public class SideEffect {
 
     @Id
     String sideEffectOfUserID;
-    String mealId;
+    String sideEffectWithMealId;
+    private String mealDaytime;
     String daytime;
-    List<Product>  listOfProductsThatWereConsumed;
-    List<Allergen>listOfAllCombinedAllergens;
-    Map<String, String> sideEffectByIcdAndStrength;
+    private String date;
+    private List<Product> listOfProductsThatWereConsumed;
+    private List<Allergen> allergens;
+    Map<String, Integer> sideEffectByIcdAndStrength;
 }
