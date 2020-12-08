@@ -29,13 +29,16 @@ export default function DashboardContextProvider({ children }) {
 
     const getAllergensTotal = () => {
         let totalAllergies = 0;
-        todaysBreakfast.forEach(meal => totalAllergies += meal.allergens.length );
+        todaysBreakfast.forEach(meal => totalAllergies += meal.allergens.length);
         todaysMeal?.forEach(meal => totalAllergies += meal.allergens.length);
         todaysDinner?.forEach(meal => totalAllergies += meal.allergens.length);
         todaysSnack?.forEach(meal => totalAllergies += meal.allergens.length);
         return totalAllergies;
     };
 
+
+    const [sideEffectsList, setSideEffectsList] = useState([]);
+    const [hasSideEffectIsSelected, setHasSideEffectIsSelected] = useState(false);
 
     return (
       <DashboardContext.Provider
@@ -44,7 +47,10 @@ export default function DashboardContextProvider({ children }) {
             todaysMeal, setTodaysMeal,
             todaysDinner, setTodaysDinner,
             todaysSnack, setTodaysSnack,
+            sideEffectsList, setSideEffectsList,
+            hasSideEffectIsSelected, setHasSideEffectIsSelected,
             getMealsTotal, getAllergensTotal
+
         }}>
           {children}
       </DashboardContext.Provider>
