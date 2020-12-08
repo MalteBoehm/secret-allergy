@@ -1,11 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Grid, Row, Col } from "react-native-easy-grid";
 import { Button, FlatList, StyleSheet, Text, View } from "react-native";
 import { moderateScale } from "../../styles/globalstyles";
 import { ListItem } from "react-native-elements";
+import { updateSideEffectsInMeal } from "../../service/LiveSearchService";
+import AuthContext from "../../context/AuthContext";
+import DashboardContext from "../../context/DashboardContext";
 
+export default function ReviewMealScreenHeader({ currentMeal, allergens, meal }) {
+    const [_id] = meal;
+    const { userData } = useContext(AuthContext);
+    const userId = userData.sub;
 
-export default function ReviewMealScreenHeader({ currentMeal, allergens }) {
+    const { sideEffectsList } = useContext(DashboardContext);
+    const createdSideEffectDto = {
+        sideEffectOfUserId: userId,
+        date: _id.date,
+        sideEffectOfMealId: _id._id,
+        mealDaytime: _id.mealDaytime,
+        products: _id.products,
+        allergens: _id.allergens,
+        sideEffects: sideEffectsList
+    };
+
 
     const mealType = () => {
         if (currentMeal.filter(meal => meal.mealDaytime === "breakfast")) {
@@ -26,7 +43,10 @@ export default function ReviewMealScreenHeader({ currentMeal, allergens }) {
       <Grid>
           <Row size={1} style={ReviewMealScreenHeaderStyled.headerWithButton}>
               <View style={ReviewMealScreenHeaderStyled.createSideEffectButton}>
-                  <Button title={"Beschwerden Hinzufügen"} onPress={() => alert("1")}  />
+                  <Button title={"Beschwerden Hinzufügen"} onPress={() => {
+                      console.log({ createdSideEffectDto });
+                      updateSideEffectsInMeal(userId, createdSideEffectDto);
+                  }} />
               </View>
 
           </Row>
@@ -93,7 +113,7 @@ const ReviewMealScreenHeaderStyled = StyleSheet.create({
         width: "100%"
     },
     createSideEffectButton: {
-        justifyContent: "center",
+        justifyContent: "center"
     },
     titleContainer: {
         marginTop: 10
