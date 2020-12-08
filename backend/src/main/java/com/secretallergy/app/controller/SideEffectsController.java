@@ -25,11 +25,10 @@ public class SideEffectsController {
     }
 
 
-
     @CrossOrigin
     @PostMapping("/add")
-    public void addSideEffectsToDbAndUpdateMealInDb(@RequestBody AddSideEffectsDto addSideEffectsDto){
+    public void addSideEffectsToDbAndUpdateMealInDb(@RequestBody AddSideEffectsDto addSideEffectsDto) {
         sideEffectService.addSideEffectsToDb(addSideEffectsDto);
-       /* mealService.updateMealsWithSideEffects(addSideEffectsDto);*/
+        sideEffectService.updateMealsWithSideEffects(addSideEffectsDto);
     }
 }
