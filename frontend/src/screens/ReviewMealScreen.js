@@ -7,14 +7,15 @@ import ReviewMealScreenModal from "./ReviewMealScreen/ReviewMealScreenModal";
 
 
 export default function ReviewMealScreen({ navigation, route }) {
-    const { currentMeal, allergens } = route.params;
+    const { currentMeal, allergens, meal } = route.params;
     return (
       <Grid style={GridListStyled.container}>
           <Row size={2}>
-              <ReviewMealScreenHeader navigation={navigation} currentMeal={currentMeal} allergens={allergens} />
+              <ReviewMealScreenHeader navigation={navigation} currentMeal={currentMeal} allergens={allergens}
+                                      meal={meal} />
           </Row>
           <Row size={3}>
-              <ReviewMealScreenModal/>
+              <ReviewMealScreenModal currentMeal={currentMeal} allergens={allergens} />
           </Row>
       </Grid>
     );
