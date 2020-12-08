@@ -4,7 +4,7 @@ import { SearchBar } from "react-native-elements";
 import SearchInputContext from "../../context/SearchInputContext";
 
 
-export default function AddMealSuche() {
+export default function AddMealSearch() {
 
   const { searchInput, setSearchInput } = useContext(SearchInputContext);
 
@@ -33,4 +33,3 @@ export default function AddMealSuche() {
     </Row>
   );
 }
-
