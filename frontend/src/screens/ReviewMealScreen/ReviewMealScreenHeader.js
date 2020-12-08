@@ -12,15 +12,19 @@ export default function ReviewMealScreenHeader({ currentMeal, allergens, meal })
     const { userData } = useContext(AuthContext);
     const userId = userData.sub;
 
-    const { sideEffectsList } = useContext(DashboardContext);
-    const createdSideEffectDto = {
-        sideEffectOfUserId: userId,
-        date: _id.date,
-        sideEffectOfMealId: _id.mealId,
-        mealDaytime: _id.mealDaytime,
-        products: _id.products,
-        allergens: _id.allergens,
-        sideEffects: sideEffectsList
+    const { sideEffectsList, setSideEffectsList } = useContext(DashboardContext);
+
+    const handleCreateSideEffect = () => {
+        const sideEffectOfUserId = userId;
+        const mealDaytime = _id.mealDaytime;
+        const listOfProductsThatWereConsumed = _id.products;
+        const date = _id.date;
+        const sideEffectOfMealId = _id.mealId;
+        const allergensList = _id.allergens;
+        const sideEffectByIcdAndStrength = sideEffectsList;
+        console.log(sideEffectOfUserId, mealDaytime, listOfProductsThatWereConsumed, date, sideEffectOfMealId, allergensList, sideEffectByIcdAndStrength)
+        updateSideEffectsInMeal(sideEffectOfUserId, mealDaytime, listOfProductsThatWereConsumed, date, sideEffectOfMealId, allergensList, sideEffectByIcdAndStrength);
+        setSideEffectsList([]);
     };
 
 
@@ -43,10 +47,7 @@ export default function ReviewMealScreenHeader({ currentMeal, allergens, meal })
       <Grid>
           <Row size={1} style={ReviewMealScreenHeaderStyled.headerWithButton}>
               <View style={ReviewMealScreenHeaderStyled.createSideEffectButton}>
-                  <Button title={"Beschwerden Hinzufügen"} onPress={() => {
-                      console.log({ createdSideEffectDto });
-                      updateSideEffectsInMeal(userId, createdSideEffectDto);
-                  }} />
+                  <Button title={"Beschwerden Hinzufügen"} onPress={() => handleCreateSideEffect()} />
               </View>
 
           </Row>
