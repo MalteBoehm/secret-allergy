@@ -7,7 +7,6 @@ import DashboardMealHeader from "./components/DashboardMealHeader";
 import DashboardMealAllergens from "./components/DashboardMealAllergens";
 import DashboardMealSideEffects from "./components/DashboardMealSideEffects";
 import DashboardContext from "../../context/DashboardContext";
-import ReviewMealScreenModal from "../ReviewMealScreen/ReviewMealScreenModal";
 
 export default function DashboardList({ navigation }) {
     const { todaysBreakfast, todaysMeal, todaysDinner, todaysSnack } = useContext(DashboardContext);
@@ -51,8 +50,7 @@ export default function DashboardList({ navigation }) {
                       const allergens = item.mapObject.map(meal => meal.allergens?.map(allergen => allergen.names)).flat();
                       const hasSideEffects = item.mapObject.hasSideEffect;
                       const hasAllergens = item.mapObject.allergens;
-                      const checkSideEffectsArray = item.mapObject.sideEffects;
-
+                      const sideEffectsArray = item.mapObject.map(meal => meal.sideEffects?.map(sideEffect => sideEffect)).flat();
                       return (
                         <Row key={item.id} style={MealStyled.card}>
                             <MealBoxStyled>
@@ -70,7 +68,7 @@ export default function DashboardList({ navigation }) {
                                     </Row>
                                     <Row size={1} style={GridListStyled.lastComponent}>
                                         <DashboardMealSideEffects hasSideEffects={hasSideEffects}
-                                                                  checkSideEffects={checkSideEffectsArray}
+                                                                  sideEffectsArray={sideEffectsArray}
                                                                   navigation={navigation}
                                                                   products={products}
                                                                   allergens={allergens}

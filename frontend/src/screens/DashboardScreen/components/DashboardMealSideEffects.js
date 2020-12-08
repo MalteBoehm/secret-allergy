@@ -1,20 +1,19 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Row, Col, Grid } from "react-native-easy-grid";
-import { Text, StyleSheet, Button, View } from "react-native";
+import { Text, StyleSheet, View, FlatList } from "react-native";
 import { moderateScale } from "../../../styles/globalstyles";
 import AnimatedProgressWheel from "react-native-progress-wheel";
 import { FontAwesome } from "@expo/vector-icons";
+import { ListItem } from "react-native-elements";
 
 
 export default function DashboardMealSideEffects({
                                                      products,
                                                      allergens,
-                                                     checkSideEffects,
-                                                     hasSideEffects,
+                                                     sideEffectsArray,
                                                      navigation,
-                                                     currentMeal
+                                                     currentMeal,
                                                  }) {
-
 
     return (
       <Grid>
@@ -31,22 +30,30 @@ export default function DashboardMealSideEffects({
 
               </Col>
               <Col size={0.33}>
-                  {hasSideEffects ? <Text>Grafik ist sichtbar</Text> :
-                    <Row>
-                        <Text style={{ textAlign: "center" }}>
-                            {checkSideEffects ? checkSideEffects.map(sideEffect => sideEffect) :
-                              <Text>starke Magenkrämpfe</Text>}
-                        </Text>
-                    </Row>
-                  }
+                  <Row>
+                      <FlatList contentContainerStyle={{ justifyContent: "spaceAround" }}
+                                data={sideEffectsArray}
+                                keyExtractor={item => item.toString()}
+                                renderItem={({ item }) => {
+                                    return (
+                                      <ListItem containerStyle={{ padding: 5 }}>
+                                          <ListItem.Content>
+                                              <Text>{`\u2022`} {item.sideEffect} ({item.ratingOfSideEffects} von
+                                                  10)</Text>
+                                          </ListItem.Content>
+                                      </ListItem>);
 
+                                }}
+                                horizontal={true} />
+                  </Row>
               </Col>
+
               <Col size={0.33} style={{ alignSelf: "right" }}>
                   <AnimatedProgressWheel
                     backgroundColor={"#45ff00"}
                     size={30}
                     width={30}
-                    progress={90}
+                    progress={1.5}
                     animateFromValue={0}
                     duration={2000}
                     color={"#45ff00"}

@@ -22,7 +22,7 @@ export default function ReviewMealScreenHeader({ currentMeal, allergens, meal })
         const sideEffectOfMealId = _id.mealId;
         const allergensList = _id.allergens;
         const sideEffectByIcdAndStrength = sideEffectsList;
-        console.log(sideEffectOfUserId, mealDaytime, listOfProductsThatWereConsumed, date, sideEffectOfMealId, allergensList, sideEffectByIcdAndStrength)
+        console.log(sideEffectOfUserId, mealDaytime, listOfProductsThatWereConsumed, date, sideEffectOfMealId, allergensList, sideEffectByIcdAndStrength);
         updateSideEffectsInMeal(sideEffectOfUserId, mealDaytime, listOfProductsThatWereConsumed, date, sideEffectOfMealId, allergensList, sideEffectByIcdAndStrength);
         setSideEffectsList([]);
     };
