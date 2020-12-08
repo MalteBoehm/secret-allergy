@@ -30,9 +30,6 @@ public class MealController {
     }
 
 
-
-
-
     @CrossOrigin
     @GetMapping("/livesearch")
     public List<Product> getProductsByName(@RequestParam String products) throws UnirestException {

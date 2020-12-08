@@ -34,6 +34,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/meal/livesearch**").permitAll()
                 .antMatchers("/getAll**").permitAll()
                 .antMatchers("/api/meal/new**").permitAll()
+                .antMatchers("/api/sideeffects").permitAll()
+                .antMatchers("/api/sideeffects/add**").permitAll()
                 .antMatchers("/**").authenticated()
                 .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)

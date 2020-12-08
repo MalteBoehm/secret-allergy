@@ -25,5 +25,5 @@ public class Meal {
     List<Allergen> allergens;
     Boolean hasSideEffect;
     List<SideEffect> sideEffects;
-    int ratingOfSideEffects;
+    double ratingOfSideEffects;
 }
