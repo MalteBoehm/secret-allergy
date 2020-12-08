@@ -1,14 +1,13 @@
 import { Grid, Row } from "react-native-easy-grid";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { StyleSheet, ScrollView } from "react-native";
 import styled from "styled-components/native";
 import { moderateScale } from "../../styles/globalstyles";
-import AuthContext from "../../context/AuthContext";
-import { getAllTodayMeals } from "../../service/LiveSearchService";
 import DashboardMealHeader from "./components/DashboardMealHeader";
 import DashboardMealAllergens from "./components/DashboardMealAllergens";
 import DashboardMealSideEffects from "./components/DashboardMealSideEffects";
 import DashboardContext from "../../context/DashboardContext";
+import ReviewMealScreenModal from "../ReviewMealScreen/ReviewMealScreenModal";
 
 export default function DashboardList({ navigation }) {
     const { todaysBreakfast, todaysMeal, todaysDinner, todaysSnack } = useContext(DashboardContext);
@@ -20,25 +19,25 @@ export default function DashboardList({ navigation }) {
             title: "Frühstück",
             emojiName: "coffee",
             kindOfMeal: "breakfast",
-            mapObject: todaysBreakfast,
+            mapObject: todaysBreakfast
         }, {
             id: 2,
             title: "Mittagessen",
             emojiName: "pizza",
             kindOfMeal: "meal",
-            mapObject: todaysMeal,
+            mapObject: todaysMeal
         }, {
             id: 3,
             title: "Abendessen",
             emojiName: "wine_glass",
             kindOfMeal: "dinner",
-            mapObject: todaysDinner,
+            mapObject: todaysDinner
         }, {
             id: 4,
             title: "Snack",
             emojiName: "apple",
             kindOfMeal: "snacks",
-            mapObject: todaysSnack,
+            mapObject: todaysSnack
         }];
 
 
@@ -47,7 +46,7 @@ export default function DashboardList({ navigation }) {
           <ScrollView>
               <Grid style={GridListStyled.container}>
                   {listItemsToMap.map(item => {
-
+                      const currentMeal = item.mapObject;
                       const products = item.mapObject.map(meal => meal.products?.map(product => product.product_name)).flat();
                       const allergens = item.mapObject.map(meal => meal.allergens?.map(allergen => allergen.names)).flat();
                       const hasSideEffects = item.mapObject.hasSideEffect;
@@ -63,7 +62,6 @@ export default function DashboardList({ navigation }) {
                                           item={item}
                                           navigation={navigation}
                                           products={products}
-                                          allergens={allergens}
                                         />
                                     </Row>
                                     <Row size={1} style={GridListStyled.component}>
@@ -74,8 +72,10 @@ export default function DashboardList({ navigation }) {
                                         <DashboardMealSideEffects hasSideEffects={hasSideEffects}
                                                                   checkSideEffects={checkSideEffectsArray}
                                                                   navigation={navigation}
+                                                                  products={products}
+                                                                  allergens={allergens}
+                                                                  currentMeal={currentMeal}
                                                                   item={item}
-
                                         />
                                     </Row>
                                 </Grid>
@@ -97,8 +97,8 @@ const MealStyled = StyleSheet.create({
         backgroundColor: "#ffffff",
         borderStyle: "solid",
         borderColor: "#d0d0d0",
-        shadowRadius: 2,
-    },
+        shadowRadius: 2
+    }
 });
 
 const GridListStyled = StyleSheet.create({
@@ -107,13 +107,13 @@ const GridListStyled = StyleSheet.create({
         backgroundColor: "rgb(255,255,255)",
         justifyContent: "space-between",
         paddingTop: moderateScale(1, 0.2),
-        paddingBottom: moderateScale(7, 0.2),
+        paddingBottom: moderateScale(7, 0.2)
     }, component: {
-        paddingTop: moderateScale(10),
+        paddingTop: moderateScale(10)
     }, lastComponent: {
         paddingTop: moderateScale(15),
-        marginBottom: moderateScale(10),
-    },
+        marginBottom: moderateScale(10)
+    }
 });
 
 

@@ -16,7 +16,7 @@ export default function DashboardMealAllergens({ hasAllergens, allergens }) {
                       <Text
                         style={{
                             fontWeight: "bold",
-                            fontSize: moderateScale(12, 0.3),
+                            fontSize: moderateScale(12, 0.3)
                         }}>Allergene:
                       </Text>
                   </Row>
@@ -24,10 +24,9 @@ export default function DashboardMealAllergens({ hasAllergens, allergens }) {
 
                       <FlatList contentContainerStyle={{ justifyContent: "spaceAround" }}
                                 data={allergens}
-
                                 keyExtractor={item => item.toString()}
                                 renderItem={({ item }) =>
-                                  <ListItem  containerStyle={{ padding: 5 }}>
+                                  <ListItem containerStyle={{ padding: 5 }}>
                                       <ListItem.Content>
                                           <Text>{`\u2022`} {item}</Text>
                                       </ListItem.Content>
@@ -38,7 +37,7 @@ export default function DashboardMealAllergens({ hasAllergens, allergens }) {
                   </Row>
               </Col>
           </Row>
-          <Separator/>
+          <Separator />
       </Grid>
     );
 
@@ -49,7 +48,7 @@ const AllergensStyled = StyleSheet.create({
     separator: {
         marginVertical: 8,
         borderBottomColor: "#e3e3e3",
-        borderBottomWidth: StyleSheet.hairlineWidth,
-    },
-})
+        borderBottomWidth: StyleSheet.hairlineWidth
+    }
+});
 
