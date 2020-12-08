@@ -14,7 +14,6 @@ import java.util.List;
 @Service
 public class OpenFoodFactsApi {
 
-    JSONArray products = new JSONArray();
     @Autowired
     public OpenFoodFactsApi() {
     }
@@ -41,10 +40,9 @@ public class OpenFoodFactsApi {
                     Arrays.asList(
                             jsonObject.keySet()
                                         .contains("ingredients_text_de")?
-                                        jsonObject.getString("ingredients_text_de").replaceAll("([0-9])w*|([-%:.?])w*|([\\s{2}])w*|[()_-]w*","").split(","):
-                                        jsonObject.getString("ingredients_text").replaceAll("([0-9])w*|([-%:.?])w*|([\\s{2}])w*|[()_-]w*","").split(",")
+                                        jsonObject.getString("ingredients_text_de").replaceAll("([0-9])w*|([-%:;.?])w*|([\\s{2}])w*|[()_-]w*"," ").split(","):
+                                        jsonObject.getString("ingredients_text").replaceAll("([0-9])w*|([-%:;.?])w*|([\\s{2}])w*|[()_-]w*"," ").split(",")
                             ));
-            System.out.println(ingredients_text_de);
             productList.add( new Product(id, name, brands, ingredients_text_de, imageUrl) );
         }
         return productList;
@@ -62,43 +60,6 @@ public class OpenFoodFactsApi {
                 .getBody()
                 .getObject()
                 .getJSONArray("products");
-    }
-
-
-    private List<Product> cleanUpStringsOfProductsBeforeReturn(List<Product> productList) {
-
-        //todo filter -> begriffe replaceAll ""
-        //todo filter -> regex replaceAll Sonderzeichen
-        List<String> filter = new ArrayList<>(List.of(
-                "Teig",
-                "Konservierungsstoff",
-                "Stabilisator",
-                "Antioxidationsmittel",
-                "Gesamtmilchbestandteile",
-                " im ",
-                " Produkt",
-                "Überzugsmittel",
-                "Gesamtkakaobestandteile",
-                "aufgeschlossenes",
-                ":",
-                ";",
-                ".",
-                "_",
-                "  ",
-                ")",
-                "(",
-                "%",
-                "0", "1","2","3","4","5","6","7","8","9"));
-
-        List<String> newIngredientsList = new ArrayList<>();
-        for (Product currentProduct : productList) {
-            currentProduct.getIngredients_text_de()
-                    .forEach(ingredient-> {
-
-                        newIngredientsList.add(ingredient.replaceAll("([0-9]w*)|([%|:]w*)|([\\s{2}-]w*)", ""));
-                    });
-        }
-        return productList;
     }
 
 }

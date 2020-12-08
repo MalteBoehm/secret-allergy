@@ -17,11 +17,13 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 @Service
@@ -40,9 +42,11 @@ public class MealService {
         this.idUtils = idUtils;
     }
 
-    public List<Product> searchProductsByNameService(String productName) throws  UnirestException {
+
+    public List<Product> searchProductsByNameService(String productName) throws UnirestException {
         return openFoodFactsApi.searchProductByName(productName);
-        }
+    }
+
 
     public Meal addMealToUser(AddMealDto addMealDto) {
         LocalDate date = LocalDate.now();
@@ -52,34 +56,100 @@ public class MealService {
 
         return mealMongo.save(
                 Meal.builder()
-                    .mealOfUserId(addMealDto.getUserId())
-                    .mealId(idUtils.generateId())
-                    .date(date.format(currentDate))
-                    .mealDaytime(addMealDto.getMealParam())
-                    .products(addMealDto.getAddMealListOfProducts())
-                    .allergens( addAllergens(addMealDto) )
-                    .hasSideEffect(false)
-                    .sideEffects(emptyListOfSideEffects)
-                    .ratingOfSideEffects(0)
-                .build());
+                        .mealOfUserId(addMealDto.getUserId())
+                        .mealId(idUtils.generateId())
+                        .date(date.format(currentDate))
+                        .mealDaytime(addMealDto.getMealParam())
+                        .products(addMealDto.getAddMealListOfProducts())
+                        .allergens(addAllergens(addMealDto).stream()
+                                .distinct()
+                                .collect(Collectors.toList()))
+                        .hasSideEffect(false)
+                        .sideEffects(emptyListOfSideEffects)
+                        .ratingOfSideEffects(0)
+                        .build());
+    }
+
+    public List<Meal> getTodaysMealsOfUser(String userId) {
+        LocalDate date = LocalDate.now();
+        DateTimeFormatter currentDate = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        return mealMongo.findMealByDateIsAndMealOfUserId(date.format(currentDate), user);
     }
 
 
-/* Helper Functions */
-    public List<Allergen> addAllergens(AddMealDto addMealDto){
-
+    /* Helper Functions */
+    public List<Allergen> addAllergens(AddMealDto addMealDto) {
         List<Allergen> allergens = new ArrayList<>();
+
         addMealDto.getAddMealListOfProducts().forEach(product -> {
             for (int i = 0; i < product.getIngredients_text_de().size(); i++) {
-                List<String> newList = Arrays.asList(product.getIngredients_text_de().get(i));
-                for (String searchWord: newList) {
-                    allergens.addAll(allergenMongo.findAllergenByName("^"+searchWord));
+                List<String> ingredientsOfProduct = filterIngredients(List.of(product.getIngredients_text_de().get(i)));
+                System.out.println(ingredientsOfProduct + "");
+                for (String searchWord : ingredientsOfProduct) {
+                    Optional<List<Allergen>> searchAllergensInDb = Optional.of(allergenMongo.findAllergensByNamesMatchesRegex(searchWord));
+
+                    for (int ia = 0; ia < searchAllergensInDb.get().size(); ia++) {
+                        if (searchAllergensInDb.get().get(ia).getNames().get(0).equals("")) {
+                            return;
+                        } else {
+                            System.out.println(allergens.add(searchAllergensInDb.get().get(ia)));
+                        }
+                    }
+                    ;
                 }
             }
         });
-        return allergens;
+        return allergens.stream().distinct().collect(Collectors.toList());
+    }
+
+
+    private List<String> filterIngredients(List<String> ingredientsOfProduct) {
+        ArrayList<String> filterWords = new ArrayList<>(List.of(
+                "Teig",
+                "Konservierungsstoff",
+                "Stabilisator",
+                "Antioxidationsmittel",
+                "Gesamtmilchbestandteile",
+                " im ",
+                " Produkt",
+                "Überzugsmittel",
+                "Gesamtkakaobestandteile",
+                "aufgeschlossenes",
+                "Gesamtfettanteil",
+                "davon",
+                "Pflanzenfett",
+                "Käse",
+                "fettarmes",
+                "Pflanzenfett",
+                "aufgeschlossenes",
+                "Pflanzeneiweiß",
+                "eingelegte",
+                "raffiniertes",
+                "frittierte",
+                "",
+                ":",
+                ";",
+                ".",
+                "_",
+                "  ",
+                ")",
+                "(",
+                "%",
+                "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "Wasser", "Gesamtfettgehalt", "davon", "und", "aufgeschlossenes", "     ","Säuerungsmittel"));
+
+        List<String> checkForDuplicatesList = new ArrayList<>();
+        for (String ingredient : ingredientsOfProduct) {
+            String cleanedIngredient = ingredient.replaceAll("^[\s]w*|(\s{2,})w*|$([\s])w*","");
+            for (String filterWord : filterWords) {
+                if (!cleanedIngredient.equalsIgnoreCase(filterWord)) {
+                    if (cleanedIngredient.length() > 3) {
+                        if (!checkForDuplicatesList.contains(cleanedIngredient)) {
+                            checkForDuplicatesList.add(cleanedIngredient);
+                        }
+                    }
+                }
+            }
+        }
+        return checkForDuplicatesList.stream().filter(item -> !item.isEmpty())
     }
 }
-
-
-

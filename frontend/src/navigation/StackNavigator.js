@@ -6,6 +6,7 @@ import AddMealScreen from "../screens/AddMealScreen";
 import LoginScreen from "../screens/LoginScreen";
 import AuthContext from '../context/AuthContext';
 import {useContext} from "react";
+import ReviewMealScreen from "../screens/ReviewMealScreen";
 
 
 
@@ -25,6 +26,7 @@ export default function StackNavigator(){
                     />
                     <Stack.Screen name="AddMeal" component={AddMealScreen} />
                     <Stack.Screen name="Login" component={LoginScreen} />
+                    <Stack.Screen name="ReviewScreen" component={ReviewMealScreen} />
                 </Stack.Navigator>
     );
 
