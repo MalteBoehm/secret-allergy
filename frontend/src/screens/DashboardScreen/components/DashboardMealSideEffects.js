@@ -1,13 +1,19 @@
 import React, { useContext } from "react";
 import { Row, Col, Grid } from "react-native-easy-grid";
-import { FlatList, Text, StyleSheet, Button, View } from "react-native";
+import { Text, StyleSheet, Button, View } from "react-native";
 import { moderateScale } from "../../../styles/globalstyles";
 import AnimatedProgressWheel from "react-native-progress-wheel";
-import DashboardContext from "../../../context/DashboardContext";
 import { FontAwesome } from "@expo/vector-icons";
 
 
-export default function DashboardMealSideEffects({ products, allergens, checkSideEffects, hasSideEffects, navigation, item }) {
+export default function DashboardMealSideEffects({
+                                                     products,
+                                                     allergens,
+                                                     checkSideEffects,
+                                                     hasSideEffects,
+                                                     navigation,
+                                                     currentMeal
+                                                 }) {
 
 
     return (
@@ -51,9 +57,10 @@ export default function DashboardMealSideEffects({ products, allergens, checkSid
                                           name="arrow-right"
                                           backgroundColor="white"
                                           onPress={() =>
-                                            navigation.navigate("ReviewScreen", {
+                                            navigation.navigate("ReviewMeal", {
                                                 currentMeal: products,
-                                                allergens: allergens
+                                                allergens: allergens,
+                                                meal: currentMeal
                                             })}>
                       </FontAwesome.Button>
                   </View>
