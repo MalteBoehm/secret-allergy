@@ -70,7 +70,7 @@ public class MealService {
                         .build());
     }
 
-    public List<Meal> getTodayMealsOfUser(String user) {
+    public List<Meal> getTodaysMealsOfUser(String userId) {
         LocalDate date = LocalDate.now();
         DateTimeFormatter currentDate = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         return mealMongo.findMealByDateIsAndMealOfUserId(date.format(currentDate), user);
@@ -160,4 +160,3 @@ public class MealService {
         return cleanList;
     }
 }
-
