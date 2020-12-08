@@ -35,7 +35,14 @@ export default function DashboardContextProvider({ children }) {
         todaysSnack?.forEach(meal => totalAllergies += meal.allergens.length);
         return totalAllergies;
     };
-
+    const getTotalSideEffects = () => {
+        let totalSideEffects = 0;
+        todaysBreakfast.forEach(meal => totalSideEffects += meal.sideEffects.length);
+        todaysMeal?.forEach(meal => totalSideEffects += meal.sideEffects.length);
+        todaysDinner?.forEach(meal => totalSideEffects += meal.sideEffects.length);
+        todaysSnack?.forEach(meal => totalSideEffects += meal.sideEffects.length);
+        return totalSideEffects;
+    };
 
     const [sideEffectsList, setSideEffectsList] = useState([]);
     const [hasSideEffectIsSelected, setHasSideEffectIsSelected] = useState(false);
@@ -49,7 +56,7 @@ export default function DashboardContextProvider({ children }) {
             todaysSnack, setTodaysSnack,
             sideEffectsList, setSideEffectsList,
             hasSideEffectIsSelected, setHasSideEffectIsSelected,
-            getMealsTotal, getAllergensTotal
+            getMealsTotal, getAllergensTotal, getTotalSideEffects
 
         }}>
           {children}

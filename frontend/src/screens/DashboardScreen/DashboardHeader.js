@@ -1,15 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { StyleSheet, Text } from "react-native";
 import { Col, Row } from "react-native-easy-grid";
 import { moderateScale } from "../../styles/globalstyles";
 import { LinearGradient } from "expo-linear-gradient";
-import mealCount from "./DashboardList";
 import DashboardContext from "../../context/DashboardContext";
 
 
 export default function DashboardHeader() {
 
-    const { getMealsTotal, getAllergensTotal } = useContext(DashboardContext);
+    const { getMealsTotal, getAllergensTotal, getTotalSideEffects } = useContext(DashboardContext);
 
     return (
       <Row size={0.5}>
@@ -47,7 +46,7 @@ export default function DashboardHeader() {
                   </Col>
                   <Col size={1} style={DashboardStyle.colsText}>
                       <Text style={DashboardStyle.textStyle}>
-
+                          {getTotalSideEffects()}
                       </Text>
                       <Text style={DashboardStyle.textStylecolsText}>
                           Beschwerden
