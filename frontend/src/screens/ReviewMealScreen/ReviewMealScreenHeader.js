@@ -16,7 +16,7 @@ export default function ReviewMealScreenHeader({ currentMeal, allergens, meal })
     const createdSideEffectDto = {
         sideEffectOfUserId: userId,
         date: _id.date,
-        sideEffectOfMealId: _id._id,
+        sideEffectOfMealId: _id.mealId,
         mealDaytime: _id.mealDaytime,
         products: _id.products,
         allergens: _id.allergens,
