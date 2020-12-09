@@ -35,7 +35,7 @@ export default function YellowBarRating() {
 const RatingStyled = StyleSheet.create({
     container: {
         height: moderateScale(20),
-        width: moderateScale(60),
+        width: moderateScale(50),
         display: "flex",
         flexDirection: "column"
     },
