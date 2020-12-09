@@ -2,9 +2,10 @@ import React from "react";
 import { Row, Col, Grid } from "react-native-easy-grid";
 import { Text, StyleSheet, View, FlatList } from "react-native";
 import { moderateScale } from "../../../styles/globalstyles";
-import AnimatedProgressWheel from "react-native-progress-wheel";
 import { FontAwesome } from "@expo/vector-icons";
 import { ListItem } from "react-native-elements";
+import DashboardBarSideEffectsRating from "./DashboardBarSideEffectsRating";
+import styled from "styled-components/native";
 
 
 export default function DashboardMealSideEffects({
@@ -12,8 +13,9 @@ export default function DashboardMealSideEffects({
                                                      allergens,
                                                      sideEffectsArray,
                                                      navigation,
-                                                     currentMeal,
+                                                     currentMeal
                                                  }) {
+
 
     return (
       <Grid>
@@ -25,40 +27,34 @@ export default function DashboardMealSideEffects({
                   Beschwerden:
               </Text>
           </Row>
-          <Row style={{ alignSelf: "space-evenly", justifyContent: "space-evenly" }}>
-              <Col size={0.33}>
-
-              </Col>
-              <Col size={0.33}>
+          <Row>
+              <Col size={0.33} />
+              <Col size={0.4}>
                   <Row>
-                      <FlatList contentContainerStyle={{ justifyContent: "spaceAround" }}
-                                data={sideEffectsArray}
-                                keyExtractor={item => item.toString()}
-                                renderItem={({ item }) => {
-                                    return (
-                                      <ListItem containerStyle={{ padding: 5 }}>
-                                          <ListItem.Content>
-                                              <Text>{`\u2022`} {item.sideEffect} ({item.ratingOfSideEffects} von
-                                                  10)</Text>
-                                          </ListItem.Content>
-                                      </ListItem>);
+                      <FlatList
+                        data={sideEffectsArray}
+                        keyExtractor={item => item.toString()}
+                        renderItem={({ item }) => {
+                            return (
+                              <ListItem containerStyle={{ padding: 5, alignContent: "baseline" }}>
+                                  <ListItem.Content>
+                                      <StyledItem>
+                                          <Row>
+                                              <ColsOfItemsStyled
+                                                size={0.6}><Text>{item.sideEffect}</Text></ColsOfItemsStyled>
+                                              <ColsOfItemsStyled size={0.4}><StyledItemWithRating
+                                                rating={item.ratingOfSideEffects} /></ColsOfItemsStyled></Row>
+                                      </StyledItem>
 
-                                }}
-                                horizontal={true} />
+                                  </ListItem.Content>
+                              </ListItem>);
+
+                        }}
+                        horizontal={true} />
                   </Row>
               </Col>
 
               <Col size={0.33} style={{ alignSelf: "right" }}>
-                  <AnimatedProgressWheel
-                    backgroundColor={"#45ff00"}
-                    size={30}
-                    width={30}
-                    progress={1.5}
-                    animateFromValue={0}
-                    duration={2000}
-                    color={"#45ff00"}
-                    fullColor={"#e91f1f"}
-                  />
                   <View style={{ justifyContent: "flex-end" }}>
                       <FontAwesome.Button iconRight style={RowContainerStyled.buttonToDetail}
                                           name="arrow-right"
@@ -77,14 +73,26 @@ export default function DashboardMealSideEffects({
     );
 }
 
+const StyledItem = styled(Grid)`
+  display: block;
+  align-self: center;
+`;
 
+const ColsOfItemsStyled = styled(Col)`
+  align-self: center;
+`;
+
+const StyledItemWithRating = styled(DashboardBarSideEffectsRating)`
+
+  align-self: center;
+`;
 const RowContainerStyled = StyleSheet.create({
     container: {
         minHeight: 50,
         maxHeight: moderateScale(250)
 
     }, buttonToDetail: {
-        backgroundColor: "#000000",
+        backgroundColor: "#ffffff",
         color: "#ffffff",
         textAlign: "right",
         alignSelf: "flex-end"

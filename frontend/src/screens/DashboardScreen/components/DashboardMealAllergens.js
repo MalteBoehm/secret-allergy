@@ -40,8 +40,6 @@ export default function DashboardMealAllergens({ hasAllergens, allergens }) {
           <Separator />
       </Grid>
     );
-
-
 }
 
 const AllergensStyled = StyleSheet.create({

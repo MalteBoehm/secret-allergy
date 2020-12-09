@@ -25,7 +25,7 @@ export default function DashboardMealHeader({ item, products, navigation }) {
                               fontSize: moderateScale(16, 0.3),
                               alignSelf: "center",
                               paddingBottom: 10,
-                              paddingTop: 10,
+                              paddingTop: 10
 
                           }}> {item.title}
                           </Text>
@@ -46,7 +46,7 @@ export default function DashboardMealHeader({ item, products, navigation }) {
                       <Col size={0.2} style={RowContainerStyled.colOfDetailButton}>
                           <View style={{ justifyContent: "flex-end" }}>
                               <FontAwesome.Button iconRight style={RowContainerStyled.buttonToDetail}
-                                                  name="arrow-right"
+                                                  name="info"
                                                   backgroundColor="white"
                                                   onPress={() =>
                                                     navigation.navigate("AddMeal", { mealParam: item.kindOfMeal })}>
@@ -64,30 +64,27 @@ export default function DashboardMealHeader({ item, products, navigation }) {
 const RowContainerStyled = StyleSheet.create({
     container: {
         minHeight: 50,
-        maxHeight: moderateScale(250),
+        maxHeight: moderateScale(250)
 
     },
-    mealFlatCol: {
-
-    }, buttonToDetail: {
+    mealFlatCol: {}, buttonToDetail: {
         backgroundColor: "#22d29b",
         color: "#ffffff",
-        textAlign: "right",
+        textAlign: "center",
         alignSelf: "flex-end",
+        paddingLeft: moderateScale(15)
     },
     colOfDetailButton: {
-
         width: 50,
         paddingTop: moderateScale(20, 0.2),
-        paddingRight: moderateScale(10, 0.2),
-
+        paddingRight: moderateScale(10, 0.2)
 
     },
     separator: {
         marginVertical: 8,
         borderBottomColor: "#e3e3e3",
-        borderBottomWidth: StyleSheet.hairlineWidth,
-    },
+        borderBottomWidth: StyleSheet.hairlineWidth
+    }
 });
 
 

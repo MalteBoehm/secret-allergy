@@ -35,7 +35,7 @@ export default function GreenBarRating() {
 const RatingStyled = StyleSheet.create({
     container: {
         height: moderateScale(30),
-        width: moderateScale(60),
+        width: moderateScale(50),
         display: "flex",
         flexDirection: "column"
     },
