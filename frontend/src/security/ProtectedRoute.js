@@ -1,23 +1,22 @@
-import React, { useContext } from 'react';
+import React, { useContext } from "react";
 import Navigator from "../navigation/Navigator";
 import StackNavigator from "../navigation/StackNavigator";
-import AuthContext from '../context/AuthContext';
-import {NavigationContainer} from "@react-navigation/native";
+import AuthContext from "../context/AuthContext";
+import { NavigationContainer } from "@react-navigation/native";
 import LiveSearchProvider from "../context/LiveSearchProvider";
 import SearchInputContextProvider from "../context/SearchInputContextProvider";
-import DashboardContextProvider from "../context/DashboardContextProvider";
 
 export default function ProtectedRoute(props) {
     const { tokenIsValid } = useContext(AuthContext);
 
-    return(
+    return (
 
-        <SearchInputContextProvider>
-            <LiveSearchProvider>
-                <NavigationContainer>
-                    {tokenIsValid() ? <Navigator {...props}/> : <StackNavigator/>}
-                </NavigationContainer>
-            </LiveSearchProvider>
-        </SearchInputContextProvider>
-    )
+      <SearchInputContextProvider>
+          <LiveSearchProvider>
+              <NavigationContainer>
+                  {tokenIsValid() ? <Navigator {...props} /> : <StackNavigator />}
+              </NavigationContainer>
+          </LiveSearchProvider>
+      </SearchInputContextProvider>
+    );
 }

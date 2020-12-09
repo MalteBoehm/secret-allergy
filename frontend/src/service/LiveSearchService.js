@@ -31,9 +31,17 @@ export const getAllTodayMeals = (userId, token) =>
     .catch((error) => console.log(error));
 
 
-const updateSideEffectsInMealUrl = "http://192.168.178.41:8080/api/meal/sideeffectupdate";
-export const updateSideEffectsInMeal = (userId, createdSideEffectDto, token) => {
+const updateSideEffectsInMealUrl = "http://192.168.178.41:8080/api/sideeffects/add";
+export const updateSideEffectsInMeal = (sideEffectOfUserId, mealDaytime, listOfProductsThatWereConsumed, date, sideEffectOfMealId, allergensList, sideEffectByIcdAndStrength, token) => {
     axios
-      .put(updateSideEffectsInMealUrl, { userId, createdSideEffectDto }, header(token))
+      .post(updateSideEffectsInMealUrl, {
+          sideEffectOfUserId,
+          mealDaytime,
+          listOfProductsThatWereConsumed,
+          date,
+          sideEffectOfMealId,
+          allergensList,
+          sideEffectByIcdAndStrength
+      }, header(token))
       .then((response) => response.data);
 };

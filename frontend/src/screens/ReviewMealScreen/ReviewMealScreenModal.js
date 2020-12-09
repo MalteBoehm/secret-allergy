@@ -56,10 +56,10 @@ export default function ReviewMealScreenModal() {
                           maxLength={40}
                         />
                         <Slider
-                          style={{ width: "50%", height: 40 }}
+                          style={{ width: "90%", height: 40 }}
                           minimumValue={0}
                           maximumValue={10}
-                          step={0.5}
+                          step={1}
                           value={ratingOfSideEffect}
                           minimumTrackTintColor="#ba0404"
                           maximumTrackTintColor="#04ba04"

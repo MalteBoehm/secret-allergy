@@ -25,9 +25,9 @@ public class OpenFoodFactsApi {
             var jsonObject = products.getJSONObject(i);
             String id = jsonObject.getString("_id");
             String name = jsonObject.keySet()
-                                    .contains("product_name_de")?
-                                            jsonObject.getString("product_name_de")
-                                            :jsonObject.getString("product_name");
+                                    .contains("product_name")?
+                                            jsonObject.getString("product_name")
+                                            :jsonObject.getString("product_name_de");
             String brands = jsonObject.keySet()
                     .contains("brands")?
                     jsonObject.getString("brands")
@@ -40,8 +40,8 @@ public class OpenFoodFactsApi {
                     Arrays.asList(
                             jsonObject.keySet()
                                         .contains("ingredients_text_de")?
-                                        jsonObject.getString("ingredients_text_de").replaceAll("([0-9])w*|([-%:;.?])w*|([\\s{2}])w*|[()_-]w*"," ").split(","):
-                                        jsonObject.getString("ingredients_text").replaceAll("([0-9])w*|([-%:;.?])w*|([\\s{2}])w*|[()_-]w*"," ").split(",")
+                                        jsonObject.getString("ingredients_text_de").replaceAll("([0-9])w*|([-%:;.?])w*|([\\s{2}])w*|[()_-]w*", ",").split(","):
+                                        jsonObject.getString("ingredients_text").replaceAll("([0-9])w*|([-%:;.?])w*|([\\s{2}])w*|[()_-]w*",",").split(",")
                             ));
             productList.add( new Product(id, name, brands, ingredients_text_de, imageUrl) );
         }
@@ -61,5 +61,4 @@ public class OpenFoodFactsApi {
                 .getObject()
                 .getJSONArray("products");
     }
-
 }

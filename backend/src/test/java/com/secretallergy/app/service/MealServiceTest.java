@@ -72,7 +72,6 @@ class MealServiceTest {
             .allergens(new ArrayList<>())
             .hasSideEffect(false)
             .sideEffects(new ArrayList<>())
-            .ratingOfSideEffects(0)
             .build();
 
     private final List<String> testIngredients_text_de = new ArrayList<>(List.of(

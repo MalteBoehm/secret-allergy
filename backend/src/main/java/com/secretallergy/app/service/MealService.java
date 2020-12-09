@@ -6,14 +6,14 @@ import com.secretallergy.app.dao.AllergenMongoDao;
 import com.secretallergy.app.dao.MealMongoDao;
 import com.secretallergy.app.dao.ProductMongoDao;
 import com.secretallergy.app.dto.AddMealDto;
-import com.secretallergy.app.model.Allergen;
-import com.secretallergy.app.model.Meal;
-import com.secretallergy.app.model.Product;
-
-import com.secretallergy.app.model.SideEffect;
+import com.secretallergy.app.dto.AddSideEffectsDto;
+import com.secretallergy.app.model.*;
+import org.springframework.data.mongodb.core.MongoOperations;
 import com.secretallergy.app.utils.IdUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 
@@ -52,7 +52,7 @@ public class MealService {
         LocalDate date = LocalDate.now();
         DateTimeFormatter currentDate = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
-        List<SideEffect> emptyListOfSideEffects = new ArrayList<>();
+        List<SideEffects> emptyListOfSideEffects = new ArrayList<>();
 
         return mealMongo.save(
                 Meal.builder()
@@ -66,7 +66,6 @@ public class MealService {
                                 .collect(Collectors.toList()))
                         .hasSideEffect(false)
                         .sideEffects(emptyListOfSideEffects)
-                        .ratingOfSideEffects(0)
                         .build());
     }
 
@@ -84,15 +83,14 @@ public class MealService {
         addMealDto.getAddMealListOfProducts().forEach(product -> {
             for (int i = 0; i < product.getIngredients_text_de().size(); i++) {
                 List<String> ingredientsOfProduct = filterIngredients(List.of(product.getIngredients_text_de().get(i)));
-                System.out.println(ingredientsOfProduct + "");
                 for (String searchWord : ingredientsOfProduct) {
-                    Optional<List<Allergen>> searchAllergensInDb = Optional.of(allergenMongo.findAllergensByNamesMatchesRegex(searchWord));
+                    Optional<List<Allergen>> searchAllergensInDb = Optional.of(allergenMongo.findAllergensByNamesMatchesRegex(searchWord.trim()));
 
-                    for (int ia = 0; ia < searchAllergensInDb.get().size(); ia++) {
-                        if (searchAllergensInDb.get().get(ia).getNames().get(0).equals("")) {
+                    for (int j = 0; j < searchAllergensInDb.get().size(); j++) {
+                        if (searchAllergensInDb.get().get(j).getNames().get(0).equals("")) {
                             return;
                         } else {
-                            System.out.println(allergens.add(searchAllergensInDb.get().get(ia)));
+                            System.out.println(allergens.add(searchAllergensInDb.get().get(j)));
                         }
                     }
                     ;
@@ -135,7 +133,7 @@ public class MealService {
                 ")",
                 "(",
                 "%",
-                "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "Wasser", "Gesamtfettgehalt", "davon", "und", "aufgeschlossenes", "     ","Säuerungsmittel"));
+                "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "UKäseMilch","Wasser", "Gesamtfettgehalt", "davon", "und", "aufgeschlossenes", "     ","Säuerungsmittel"));
 
         List<String> checkForDuplicatesList = new ArrayList<>();
         for (String ingredient : ingredientsOfProduct) {
@@ -144,7 +142,7 @@ public class MealService {
                 if (!cleanedIngredient.equalsIgnoreCase(filterWord)) {
                     if (cleanedIngredient.length() > 3) {
                         if (!checkForDuplicatesList.contains(cleanedIngredient)) {
-                            checkForDuplicatesList.add(cleanedIngredient);
+                            System.out.println(checkForDuplicatesList.add(cleanedIngredient.trim()));
                         }
                     }
                 }

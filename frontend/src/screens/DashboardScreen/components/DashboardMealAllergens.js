@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Row, Col, Grid } from "react-native-easy-grid";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import { moderateScale } from "../../../styles/globalstyles";
@@ -13,15 +13,8 @@ export default function DashboardMealAllergens({ hasAllergens, allergens }) {
           <Row>
               <Col>
                   <Row style={{ justifyContent: "center" }}>
-                      <Text
-                        style={{
-                            fontWeight: "bold",
-                            fontSize: moderateScale(12, 0.3)
-                        }}>Allergene:
-                      </Text>
-                  </Row>
+                      <TitleAllergensStyled>Allergene:</TitleAllergensStyled></Row>
                   <Row style={{ alignSelf: "center" }}>
-
                       <FlatList contentContainerStyle={{ justifyContent: "spaceAround" }}
                                 data={allergens}
                                 keyExtractor={item => item.toString()}
@@ -31,17 +24,12 @@ export default function DashboardMealAllergens({ hasAllergens, allergens }) {
                                           <Text>{`\u2022`} {item}</Text>
                                       </ListItem.Content>
                                   </ListItem>}
-                                horizontal={true}
-                      />
-
-                  </Row>
+                                horizontal={true} /></Row>
               </Col>
           </Row>
           <Separator />
       </Grid>
     );
-
-
 }
 
 const AllergensStyled = StyleSheet.create({
@@ -51,4 +39,9 @@ const AllergensStyled = StyleSheet.create({
         borderBottomWidth: StyleSheet.hairlineWidth
     }
 });
+
+const TitleAllergensStyled = styled.Text`
+  fontWeight: bold;
+  fontSize: ${moderateScale(12, 0.3)};
+`;
 

@@ -7,11 +7,9 @@ import DashboardMealHeader from "./components/DashboardMealHeader";
 import DashboardMealAllergens from "./components/DashboardMealAllergens";
 import DashboardMealSideEffects from "./components/DashboardMealSideEffects";
 import DashboardContext from "../../context/DashboardContext";
-import ReviewMealScreenModal from "../ReviewMealScreen/ReviewMealScreenModal";
 
 export default function DashboardList({ navigation }) {
     const { todaysBreakfast, todaysMeal, todaysDinner, todaysSnack } = useContext(DashboardContext);
-
 
     const listItemsToMap = [
         {
@@ -51,35 +49,30 @@ export default function DashboardList({ navigation }) {
                       const allergens = item.mapObject.map(meal => meal.allergens?.map(allergen => allergen.names)).flat();
                       const hasSideEffects = item.mapObject.hasSideEffect;
                       const hasAllergens = item.mapObject.allergens;
-                      const checkSideEffectsArray = item.mapObject.sideEffects;
-
+                      const sideEffectsArray = item.mapObject.map(meal => meal.sideEffects?.map(sideEffect => sideEffect)).flat();
                       return (
                         <Row key={item.id} style={MealStyled.card}>
-                            <MealBoxStyled>
+                            <MealContainerStyled>
                                 <Grid>
-                                    <Row size={1}>
+                                    <MealBoxStyled size={1}>
                                         <DashboardMealHeader
                                           item={item}
                                           navigation={navigation}
                                           products={products}
-                                        />
-                                    </Row>
+                                        /></MealBoxStyled>
                                     <Row size={1} style={GridListStyled.component}>
-                                        <DashboardMealAllergens allergens={allergens} hasAllergens={hasAllergens}
-                                        />
-                                    </Row>
+                                        <DashboardMealAllergens allergens={allergens}
+                                                                hasAllergens={hasAllergens} /></Row>
                                     <Row size={1} style={GridListStyled.lastComponent}>
                                         <DashboardMealSideEffects hasSideEffects={hasSideEffects}
-                                                                  checkSideEffects={checkSideEffectsArray}
+                                                                  sideEffectsArray={sideEffectsArray}
                                                                   navigation={navigation}
                                                                   products={products}
                                                                   allergens={allergens}
                                                                   currentMeal={currentMeal}
-                                                                  item={item}
-                                        />
-                                    </Row>
+                                                                  item={item} /></Row>
                                 </Grid>
-                            </MealBoxStyled>
+                            </MealContainerStyled>
                         </Row>
                       );
                   })}
@@ -88,19 +81,6 @@ export default function DashboardList({ navigation }) {
       </Row>
     );
 }
-const MealStyled = StyleSheet.create({
-    card: {
-
-        marginVertical: moderateScale(4),
-        marginBottom: moderateScale(4),
-        marginHorizontal: moderateScale(5),
-        backgroundColor: "#ffffff",
-        borderStyle: "solid",
-        borderColor: "#d0d0d0",
-        shadowRadius: 2
-    }
-});
-
 const GridListStyled = StyleSheet.create({
     container: {
         display: "flex",
@@ -116,12 +96,26 @@ const GridListStyled = StyleSheet.create({
     }
 });
 
+const MealContainerStyled = styled(Grid)`
+  margin-vertical: ${moderateScale(2)};
+  marginBottom: ${moderateScale(2)};
+  marginHorizontal: ${moderateScale(2)};
+  backgroundColor: #ffffff;
+  borderStyle: solid;
+  borderColor: #d0d0d0;
+  shadowRadius: 2;
+`;
 
-const MealBoxStyled = styled.View`
+const MealStyled = styled(Row)`
+  backgroundColor: #ffffff;
+  borderStyle: solid;
+  borderColor: #d0d0d0;
+  shadowRadius: 2;
+`;
+
+const MealBoxStyled = styled(Row)`
   display: flex;
   width: 100%;
-  min-height: ${moderateScale(180, 0.3)};
-  justify-content: stretch;
-
+  min-height: ${moderateScale(100, 0.3)};
 `;
 
