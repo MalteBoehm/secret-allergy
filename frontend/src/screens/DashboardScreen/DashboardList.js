@@ -54,12 +54,12 @@ export default function DashboardList({ navigation }) {
                         <Row key={item.id} style={MealStyled.card}>
                             <MealContainerStyled>
                                 <Grid>
-                                    <Row size={1}>
+                                    <MealBoxStyled size={1}>
                                         <DashboardMealHeader
                                           item={item}
                                           navigation={navigation}
                                           products={products}
-                                        /></Row>
+                                        /></MealBoxStyled>
                                     <Row size={1} style={GridListStyled.component}>
                                         <DashboardMealAllergens allergens={allergens}
                                                                 hasAllergens={hasAllergens} /></Row>
@@ -106,23 +106,16 @@ const MealContainerStyled = styled(Grid)`
   shadowRadius: 2;
 `;
 
-const MealStyled = StyleSheet.create({
-    card: {
-        backgroundColor: "#ffffff",
-        borderStyle: "solid",
-        borderColor: "#d0d0d0",
-        shadowRadius: 2
-    }
-});
+const MealStyled = styled(Row)`
+  backgroundColor: #ffffff;
+  borderStyle: solid;
+  borderColor: #d0d0d0;
+  shadowRadius: 2;
+`;
 
-
-
-
-const MealBoxStyled = styled.View`
+const MealBoxStyled = styled(Row)`
   display: flex;
   width: 100%;
-  min-height: ${moderateScale(180, 0.3)};
-  justify-content: stretch;
-
+  min-height: ${moderateScale(100, 0.3)};
 `;
 

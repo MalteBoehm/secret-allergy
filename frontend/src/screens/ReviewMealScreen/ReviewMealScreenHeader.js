@@ -6,6 +6,7 @@ import { ListItem } from "react-native-elements";
 import { updateSideEffectsInMeal } from "../../service/LiveSearchService";
 import AuthContext from "../../context/AuthContext";
 import DashboardContext from "../../context/DashboardContext";
+import styled from "styled-components/native";
 
 export default function ReviewMealScreenHeader({ currentMeal, allergens, meal }) {
     const [_id] = meal;
@@ -22,7 +23,6 @@ export default function ReviewMealScreenHeader({ currentMeal, allergens, meal })
         const sideEffectOfMealId = _id.mealId;
         const allergensList = _id.allergens;
         const sideEffectByIcdAndStrength = sideEffectsList;
-        console.log(sideEffectOfUserId, mealDaytime, listOfProductsThatWereConsumed, date, sideEffectOfMealId, allergensList, sideEffectByIcdAndStrength);
         updateSideEffectsInMeal(sideEffectOfUserId, mealDaytime, listOfProductsThatWereConsumed, date, sideEffectOfMealId, allergensList, sideEffectByIcdAndStrength);
         setSideEffectsList([]);
     };
@@ -38,35 +38,28 @@ export default function ReviewMealScreenHeader({ currentMeal, allergens, meal })
         if (currentMeal.filter(meal => meal.mealDaytime === "dinner")) {
             return "Abendessen";
         }
-        if (currentMeal.filter(meal => meal.mealDaytime === "snack")) {
+        if (currentMeal.filter(meal => meal.mealDaytime === "snacks")) {
             return "Snacks";
         }
     };
 
     return (
       <Grid>
-          <Row size={1} style={ReviewMealScreenHeaderStyled.headerWithButton}>
-              <View style={ReviewMealScreenHeaderStyled.createSideEffectButton}>
+          <HeaderContainerStyled size={1}>
+              <View>
                   <Button title={"Beschwerden Hinzufügen"} onPress={() => handleCreateSideEffect()} />
               </View>
+          </HeaderContainerStyled>
 
-          </Row>
-          <Row style={ReviewMealScreenHeaderStyled.titleContainer}>
-              <Text style={ReviewMealScreenHeaderStyled.title}>
+          <TileContainerStyled>
+              <TitleStyled>
                   Beschwerden durch das {mealType()}
-              </Text>
-          </Row>
+              </TitleStyled>
+          </TileContainerStyled>
           <Row size={3} style={ReviewMealScreenHeaderStyled.headerWithTitle}>
               <Col size={1} style={ReviewMealScreenHeaderStyled.productAllergenCols}>
                   <Text style={ReviewMealScreenHeaderStyled.productAllergenColsTitle}>Verwendete Produkte</Text>
-                  <FlatList
-                    style={{
-                        alignSelf: "center",
-                        flexWrap: "wrap",
-                        flexDirection: "row",
-                        height: "90%",
-                        width: "100%"
-                    }}
+                  <FlatListStyled
                     data={currentMeal}
                     keyExtractor={item => item.toString()}
                     contentContainerStyle={{ height: "100%", width: "100%" }}
@@ -83,14 +76,7 @@ export default function ReviewMealScreenHeader({ currentMeal, allergens, meal })
                   <Text style={ReviewMealScreenHeaderStyled.productAllergenColsTitle}>
                       Enthaltene Allergene
                   </Text>
-                  <FlatList
-                    style={{
-                        alignSelf: "center",
-                        flexWrap: "wrap",
-                        flexDirection: "row",
-                        height: "90%",
-                        width: "100%"
-                    }}
+                  <FlatListStyled
                     data={allergens}
                     keyExtractor={item => item.toString()}
                     contentContainerStyle={{ height: "100%", width: "100%" }}
@@ -104,26 +90,35 @@ export default function ReviewMealScreenHeader({ currentMeal, allergens, meal })
                   />
               </Col>
           </Row>
-      </Grid>
-
-    );
+      </Grid>);
 }
+
+const HeaderContainerStyled = styled(Row)`
+  alignSelf: flex-end;
+  justifyContent: center;
+`;
+
+const TileContainerStyled = styled(Row)`
+  marginTop: 10;
+`;
+
+const TitleStyled = styled.Text`
+  paddingLeft: 10;
+  fontSize: 24;
+`;
+
+const FlatListStyled = styled(FlatList)`
+  alignSelf: center;
+  flexWrap: wrap;
+  flexDirection: row;
+  height: 90%;
+  width: 100%;
+`;
+
 
 const ReviewMealScreenHeaderStyled = StyleSheet.create({
     container: {
         width: "100%"
-    },
-    createSideEffectButton: {
-        justifyContent: "center"
-    },
-    titleContainer: {
-        marginTop: 10
-    }, title: {
-        paddingLeft: 10,
-        fontSize: 24
-    },
-    headerWithButton: {
-        alignSelf: "flex-end"
     },
     headerWithTitle: {
         paddingTop: 5,

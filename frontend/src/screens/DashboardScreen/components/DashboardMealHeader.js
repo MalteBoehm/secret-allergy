@@ -1,9 +1,10 @@
 import React from "react";
 import { Row, Col, Grid } from "react-native-easy-grid";
+import styled from 'styled-components/native'
 import { FlatList, Text, StyleSheet, View } from "react-native";
 import Emoji from "react-native-emoji";
 import { moderateScale } from "../../../styles/globalstyles";
-import { Button, ListItem, Icon } from "react-native-elements";
+import { ListItem } from "react-native-elements";
 import { FontAwesome } from "@expo/vector-icons";
 
 export default function DashboardMealHeader({ item, products, navigation }) {
@@ -20,16 +21,7 @@ export default function DashboardMealHeader({ item, products, navigation }) {
                           </Text>
                       </Col>
                       <Col size={0.6}>
-                          <Text style={{
-                              fontWeight: "bold",
-                              fontSize: moderateScale(16, 0.3),
-                              alignSelf: "center",
-                              paddingBottom: 10,
-                              paddingTop: 10
-
-                          }}> {item.title}
-                          </Text>
-
+                          <MealTitleStyled> {item.title}</MealTitleStyled>
                           <FlatList
                             style={{ alignSelf: "center", flexWrap: "wrap", flexDirection: "row" }}
                             data={products}
@@ -60,12 +52,18 @@ export default function DashboardMealHeader({ item, products, navigation }) {
       </Grid>
     );
 }
+const MealTitleStyled = styled.Text`
+  font-weight: bold;
+  font-size: ${moderateScale(15, 0.3)};
+  align-self: center;
+  padding-bottom: ${moderateScale(10, 0.3)};
+  padding-top: ${moderateScale(10, 0.3)};
+`;
 
 const RowContainerStyled = StyleSheet.create({
     container: {
         minHeight: 50,
         maxHeight: moderateScale(250)
-
     },
     mealFlatCol: {}, buttonToDetail: {
         backgroundColor: "#22d29b",

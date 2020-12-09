@@ -23,9 +23,7 @@ export default function DashboardMealSideEffects({
               <Text style={{
                   fontWeight: "bold",
                   fontSize: moderateScale(12, 0.3)
-              }}>
-                  Beschwerden:
-              </Text>
+              }}>Beschwerden:</Text>
           </Row>
           <Row>
               <Col size={0.33} />
@@ -56,7 +54,8 @@ export default function DashboardMealSideEffects({
 
               <Col size={0.33} style={{ alignSelf: "right" }}>
                   <View style={{ justifyContent: "flex-end" }}>
-                      <FontAwesome.Button iconRight style={RowContainerStyled.buttonToDetail}
+                      <FontAwesome.Button iconRight
+                                          style={RowContainerStyled.buttonToDetail}
                                           name="arrow-right"
                                           backgroundColor="white"
                                           onPress={() =>
@@ -83,9 +82,9 @@ const ColsOfItemsStyled = styled(Col)`
 `;
 
 const StyledItemWithRating = styled(DashboardBarSideEffectsRating)`
-
   align-self: center;
 `;
+
 const RowContainerStyled = StyleSheet.create({
     container: {
         minHeight: 50,

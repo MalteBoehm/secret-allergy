@@ -19,7 +19,7 @@ export default function DashboardContextProvider({ children }) {
             setTodaysBreakfast(meals.filter(meal => meal.mealDaytime === "breakfast"));
             setTodaysMeal(meals.filter(meal => meal.mealDaytime === "meal"));
             setTodaysDinner(meals.filter(meal => meal.mealDaytime === "dinner"));
-            setTodaysSnack(meals.filter(meal => meal.mealDaytime === "snack"));
+            setTodaysSnack(meals.filter(meal => meal.mealDaytime === "snacks"));
         }).catch(console.log);
     }, []);
 

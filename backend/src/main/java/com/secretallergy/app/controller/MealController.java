@@ -3,9 +3,7 @@ package com.secretallergy.app.controller;
 
 import com.mashape.unirest.http.exceptions.UnirestException;
 
-import com.secretallergy.app.dao.AllergenMongoDao;
 import com.secretallergy.app.dto.AddMealDto;
-import com.secretallergy.app.model.Allergen;
 import com.secretallergy.app.model.Meal;
 import com.secretallergy.app.model.Product;
 import com.secretallergy.app.service.MealService;
@@ -20,13 +18,11 @@ import java.util.Optional;
 @RequestMapping(value = "/api/meal")
 public class MealController {
     private final MealService mealService;
-    private AllergenMongoDao allergenMongo;
 
 
     @Autowired
-    public MealController(MealService mealService, AllergenMongoDao allergenMongo) {
+    public MealController(MealService mealService) {
         this.mealService = mealService;
-        this.allergenMongo = allergenMongo;
     }
 
 
