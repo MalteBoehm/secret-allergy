@@ -8,24 +8,12 @@ export default function OrangeBarRating() {
     return (
       <Grid style={RatingStyled.container}>
           <Row>
-              <Col size={1} style={RatingStyled.greenBar}>
-
-              </Col>
-              <Col size={1} style={RatingStyled.lightGreenBar}>
-
-              </Col>
-              <Col size={1} style={RatingStyled.yellowBar}>
-
-              </Col>
-              <Col size={1} style={RatingStyled.orangeBar}>
-
-              </Col>
-              <Col size={1} style={RatingStyled.redBar}>
-
-              </Col>
-              <Col size={1} style={RatingStyled.container}>
-
-              </Col>
+              <Col size={1} style={RatingStyled.greenBar} />
+              <Col size={1} style={RatingStyled.lightGreenBar}/>
+              <Col size={1} style={RatingStyled.yellowBar}/>
+              <Col size={1} style={RatingStyled.orangeBar}/>
+              <Col size={1} style={RatingStyled.redBar}/>
+              <Col size={1} style={RatingStyled.container}/>
           </Row>
       </Grid>
     );
