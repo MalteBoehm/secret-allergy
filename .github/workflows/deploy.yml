@@ -3,7 +3,7 @@ name: Deploy Secret-Allergy
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build-frontend:
