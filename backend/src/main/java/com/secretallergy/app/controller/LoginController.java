@@ -1,6 +1,7 @@
 package com.secretallergy.app.controller;
 
 import com.secretallergy.app.dto.AppUserLoginDto;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import com.secretallergy.app.security.JwtUtils;
 
 import java.util.HashMap;
-
+@Slf4j
 @RestController
 @RequestMapping(path = "auth/login")
 public class LoginController {
@@ -36,6 +37,7 @@ public class LoginController {
             return jwtUtils.createJwtToken(appUserLoginDto.getUsername(), new HashMap<>());
 
         } catch(Exception e){
+            log.error("Failed to login", e);
            throw new UsernameNotFoundException("Nutzer wer bitte...?");
         }
     }

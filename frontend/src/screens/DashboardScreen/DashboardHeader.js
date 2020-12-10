@@ -61,8 +61,10 @@ const GradientHeaderStyled = styled(LinearGradient)`
 
 const TileStyle = styled.Text`
   textAlign: center;
-  fontFamily: Helvetica-Oblique;
+  font-family: "Monotype Corsiva , fantasy";
   fontSize: 24;
+  font-weight: 400;
+  font-style:  normal;
   justifyContent: center;
   color: white;
   paddingTop: ${moderateScale(18, 0.5)};

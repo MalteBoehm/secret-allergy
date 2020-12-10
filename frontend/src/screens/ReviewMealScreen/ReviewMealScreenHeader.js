@@ -10,7 +10,7 @@ import styled from "styled-components/native";
 
 export default function ReviewMealScreenHeader({ currentMeal, allergens, meal }) {
     const [_id] = meal;
-    const { userData } = useContext(AuthContext);
+    const { userData, token } = useContext(AuthContext);
     const userId = userData.sub;
 
     const { sideEffectsList, setSideEffectsList } = useContext(DashboardContext);
@@ -23,7 +23,7 @@ export default function ReviewMealScreenHeader({ currentMeal, allergens, meal })
         const sideEffectOfMealId = _id.mealId;
         const allergensList = _id.allergens;
         const sideEffectByIcdAndStrength = sideEffectsList;
-        updateSideEffectsInMeal(sideEffectOfUserId, mealDaytime, listOfProductsThatWereConsumed, date, sideEffectOfMealId, allergensList, sideEffectByIcdAndStrength);
+        updateSideEffectsInMeal(sideEffectOfUserId, mealDaytime, listOfProductsThatWereConsumed, date, sideEffectOfMealId, allergensList, sideEffectByIcdAndStrength, token);
         setSideEffectsList([]);
     };
 

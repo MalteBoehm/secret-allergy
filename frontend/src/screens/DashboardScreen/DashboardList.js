@@ -7,6 +7,7 @@ import DashboardMealHeader from "./components/DashboardMealHeader";
 import DashboardMealAllergens from "./components/DashboardMealAllergens";
 import DashboardMealSideEffects from "./components/DashboardMealSideEffects";
 import DashboardContext from "../../context/DashboardContext";
+import FloatingAddButton from "../../navigation/FloatingAddButton";
 
 export default function DashboardList({ navigation }) {
     const { todaysBreakfast, todaysMeal, todaysDinner, todaysSnack } = useContext(DashboardContext);
@@ -78,6 +79,7 @@ export default function DashboardList({ navigation }) {
                   })}
               </Grid>
           </ScrollView>
+          <FloatingAddButton navigation={navigation} />
       </Row>
     );
 }

@@ -9,7 +9,7 @@ import { LiveSearchContext } from "../../context/LiveSearchContext";
 
 export default function AddMealHeader({ navigation, route }) {
 
-    const { userData } = useContext(AuthContext);
+    const { userData, token } = useContext(AuthContext);
     const userId = userData.sub;
     const { mealParam } = route.params;
 
@@ -25,7 +25,7 @@ export default function AddMealHeader({ navigation, route }) {
           <Button type="solid"
                   title={"Mahlzeit erstellen"}
                   onPress={() => {
-                      createMeal(userId, mealParam, addMealListOfProducts);
+                      createMeal(userId, mealParam, addMealListOfProducts, token);
                       setAddMealListOfProducts([]);
                   }}
           />

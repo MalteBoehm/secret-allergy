@@ -16,25 +16,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.springframework.data.domain.Sort;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.server.ResponseStatusException;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
-
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.*;
-
-import static org.mockito.Mockito.*;
-import java.io.FileNotFoundException;
 import java.util.List;
 
 class MealServiceTest {
@@ -45,16 +27,16 @@ class MealServiceTest {
     private final IdUtils idUtils = mock(IdUtils.class);
     private final MealService mealService = new MealService(allergenMongo,mealMongo,openFoodFactsApi,idUtils);
 
-    private final List<String> ingredients = new ArrayList(List.of("Weizenmehl", "Spinat", "Tomatenpüree", "Wasser",  "EdamerMilch"));
+    private final List<String> ingredients = (List.of("Weizenmehl", "Spinat", "Tomatenpüree", "Wasser",  "EdamerMilch"));
     private final List<Product> emptyProductList = new ArrayList<>();
 
-    Product mockProduct1 = Product.builder()
+/*    Product mockProduct1 = Product.builder()
             ._id("1")
             .product_name("Kinsder")
             .brands("Rewe")
             .image_front_thumb_url("www.thumbnail.de")
             .ingredients_text_de(ingredients)
-            .build();
+            .build();*/
     Product mockProduct2 = Product.builder()
             ._id("1")
             .product_name("Tortellini")
@@ -74,7 +56,7 @@ class MealServiceTest {
             .sideEffects(new ArrayList<>())
             .build();
 
-    private final List<String> testIngredients_text_de = new ArrayList<>(List.of(
+/*    private final List<String> testIngredients_text_de = new ArrayList<>(List.of(
             "Eidotter", "Eier", "Milch", "ABSADAS", "Butter"
     ));
 
@@ -82,7 +64,7 @@ class MealServiceTest {
             .userId("testUser")
             .mealParam("breakfast")
             .addMealListOfProducts(emptyProductList)
-            .build();
+            .build();*/
 
     private final AddMealDto addMealDtoMock = AddMealDto.builder()
             .userId("testUser")
@@ -146,5 +128,21 @@ class MealServiceTest {
 
         // THEN
         assertThat(actual.size(),is(0));
+    }
+
+    @Test
+    void searchProductsByNameService() {
+    }
+
+    @Test
+    void testAddMealToUser() {
+    }
+
+    @Test
+    void getTodaysMealsOfUser() {
+    }
+
+    @Test
+    void testAddAllergens() {
     }
 }

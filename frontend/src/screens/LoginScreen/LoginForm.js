@@ -28,18 +28,14 @@ export default function LoginForm({ navigation }) {
                   name="user"
                   size={24}
                   color="black"
-                />
-            }
-          />
+                />} />
           <Input
             placeholder="Password"
             name="password"
             value={loginData.password}
             errorStyle={{ color: "red" }}
             secureTextEntry={true}
-            onChangeText={text => setLoginData({ ...loginData, password: text })}
-
-          />
+            onChangeText={text => setLoginData({ ...loginData, password: text })} />
           <Button
             title="Login"
             buttonStyle={{ backgroundColor: "#3ca938" }}
@@ -47,7 +43,6 @@ export default function LoginForm({ navigation }) {
           />
       </View>
     );
-
 
     function handleSubmit() {
         loginWithUserCredentials(loginData)

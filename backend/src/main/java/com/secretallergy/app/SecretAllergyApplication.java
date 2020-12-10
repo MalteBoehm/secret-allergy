@@ -18,7 +18,7 @@ public class SecretAllergyApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/*").allowedOrigins("http://localhost:19006", "http://192.168.178.41:19006");
+				registry.addMapping("/*");
 
 			}
 		};
