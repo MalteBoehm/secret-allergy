@@ -23,7 +23,7 @@ jobs:
           cd frontend
           npm install
 
-      - name: run build
+      - name: run builds
         run: |
           cd frontend
           expo build:web
