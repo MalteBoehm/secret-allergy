@@ -1,7 +1,9 @@
+
+jwt:
+  secretkey: dummy
+
 spring:
   data:
     mongodb:
       database: allergyApp
-      host: localhost
-      port: 37017
 
