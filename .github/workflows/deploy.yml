@@ -14,24 +14,25 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
-      - uses: expo/expo-github-action@v5
-        with:
-          expo-version: 3.x
-          expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
-          expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
-        - run: npm install
-        - run: expo build:web
+
       - name: npm install frontend
+
         run: |
           cd frontend
-          npm install
+      - uses: expo/expo-github-action@v5
+          with:
+            expo-version: 3.x
+            expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
+            expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
+        run:  |
+          - npm install
       - name: run build
         run: |
           cd frontend
-
+          expo build:web
       - uses: actions/upload-artifact@v2
         with:
-          name: frontend-build
+          name: web-build
           path: frontend/web-build/
 
   build-backend:
