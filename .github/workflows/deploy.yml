@@ -14,6 +14,11 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 14.x
+      - uses: expo/expo-github-action@v5
+        with:
+          expo-version: 3.x
+        - run: npm install
+        - run: expo build:web
       - name: npm install frontend
         run: |
           cd frontend
@@ -21,7 +26,7 @@ jobs:
       - name: run build
         run: |
           cd frontend
-          expo build:web
+
       - uses: actions/upload-artifact@v2
         with:
           name: frontend-build
