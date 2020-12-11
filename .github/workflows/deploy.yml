@@ -7,7 +7,6 @@ on:
 
 jobs:
   build-frontend:
-
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -20,7 +19,7 @@ jobs:
           expo-version: 3.x
           expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
           expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
-        run: |
+      - run: |
           cd frontend
           npm install
       - name: run builds
@@ -29,12 +28,12 @@ jobs:
           expo build:web
       - uses: actions/upload-artifact@v2
         with:
-          name: frontend-build
+          name: web-build
           path: frontend/web-build/
 
   build-backend:
     runs-on: ubuntu-latest
-    needs: frontend-build
+    needs: build-frontend
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 15
