@@ -38,7 +38,7 @@ export default function({ children }) {
 
     const loginWithUserCredentials = (loginData) =>
       axios
-        .post("/auth/login", loginData)
+        .post("http://localhost:8080/auth/login", loginData)
         .then((response) => {
             setToken(response.data);
         });
