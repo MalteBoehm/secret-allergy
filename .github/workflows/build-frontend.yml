@@ -19,9 +19,9 @@ jobs:
           expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
           expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
       - run: |
-        cd frontend
-        npm install
+          cd frontend
+          npm install
       - name: build frontend
         run: |
-        cd frontend
-        expo build:web
+          cd frontend
+          expo build:web

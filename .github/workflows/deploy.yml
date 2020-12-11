@@ -20,12 +20,12 @@ jobs:
           expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
           expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
       - run: |
-        cd frontend
-        npm install
+          cd frontend
+          npm install
       - name: run builds
         run: |
-        cd frontend
-        expo build:web
+          cd frontend
+          expo build:web
       - uses: actions/upload-artifact@v2
         with:
           name: web-build
