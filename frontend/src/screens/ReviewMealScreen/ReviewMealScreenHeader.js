@@ -47,7 +47,7 @@ export default function ReviewMealScreenHeader({ currentMeal, allergens, meal })
       <Grid>
           <HeaderContainerStyled size={1}>
               <View>
-                  <Button title={"Beschwerden Hinzufügen"} onPress={() => handleCreateSideEffect()} />
+                  <Button title={"Hinzufügen"} onPress={() => handleCreateSideEffect()} />
               </View>
           </HeaderContainerStyled>
 
@@ -64,7 +64,7 @@ export default function ReviewMealScreenHeader({ currentMeal, allergens, meal })
                     keyExtractor={item => item.toString()}
                     contentContainerStyle={{ height: "100%", width: "100%" }}
                     renderItem={({ item }) => <View>
-                        <ListItem containerStyle={{ flex: 1, padding: 4, height: 20 }}>
+                        <ListItem containerStyle={{ flex: 1, padding: 4, height: 15 }}>
                             <ListItem.Content>
                                 <Text style={{}}>{`\u2022`} {item}</Text>
                             </ListItem.Content>
@@ -103,6 +103,8 @@ const TileContainerStyled = styled(Row)`
 `;
 
 const TitleStyled = styled.Text`
+  fontWeight: bold;
+  font-family: "Lato";
   paddingLeft: 10;
   fontSize: 24;
 `;
@@ -122,15 +124,21 @@ const ReviewMealScreenHeaderStyled = StyleSheet.create({
     },
     headerWithTitle: {
         paddingTop: 5,
-        textAlign: "center"
+        textAlign: "center",
+        fontWeight: 'bold',
+        fontFamily: "Lato",
     },
     productAllergenCols: {
         height: "100%",
         width: "100%",
         backgroundColor: "white",
-        paddingBottom: 10
+        paddingBottom: 5
     },
     productAllergenColsTitle: {
-        fontSize: moderateScale(16)
+        fontSize: moderateScale(16),
+        textAlign: "center",
+        fontWeight: 'bold',
+        fontFamily: "Lato",
+        paddingBottom: 5
     }
 });

@@ -62,7 +62,7 @@ const GradientHeaderStyled = styled(LinearGradient)`
 
 const TileStyle = styled.Text`
   textAlign: center;
-  font-family: "Monotype Corsiva , fantasy";
+  font-family: "Lato Semibold";
   fontSize: 28;
   font-weight: 400;
   font-style:  normal;
@@ -82,6 +82,7 @@ const StatsColsStyled = styled(Col)`
 `;
 
 const StatsTextStyled = styled.Text`
+  font-family: "Lato";
   fontSize: ${moderateScale(15, 0.4)};
   color: #ffffff;
   alignContent: center;
@@ -89,6 +90,7 @@ const StatsTextStyled = styled.Text`
 `;
 
 const StatsNumbersStyled = styled.Text`
+  font-family: "Lato";
   fontSize: ${moderateScale(20, 0.4)};
   color: #ffffff;
   alignContent: center;

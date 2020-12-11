@@ -44,6 +44,7 @@ const AllergensStyled = StyleSheet.create({
 
 const TitleAllergensStyled = styled.Text`
   fontWeight: bold;
+  font-family: "Lato";
   fontSize: ${moderateScale(14, 0.3)};
 `;
 

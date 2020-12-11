@@ -20,10 +20,7 @@ export default function DashboardMealSideEffects({
     return (
       <Grid>
           <Row style={{ alignSelf: "center" }}>
-              <Text style={{
-                  fontWeight: "bold",
-                  fontSize: moderateScale(14, 0.3),
-              }}>Beschwerden:</Text>
+              <TitleSideEffectsStyled>Beschwerden:</TitleSideEffectsStyled>
           </Row>
           <Row>
               <Col size={1} />
@@ -80,6 +77,12 @@ export default function DashboardMealSideEffects({
 const StyledItem = styled(Grid)`
   display: block;
   align-self: center;
+`;
+
+const TitleSideEffectsStyled = styled.Text`
+  fontWeight: bold;
+  font-family: "Lato";
+  fontSize: ${moderateScale(14, 0.3)};
 `;
 
 const ColsOfItemsStyled = styled(Col)`
