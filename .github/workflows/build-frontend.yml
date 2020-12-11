@@ -4,7 +4,9 @@ on: push
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js 14.x
@@ -19,7 +21,7 @@ jobs:
       - run: |
           cd frontend
           npm install
-      - name: frontend-build
+      - name: build frontend
         run: |
           cd frontend
           expo build:web
