@@ -11,7 +11,6 @@ import styled from "styled-components/native";
 export default function DashboardMealSideEffects({
                                                      products,
                                                      allergens,
-                                                     sideEffectsArray,
                                                      navigation,
                                                      currentMeal,
                                                  }) {
@@ -45,7 +44,7 @@ export default function DashboardMealSideEffects({
                                               </ColsOfItemsStyled>
                                               <ColsOfItemsStyled size={0.5}>
                                                   <StyledItemWithRating
-                                                rating={item.ratingOfSideEffects} /></ColsOfItemsStyled></Row>
+                                                    rating={item.ratingOfSideEffects} /></ColsOfItemsStyled></Row>
                                       </StyledItem>
                                   </ListItem.Content>
                               </ListItemStyled>);

@@ -1,5 +1,5 @@
 import { Grid, Row } from "react-native-easy-grid";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { StyleSheet, ScrollView } from "react-native";
 import styled from "styled-components/native";
 import { moderateScale } from "../../styles/globalstyles";
@@ -11,6 +11,7 @@ import FloatingAddButton from "../../navigation/FloatingAddButton";
 
 export default function DashboardList({ navigation }) {
     const { todaysBreakfast, todaysMeal, todaysDinner, todaysSnack } = useContext(DashboardContext);
+
 
     const listItemsToMap = [
         {
@@ -59,6 +60,7 @@ export default function DashboardList({ navigation }) {
                                           item={item}
                                           navigation={navigation}
                                           products={products}
+                                          currentMeal={currentMeal}
                                         /></MealBoxStyled>
                                     <Row size={1} style={GridListStyled.component}>
                                         <DashboardMealAllergens allergens={allergens}
