@@ -27,30 +27,30 @@ export default function DashboardMealSideEffects({
               <Col size={6} style={{ alignItems: "center" }}>
                   <Row>
                       <FlatListStyled
-                        data={sideEffectsArray}
-                        keyExtractor={item => item.toString()}
+                        data={currentMeal.map(meal => meal.sideEffects?.map(sideEffect => sideEffect)).flat()}
+                        keyExtractor={item => item.id}
+                        horizontal={true}
                         renderItem={({ item }) => {
                             return (
-                              <ListItemStyled containerStyle={{ padding: 5, alignContent: "baseline", width: 500 }}>
+                              <ListItemStyled key={item.id}
+                                              containerStyle={{ padding: 5, alignContent: "baseline" }}>
                                   <ListItem.Content>
                                       <StyledItem>
                                           <Row size={1}>
-                                              <ColsOfItemsStyled
-                                              >
+                                              <ColsOfItemsStyled size={0.5}>
                                                   <Text style={{
-                                                      alignSelf: "center",
+                                                      alignSelf: "flex-start",
                                                       overflowWrap: "normal",
                                                   }}>{item.sideEffect}</Text>
                                               </ColsOfItemsStyled>
-                                              <ColsOfItemsStyled><StyledItemWithRating
+                                              <ColsOfItemsStyled size={0.5}>
+                                                  <StyledItemWithRating
                                                 rating={item.ratingOfSideEffects} /></ColsOfItemsStyled></Row>
                                       </StyledItem>
-
                                   </ListItem.Content>
                               </ListItemStyled>);
-
                         }}
-                        horizontal={true} />
+                      />
                   </Row>
               </Col>
 
@@ -77,6 +77,7 @@ export default function DashboardMealSideEffects({
 const StyledItem = styled(Grid)`
   display: block;
   align-self: center;
+  text-align: justify;
 `;
 
 const TitleSideEffectsStyled = styled.Text`

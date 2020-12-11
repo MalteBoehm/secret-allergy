@@ -7,7 +7,7 @@ import { moderateScale } from "../../../styles/globalstyles";
 import { ListItem } from "react-native-elements";
 import { FontAwesome } from "@expo/vector-icons";
 
-export default function DashboardMealHeader({ item, products, navigation }) {
+export default function DashboardMealHeader({ item, products, navigation, currentMeal}) {
   const Separator = () => <View style={RowContainerStyled.separator} />;
 
   return (
@@ -24,11 +24,12 @@ export default function DashboardMealHeader({ item, products, navigation }) {
               <MealTitleStyled>
                 {item.title}</MealTitleStyled>
               <FlatList
-                style={{ alignSelf: "center", flexWrap: "wrap", flexDirection: "row" }}
-                data={products}
-                keyExtractor={item => item.toString()}
-                renderItem={({ item }) => <View>
-                  <ListItemStyled containerStyle={{
+                style={{ alignSelf: "center",  flexWrap: "wrap", flexDirection: "row" }}
+                data={currentMeal.map(meal => meal.products?.map(product => product)).flat()}
+                keyExtractor={item => item._id}
+                renderItem={({ item }) =>
+
+                  <ListItemStyled key={item._id} containerStyle={{
                     flex: 1,
                     padding: 12,
                     borderRadius: 100,
@@ -36,10 +37,10 @@ export default function DashboardMealHeader({ item, products, navigation }) {
                     maxHeight: 10,
                   }}>
                     <ListItem.Content style={{ alignSelf: "center" }}>
-                      <Text style={{}}>{item}</Text>
+                      <Text style={{}}>{item.product_name}</Text>
                     </ListItem.Content>
                   </ListItemStyled>
-                </View>}
+                }
               />
             </Col>
             <Col size={0.2} style={RowContainerStyled.colOfDetailButton}>
