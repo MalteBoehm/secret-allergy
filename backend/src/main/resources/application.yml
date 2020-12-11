@@ -1,10 +1,5 @@
-
 jwt:
   secretkey: dummy
 
-spring:
-  data:
-    mongodb:
-      database: allergyApp
-      port: 37017
+
 
