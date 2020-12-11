@@ -43,7 +43,7 @@ jobs:
           java-version: 15
       - uses: actions/download-artifact@v2
         with:
-          name: frontend-build
+          name: web-build
           path: backend/src/main/resources/static
       - name: Build with Maven
         run: mvn -B package -DskipTests --file backend/pom.xml
