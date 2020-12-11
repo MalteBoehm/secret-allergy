@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Grid, Row, Col } from "react-native-easy-grid";
 import { Button, FlatList, StyleSheet, Text, View } from "react-native";
 import { moderateScale } from "../../styles/globalstyles";
@@ -8,7 +8,7 @@ import AuthContext from "../../context/AuthContext";
 import DashboardContext from "../../context/DashboardContext";
 import styled from "styled-components/native";
 
-export default function ReviewMealScreenHeader({ allergens, meal }) {
+export default function ReviewMealScreenHeader({ allergens, currentProducts,  meal }) {
     const [_id] = meal;
     const { userData, token } = useContext(AuthContext);
     const userId = userData.sub;
@@ -26,21 +26,20 @@ export default function ReviewMealScreenHeader({ allergens, meal }) {
         updateSideEffectsInMeal(sideEffectOfUserId, mealDaytime, listOfProductsThatWereConsumed, date, sideEffectOfMealId, allergensList, sideEffectByIcdAndStrength, token);
         setSideEffectsList([]);
     };
-
-
     const mealType = () => {
-        console.log(meal)
-        if (meal.filter(meal => meal.mealDaytime === "breakfast")) {
+        if (_id?.mealDaytime === "breakfast") {
             return "Frühstück";
         }
-        if (meal.filter(meal => meal.mealDaytime === "meal")) {
+        if (_id?.mealDaytime === "meal") {
             return "Mittagessen";
         }
-        if (meal.filter(meal => meal.mealDaytime === "dinner")) {
+        if (_id?.mealDaytime === "dinner") {
             return "Abendessen";
         }
-        if (meal.filter(meal => meal.mealDaytime === "snacks")) {
+        if (_id?.mealDaytime === "snacks") {
             return "Snacks";
+        }else {
+            return "keine Tageszeit vorhanden"
         }
     };
 
@@ -61,7 +60,7 @@ export default function ReviewMealScreenHeader({ allergens, meal }) {
               <Col size={1} style={ReviewMealScreenHeaderStyled.productAllergenCols}>
                   <Text style={ReviewMealScreenHeaderStyled.productAllergenColsTitle}>Verwendete Produkte</Text>
                   <FlatListStyled
-                    data={meal.mealDaytime}
+                    data={currentProducts}
                     keyExtractor={item => item.toString()}
                     contentContainerStyle={{ height: "100%", width: "100%" }}
                     renderItem={({ item }) => <View>

@@ -61,7 +61,7 @@ export default function DashboardMealSideEffects({
                                           backgroundColor="white"
                                           onPress={() =>
                                             navigation.navigate("ReviewMeal", {
-                                                currentMeal: products,
+                                                currentProducts: products,
                                                 allergens: allergens,
                                                 meal: currentMeal,
                                             })}>
