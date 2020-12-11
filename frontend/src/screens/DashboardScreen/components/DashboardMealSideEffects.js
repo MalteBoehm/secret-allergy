@@ -26,33 +26,35 @@ export default function DashboardMealSideEffects({
               }}>Beschwerden:</Text>
           </Row>
           <Row>
-              <Col size={0.33} />
-              <Col size={0.4}>
+              <Col size={1} />
+              <Col size={6} style={{alignItems:"center"}}>
                   <Row>
-                      <FlatList
+                      <FlatListStyled
                         data={sideEffectsArray}
                         keyExtractor={item => item.toString()}
                         renderItem={({ item }) => {
                             return (
-                              <ListItem containerStyle={{ padding: 5, alignContent: "baseline" }}>
+                              <ListItemStyled containerStyle={{ padding: 5, alignContent: "baseline" ,width: 500}}>
                                   <ListItem.Content>
                                       <StyledItem>
-                                          <Row>
+                                          <Row size={1}>
                                               <ColsOfItemsStyled
-                                                size={0.6}><Text>{item.sideEffect}</Text></ColsOfItemsStyled>
-                                              <ColsOfItemsStyled size={0.4}><StyledItemWithRating
+                                                >
+                                                <Text style={{alignSelf: 'center', overflowWrap: 'normal'}}>{item.sideEffect}</Text>
+                                              </ColsOfItemsStyled>
+                                              <ColsOfItemsStyled><StyledItemWithRating
                                                 rating={item.ratingOfSideEffects} /></ColsOfItemsStyled></Row>
                                       </StyledItem>
 
                                   </ListItem.Content>
-                              </ListItem>);
+                              </ListItemStyled>);
 
                         }}
                         horizontal={true} />
                   </Row>
               </Col>
 
-              <Col size={0.33} style={{ alignSelf: "right" }}>
+              <Col size={1} style={{ alignSelf: "right" }}>
                   <View style={{ justifyContent: "flex-end" }}>
                       <FontAwesome.Button iconRight
                                           style={RowContainerStyled.buttonToDetail}
@@ -79,15 +81,25 @@ const StyledItem = styled(Grid)`
 
 const ColsOfItemsStyled = styled(Col)`
   align-self: center;
+  align-items: flex-end;
 `;
-
+const ListItemStyled = styled(ListItem)`
+  width: fit-content;
+  margin-top: ${moderateScale(2)};
+`;
 const StyledItemWithRating = styled(DashboardBarSideEffectsRating)`
   align-self: center;
+  width: fit-content;
+  margin-top: ${moderateScale(2)};
 `;
+
+const FlatListStyled =  styled(FlatList)`
+justify-self: center;
+`
 
 const RowContainerStyled = StyleSheet.create({
     container: {
-        minHeight: 50,
+        minHeight: 40,
         maxHeight: moderateScale(250)
 
     }, buttonToDetail: {

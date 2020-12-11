@@ -87,6 +87,7 @@ const StatsTextStyled = styled.Text`
   alignContent: center;
   textAlign: center;
 `;
+
 const StatsNumbersStyled = styled.Text`
   fontSize: ${moderateScale(20, 0.4)};
   color: #ffffff;

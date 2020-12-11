@@ -70,7 +70,6 @@ const MealTitleStyled = styled.Text`
 const ListItemStyled = styled(ListItem)`
   width: fit-content;
   margin-top: ${moderateScale(2)};
-
 `;
 
 const RowContainerStyled = StyleSheet.create({
