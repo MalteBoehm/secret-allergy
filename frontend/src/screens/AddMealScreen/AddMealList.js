@@ -10,21 +10,24 @@ import AddMealSuche from "./AddMealSuche";
 
 
 export default function AddMealList() {
-    const { liveSearchData, addMealListOfProducts } = useContext(LiveSearchContext);
+    const { liveSearchData, addMealListOfProducts,  setAddMealListOfProducts} = useContext(LiveSearchContext);
 
     const keyExtractor = (item, index) => index.toString();
     const renderItem = ({ item }) => {
         let isChecked = false;
 
+
+
         const handleChecked = () => {
             if (!addMealListOfProducts.includes(item)) {
-                addMealListOfProducts.push(item);
+                setAddMealListOfProducts(addMealListOfProducts => [...addMealListOfProducts, item]);
                 isChecked = true;
                 console.log(isChecked);
-            } else {
+            } if(addMealListOfProducts.includes(item)) {
                 const indexOfItem = addMealListOfProducts.indexOf(item);
                 addMealListOfProducts.splice(indexOfItem);
                 isChecked = false;
+                console.log('Aus der Liste')
             }
         };
 
