@@ -8,7 +8,7 @@ import AuthContext from "../../context/AuthContext";
 import DashboardContext from "../../context/DashboardContext";
 import styled from "styled-components/native";
 
-export default function ReviewMealScreenHeader({ currentMeal, allergens, meal }) {
+export default function ReviewMealScreenHeader({ allergens, meal }) {
     const [_id] = meal;
     const { userData, token } = useContext(AuthContext);
     const userId = userData.sub;
@@ -29,16 +29,17 @@ export default function ReviewMealScreenHeader({ currentMeal, allergens, meal })
 
 
     const mealType = () => {
-        if (currentMeal.filter(meal => meal.mealDaytime === "breakfast")) {
+        console.log(meal)
+        if (meal.filter(meal => meal.mealDaytime === "breakfast")) {
             return "Frühstück";
         }
-        if (currentMeal.filter(meal => meal.mealDaytime === "meal")) {
+        if (meal.filter(meal => meal.mealDaytime === "meal")) {
             return "Mittagessen";
         }
-        if (currentMeal.filter(meal => meal.mealDaytime === "dinner")) {
+        if (meal.filter(meal => meal.mealDaytime === "dinner")) {
             return "Abendessen";
         }
-        if (currentMeal.filter(meal => meal.mealDaytime === "snacks")) {
+        if (meal.filter(meal => meal.mealDaytime === "snacks")) {
             return "Snacks";
         }
     };
@@ -60,7 +61,7 @@ export default function ReviewMealScreenHeader({ currentMeal, allergens, meal })
               <Col size={1} style={ReviewMealScreenHeaderStyled.productAllergenCols}>
                   <Text style={ReviewMealScreenHeaderStyled.productAllergenColsTitle}>Verwendete Produkte</Text>
                   <FlatListStyled
-                    data={currentMeal}
+                    data={meal.mealDaytime}
                     keyExtractor={item => item.toString()}
                     contentContainerStyle={{ height: "100%", width: "100%" }}
                     renderItem={({ item }) => <View>
@@ -106,7 +107,7 @@ const TitleStyled = styled.Text`
   fontWeight: bold;
   font-family: "Lato";
   paddingLeft: 10;
-  fontSize: 24;
+  fontSize: 18;
 `;
 
 const FlatListStyled = styled(FlatList)`

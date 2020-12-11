@@ -8,14 +8,14 @@ import { FlatList } from "react-native";
 
 
 export default function ReviewMealScreen({ navigation, route }) {
-    const { currentMeal, allergens, meal } = route.params;
+    const { allergens, meal } = route.params;
     return (
       <GridListStyled>
           <Row size={2}>
-              <ReviewMealScreenHeader navigation={navigation} currentMeal={currentMeal} allergens={allergens}
+              <ReviewMealScreenHeader navigation={navigation}  allergens={allergens}
                                       meal={meal} /></Row>
           <Row size={3}>
-              <ReviewMealScreenModal currentMeal={currentMeal} allergens={allergens} />
+              <ReviewMealScreenModal meal={meal} allergens={allergens} />
           </Row>
       </GridListStyled>
     );
