@@ -16,9 +16,9 @@ jobs:
           expo-version: 3.x
           expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
           expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
-        - run: |
-          cd frontend
-          npm install
+      - run: |
+        cd frontend
+        npm install
       - name: build frontend
         run: |
           cd frontend
