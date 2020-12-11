@@ -43,7 +43,7 @@ export default function AddMealList() {
                 title="Hinzugefügt"
                 checkedIcon="check-square-o"
                 uncheckedIcon="square-o"
-                checked={true}
+                checked={false}
                 onPress={handleChecked}
               />
           </ListItem>
