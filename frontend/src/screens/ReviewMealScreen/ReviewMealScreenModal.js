@@ -19,7 +19,7 @@ export default function ReviewMealScreenModal() {
         if (sideEffectsList !== sideEffectsList[sideEffectsList.length - 1] && ratingOfSideEffect !== 0 && singleSideEffect.length > 2) {
             const singleSideEffectWithRating = {
                 sideEffect: singleSideEffect,
-                ratingOfSideEffects: ratingOfSideEffect
+                ratingOfSideEffects: ratingOfSideEffect,
             };
             setSideEffectsList(sideEffectsList => [...sideEffectsList, singleSideEffectWithRating]);
             setSingleSideEffect("");
@@ -47,15 +47,17 @@ export default function ReviewMealScreenModal() {
           <Row size={4}>
               <Col size={3}>
                   {!hasSideEffectIsSelected ?
-                    <Text>Falls du keine Beschwerden hattest klicke oben rechts auf "Beschwerden hinzufügen" damit du
-                        keine lücken im Tagebuch hast!</Text> :
+                    <Text>Falls du keine Beschwerden hattest, klicke auf "Hinzufügen" damit du
+                        keine Lücken im Tagebuch hast!</Text> :
                     <View>
                         <Input
                           placeholder="Eine Beschwerde hinzufügen"
                           onChangeText={text => setSingleSideEffect(text)}
+                          value={singleSideEffect}
                           maxLength={40}
 
                         />
+                        <Text>Stärke der Beschwerden</Text>
                         <Slider
                           style={{ width: "90%", height: 40 }}
                           minimumValue={0}
@@ -76,7 +78,7 @@ export default function ReviewMealScreenModal() {
                         flexWrap: "wrap",
                         flexDirection: "row",
                         height: "90%",
-                        width: "100%"
+                        width: "100%",
                     }}
                     keyExtractor={item => item.sideEffect.toString()}
                     data={sideEffectsList}
@@ -99,7 +101,7 @@ export default function ReviewMealScreenModal() {
                     <Text> </Text>
                     :
                     <View>
-                        <Button title={"Zur Liste hinzufügen"} onPress={handleCreateSideEffectInList} />
+                        <Button title={"+"} onPress={handleCreateSideEffectInList} />
                     </View>}
               </Col>
           </Row>
@@ -113,21 +115,21 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
     },
     checkboxHeading: {
-        paddingTop: 5,
+        paddingTop: 7,
         alignSelf: "center",
-        fontWeight: "bold"
+        fontWeight: "bold",
     },
     checkboxContainer: {
         flexDirection: "row",
-        marginBottom: 20
+        marginBottom: 10,
     },
     checkbox: {
-        alignSelf: "center"
+        alignSelf: "center",
     },
     label: {
-        margin: 8
-    }
+        margin: 8,
+    },
 });
