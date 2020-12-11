@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { StyleSheet, Text } from "react-native";
+import { Image, StyleSheet, Text } from "react-native";
 import { Col, Row } from "react-native-easy-grid";
 import { moderateScale } from "../../styles/globalstyles";
 import { LinearGradient } from "expo-linear-gradient";
@@ -17,6 +17,7 @@ export default function DashboardHeader() {
             colors={["rgb(0,121,91)", "transparent"]}>
               <Row size={0.4}>
                   <TileStyle>Secret Allergy</TileStyle>
+                  <Image  style={{marginTop:7, marginLeft: 8, width: 35, height: 35}} source={require('../../../assets/favicon.png')} />
               </Row>
               <StatsRowStyled size={0.6}>
                   <StatsColsStyled size={1}>
@@ -61,8 +62,8 @@ const GradientHeaderStyled = styled(LinearGradient)`
 
 const TileStyle = styled.Text`
   textAlign: center;
-  font-family: "Monotype Corsiva , fantasy";
-  fontSize: 24;
+  font-family: "Lato Semibold";
+  fontSize: 28;
   font-weight: 400;
   font-style:  normal;
   justifyContent: center;
@@ -81,13 +82,16 @@ const StatsColsStyled = styled(Col)`
 `;
 
 const StatsTextStyled = styled.Text`
-  fontSize: ${moderateScale(14, 0.4)};
+  font-family: "Lato";
+  fontSize: ${moderateScale(15, 0.4)};
   color: #ffffff;
   alignContent: center;
   textAlign: center;
 `;
+
 const StatsNumbersStyled = styled.Text`
-  fontSize: ${moderateScale(14, 0.4)};
+  font-family: "Lato";
+  fontSize: ${moderateScale(20, 0.4)};
   color: #ffffff;
   alignContent: center;
   textAlign: center;

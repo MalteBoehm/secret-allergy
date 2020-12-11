@@ -23,6 +23,16 @@ export default function DashboardContextProvider({ children }) {
         }).catch(console.log);
     }, []);
 
+
+    const mealRefresh = () => {
+        return getAllTodayMeals(userId, token).then((meals) => {
+            setTodaysBreakfast(meals.filter(meal => meal.mealDaytime === "breakfast"));
+            setTodaysMeal(meals.filter(meal => meal.mealDaytime === "meal"));
+            setTodaysDinner(meals.filter(meal => meal.mealDaytime === "dinner"));
+            setTodaysSnack(meals.filter(meal => meal.mealDaytime === "snacks"));
+        }).catch(console.log);
+    }
+
     const getMealsTotal = () => {
         return todaysBreakfast.length + todaysMeal.length + todaysDinner.length + todaysSnack.length;
     };
@@ -56,7 +66,7 @@ export default function DashboardContextProvider({ children }) {
             todaysSnack, setTodaysSnack,
             sideEffectsList, setSideEffectsList,
             hasSideEffectIsSelected, setHasSideEffectIsSelected,
-            getMealsTotal, getAllergensTotal, getTotalSideEffects
+            getMealsTotal, getAllergensTotal, getTotalSideEffects, mealRefresh
 
         }}>
           {children}

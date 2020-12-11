@@ -28,27 +28,35 @@ const RatingStyled = StyleSheet.create({
     },
     greenBar: {
         backgroundColor: "#4fef0c",
+        borderRightWidth:1,
+        borderRightColor: '#9d9d9a',
         height: moderateScale(5),
         alignSelf: "flex-end"
     },
     lightGreenBar: {
-        backgroundColor: "#93e970",
-        height: moderateScale(0),
+        backgroundColor: "#c3c3c3",
+        borderRightWidth:1,
+        borderRightColor: '#9d9d9a',
+        height: moderateScale(10),
         alignSelf: "flex-end"
     },
     yellowBar: {
-        backgroundColor: "#efe40c",
-        height: moderateScale(0),
+        backgroundColor: "#c3c3c3",
+        borderRightWidth:1,
+        borderRightColor: '#9d9d9a',
+        height: moderateScale(15),
         alignSelf: "flex-end"
     },
     orangeBar: {
-        backgroundColor: "#ef890c",
-        height: moderateScale(0),
+        backgroundColor: "#c3c3c3",
+        borderRightWidth:1,
+        borderRightColor: '#9d9d9a',
+        height: moderateScale(20),
         alignSelf: "flex-end"
     },
     redBar: {
-        backgroundColor: "#ef2e0c",
-        height: moderateScale(0),
+        backgroundColor: "#c3c3c3",
+        height: moderateScale(25),
         alignSelf: "flex-end"
     }
 });

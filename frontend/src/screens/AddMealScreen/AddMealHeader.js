@@ -6,6 +6,7 @@ import { moderateScale } from "../../styles/globalstyles";
 import AuthContext from "../../context/AuthContext";
 import { createMeal } from "../../service/LiveSearchService";
 import { LiveSearchContext } from "../../context/LiveSearchContext";
+import DashboardContext from "../../context/DashboardContext";
 
 export default function AddMealHeader({ navigation, route }) {
 
@@ -14,13 +15,16 @@ export default function AddMealHeader({ navigation, route }) {
     const { mealParam } = route.params;
 
     const { addMealListOfProducts, setAddMealListOfProducts } = useContext(LiveSearchContext);
+    const { mealRefresh } = useContext(DashboardContext);
 
 
     return (
       <Row size={0.5} style={headerStyle.rowStyle}>
           <Button type="outline"
                   title={"Zurück"}
-                  onPress={() => navigation.navigate("Dashboard")}
+                  onPress={() => {
+                      navigation.navigate("Dashboard")
+                      mealRefresh()}}
           />
           <Button type="solid"
                   title={"Mahlzeit erstellen"}

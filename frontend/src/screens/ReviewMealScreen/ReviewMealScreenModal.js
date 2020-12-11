@@ -54,6 +54,7 @@ export default function ReviewMealScreenModal() {
                           placeholder="Eine Beschwerde hinzufügen"
                           onChangeText={text => setSingleSideEffect(text)}
                           maxLength={40}
+
                         />
                         <Slider
                           style={{ width: "90%", height: 40 }}
@@ -115,6 +116,7 @@ const styles = StyleSheet.create({
         justifyContent: "center"
     },
     checkboxHeading: {
+        paddingTop: 5,
         alignSelf: "center",
         fontWeight: "bold"
     },
