@@ -4,7 +4,9 @@ on: push
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js 14.x
@@ -16,10 +18,10 @@ jobs:
           expo-version: 3.x
           expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
           expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
-      - run: |
+        run: |
           cd frontend
           npm install
-      - name: frontend-build
+      - name: build-frontend
         run: |
           cd frontend
           expo build:web
