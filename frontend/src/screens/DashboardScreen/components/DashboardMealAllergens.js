@@ -5,7 +5,7 @@ import { moderateScale } from "../../../styles/globalstyles";
 import styled from "styled-components/native";
 import { ListItem } from "react-native-elements";
 
-export default function DashboardMealAllergens({ hasAllergens, allergens }) {
+export default function DashboardMealAllergens({ allergens }) {
     const Separator = () => <View style={AllergensStyled.separator} />;
 
     return (
@@ -17,6 +17,8 @@ export default function DashboardMealAllergens({ hasAllergens, allergens }) {
                   <Row style={{ alignSelf: "center" }}>
                       <FlatList contentContainerStyle={{ justifyContent: "spaceAround" }}
                                 data={allergens}
+                                ListItemStyled={0}
+                                numColumns={3}
                                 keyExtractor={item => item.toString()}
                                 renderItem={({ item }) =>
                                   <ListItem containerStyle={{ padding: 5 }}>
@@ -24,7 +26,7 @@ export default function DashboardMealAllergens({ hasAllergens, allergens }) {
                                           <Text>{`\u2022`} {item}</Text>
                                       </ListItem.Content>
                                   </ListItem>}
-                                horizontal={true} /></Row>
+                                horizontal={false} /></Row>
               </Col>
           </Row>
           <Separator />
@@ -42,6 +44,6 @@ const AllergensStyled = StyleSheet.create({
 
 const TitleAllergensStyled = styled.Text`
   fontWeight: bold;
-  fontSize: ${moderateScale(12, 0.3)};
+  fontSize: ${moderateScale(14, 0.3)};
 `;
 

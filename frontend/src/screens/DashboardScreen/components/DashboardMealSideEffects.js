@@ -13,7 +13,7 @@ export default function DashboardMealSideEffects({
                                                      allergens,
                                                      sideEffectsArray,
                                                      navigation,
-                                                     currentMeal
+                                                     currentMeal,
                                                  }) {
 
 
@@ -22,25 +22,28 @@ export default function DashboardMealSideEffects({
           <Row style={{ alignSelf: "center" }}>
               <Text style={{
                   fontWeight: "bold",
-                  fontSize: moderateScale(12, 0.3)
+                  fontSize: moderateScale(14, 0.3),
               }}>Beschwerden:</Text>
           </Row>
           <Row>
               <Col size={1} />
-              <Col size={6} style={{alignItems:"center"}}>
+              <Col size={6} style={{ alignItems: "center" }}>
                   <Row>
                       <FlatListStyled
                         data={sideEffectsArray}
                         keyExtractor={item => item.toString()}
                         renderItem={({ item }) => {
                             return (
-                              <ListItemStyled containerStyle={{ padding: 5, alignContent: "baseline" ,width: 500}}>
+                              <ListItemStyled containerStyle={{ padding: 5, alignContent: "baseline", width: 500 }}>
                                   <ListItem.Content>
                                       <StyledItem>
                                           <Row size={1}>
                                               <ColsOfItemsStyled
-                                                >
-                                                <Text style={{alignSelf: 'center', overflowWrap: 'normal'}}>{item.sideEffect}</Text>
+                                              >
+                                                  <Text style={{
+                                                      alignSelf: "center",
+                                                      overflowWrap: "normal",
+                                                  }}>{item.sideEffect}</Text>
                                               </ColsOfItemsStyled>
                                               <ColsOfItemsStyled><StyledItemWithRating
                                                 rating={item.ratingOfSideEffects} /></ColsOfItemsStyled></Row>
@@ -64,7 +67,7 @@ export default function DashboardMealSideEffects({
                                             navigation.navigate("ReviewMeal", {
                                                 currentMeal: products,
                                                 allergens: allergens,
-                                                meal: currentMeal
+                                                meal: currentMeal,
                                             })}>
                       </FontAwesome.Button>
                   </View>
@@ -93,19 +96,19 @@ const StyledItemWithRating = styled(DashboardBarSideEffectsRating)`
   margin-top: ${moderateScale(2)};
 `;
 
-const FlatListStyled =  styled(FlatList)`
-justify-self: center;
-`
+const FlatListStyled = styled(FlatList)`
+  justify-self: center;
+`;
 
 const RowContainerStyled = StyleSheet.create({
     container: {
         minHeight: 40,
-        maxHeight: moderateScale(250)
+        maxHeight: moderateScale(250),
 
     }, buttonToDetail: {
         backgroundColor: "#ffffff",
         color: "#ffffff",
         textAlign: "right",
-        alignSelf: "flex-end"
-    }
+        alignSelf: "flex-end",
+    },
 });

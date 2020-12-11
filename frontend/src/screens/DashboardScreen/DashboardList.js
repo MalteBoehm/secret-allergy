@@ -18,25 +18,25 @@ export default function DashboardList({ navigation }) {
             title: "Frühstück",
             emojiName: "coffee",
             kindOfMeal: "breakfast",
-            mapObject: todaysBreakfast
+            mapObject: todaysBreakfast,
         }, {
             id: 2,
             title: "Mittagessen",
             emojiName: "pizza",
             kindOfMeal: "meal",
-            mapObject: todaysMeal
+            mapObject: todaysMeal,
         }, {
             id: 3,
             title: "Abendessen",
             emojiName: "wine_glass",
             kindOfMeal: "dinner",
-            mapObject: todaysDinner
+            mapObject: todaysDinner,
         }, {
             id: 4,
             title: "Snack",
             emojiName: "apple",
             kindOfMeal: "snacks",
-            mapObject: todaysSnack
+            mapObject: todaysSnack,
         }];
 
 
@@ -49,7 +49,6 @@ export default function DashboardList({ navigation }) {
                       const products = item.mapObject.map(meal => meal.products?.map(product => product.product_name)).flat();
                       const allergens = item.mapObject.map(meal => meal.allergens?.map(allergen => allergen.names)).flat();
                       const hasSideEffects = item.mapObject.hasSideEffect;
-                      const hasAllergens = item.mapObject.allergens;
                       const sideEffectsArray = item.mapObject.map(meal => meal.sideEffects?.map(sideEffect => sideEffect)).flat();
                       return (
                         <Row key={item.id} style={MealStyled.card}>
@@ -63,7 +62,7 @@ export default function DashboardList({ navigation }) {
                                         /></MealBoxStyled>
                                     <Row size={1} style={GridListStyled.component}>
                                         <DashboardMealAllergens allergens={allergens}
-                                                                hasAllergens={hasAllergens} /></Row>
+                                        /></Row>
                                     <Row size={1} style={GridListStyled.lastComponent}>
                                         <DashboardMealSideEffects hasSideEffects={hasSideEffects}
                                                                   sideEffectsArray={sideEffectsArray}
@@ -89,13 +88,13 @@ const GridListStyled = StyleSheet.create({
         backgroundColor: "rgb(255,255,255)",
         justifyContent: "space-between",
         paddingTop: moderateScale(1, 0.2),
-        paddingBottom: moderateScale(7, 0.2)
+        paddingBottom: moderateScale(7, 0.2),
     }, component: {
-        paddingTop: moderateScale(10)
+        paddingTop: moderateScale(10),
     }, lastComponent: {
         paddingTop: moderateScale(15),
-        marginBottom: moderateScale(10)
-    }
+        marginBottom: moderateScale(10),
+    },
 });
 
 const MealContainerStyled = styled(Grid)`
