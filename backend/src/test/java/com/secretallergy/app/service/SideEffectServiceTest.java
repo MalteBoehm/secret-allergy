@@ -88,8 +88,9 @@ class SideEffectServiceTest {
     void isSideEffectForMealNotInDb() {
         // GIVEN
         String givenIdOfMealToFind = "1";
+        String givenDifferentId = "2";
         SideEffect givenSideEffect = SideEffect.builder()
-                .sideEffectId(givenIdOfMealToFind)
+                .sideEffectWithMealId(givenDifferentId)
                 .build();
 
         // WHEN
@@ -98,5 +99,25 @@ class SideEffectServiceTest {
 
         //THEN
         assertThat(sideEffectService.isSideEffectForMealNotInDb(givenSideEffect), is(false));
+    }
+
+    @Test
+    @DisplayName("Tests if SideEffect is In DB and returns true")
+    void isSideEffectForMealInInDb() {
+        // GIVEN
+        String givenIdOfMealToFind = "1";
+
+        SideEffect givenSideEffect = SideEffect.builder()
+                .sideEffectWithMealId(givenIdOfMealToFind)
+                .build();
+        Optional<SideEffect> expectedMeal = Optional.of(givenSideEffect);
+
+        // WHEN
+        when(sideEffectMongo.findOutIfSideEffectIsAlreadyInDb(givenIdOfMealToFind))
+                .thenReturn(expectedMeal);
+
+
+        //THEN
+        assertThat(sideEffectService.isSideEffectForMealNotInDb(givenSideEffect), is(true));
     }
 }
