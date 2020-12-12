@@ -44,7 +44,7 @@ public class SideEffectService {
                 .listOfProductsThatWereConsumed(addSideEffectsDto.getListOfProductsThatWereConsumed())
                 .sideEffectByIcdAndStrength(addSideEffectsDto.getSideEffectByIcdAndStrength())
                 .build();
-        if (isSideEffectForMealNotInDb(newSideEffect)) {
+        if (!isSideEffectForMealNotInDb(newSideEffect)) {
             sideEffectMongo.save(newSideEffect);
         }
     }
@@ -74,6 +74,6 @@ public class SideEffectService {
         String mealIdToSearchFor = newSideEffect.getSideEffectWithMealId();
 
         Optional<SideEffect> answer = sideEffectMongo.findOutIfSideEffectIsAlreadyInDb(mealIdToSearchFor);
-        return answer.map(sideEffect -> sideEffect.getSideEffectWithMealId().equals(mealIdToSearchFor)).orElse(true);
+        return answer.map(sideEffect -> sideEffect.getSideEffectWithMealId().equals(mealIdToSearchFor)).orElse(false);
     }
 }

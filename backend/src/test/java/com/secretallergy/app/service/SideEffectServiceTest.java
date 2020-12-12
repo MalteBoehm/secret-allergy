@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -83,6 +84,7 @@ class SideEffectServiceTest {
     }
 
     @Test
+    @DisplayName("Tests if SideEffect is not in DB and returns false")
     void isSideEffectForMealNotInDb() {
         // GIVEN
         String givenIdOfMealToFind = "1";
@@ -91,9 +93,10 @@ class SideEffectServiceTest {
                 .build();
 
         // WHEN
-        sideEffectService.isSideEffectForMealNotInDb(givenSideEffect);
+        when(sideEffectMongo.findOutIfSideEffectIsAlreadyInDb(givenIdOfMealToFind))
+                .thenReturn(Optional.of(givenSideEffect));
 
         //THEN
-        assertThat(sideEffectService.isSideEffectForMealNotInDb(givenSideEffect), is(true));
+        assertThat(sideEffectService.isSideEffectForMealNotInDb(givenSideEffect), is(false));
     }
 }
