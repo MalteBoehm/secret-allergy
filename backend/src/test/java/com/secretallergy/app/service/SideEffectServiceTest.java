@@ -84,5 +84,16 @@ class SideEffectServiceTest {
 
     @Test
     void isSideEffectForMealNotInDb() {
+        // GIVEN
+        String givenIdOfMealToFind = "1";
+        SideEffect givenSideEffect = SideEffect.builder()
+                .sideEffectId(givenIdOfMealToFind)
+                .build();
+
+        // WHEN
+        sideEffectService.isSideEffectForMealNotInDb(givenSideEffect);
+
+        //THEN
+        assertThat(sideEffectService.isSideEffectForMealNotInDb(givenSideEffect), is(true));
     }
 }
