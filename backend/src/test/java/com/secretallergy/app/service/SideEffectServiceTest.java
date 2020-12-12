@@ -2,12 +2,15 @@ package com.secretallergy.app.service;
 
 import com.secretallergy.app.dao.SideEffectMongoDao;
 import com.secretallergy.app.dto.AddSideEffectsDto;
+import com.secretallergy.app.model.Meal;
 import com.secretallergy.app.model.SideEffect;
 import com.secretallergy.app.model.SideEffects;
 import com.secretallergy.app.utils.IdUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.mongodb.core.MongoOperations;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -47,6 +50,20 @@ class SideEffectServiceTest {
 
     @Test
     void updateMealsWithSideEffects() {
+        //GIVEN
+        String givenMealId = "1";
+        Meal givenMeal = Meal.builder().sideEffects(List.of()).build();
+
+        addSideEffectsDto.setSideEffectOfMealId(givenMealId);
+        addSideEffectsDto.setSideEffectByIcdAndStrength(List.of());
+
+        // WHEN
+        when(mongoOperation.findOne(anyObject(), eq(Meal.class))).thenReturn(givenMeal);
+
+        sideEffectService.updateMealsWithSideEffects(addSideEffectsDto);
+
+        // THEN
+        verify(mongoOperation).save(givenMeal);
     }
 
     @Test
