@@ -4,6 +4,7 @@ import com.secretallergy.app.dao.SideEffectMongoDao;
 import com.secretallergy.app.dto.AddSideEffectsDto;
 import com.secretallergy.app.model.Meal;
 import com.secretallergy.app.model.SideEffect;
+import com.secretallergy.app.model.SideEffects;
 import com.secretallergy.app.utils.IdUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -71,6 +72,27 @@ class SideEffectServiceTest {
     }
 
     @Test
+    @DisplayName("Each Side Effect in List createNewSideEffectByIcdAndStrengthWithId should be updated with a ID")
+    void updateMealsWithSideEffectsSetsIdToEachSideEffect() {
+        //GIVEN
+        String givenMealId = "1";
+        Meal givenMeal = Meal.builder().sideEffects(List.of()).build();
+
+        addSideEffectsDto.setSideEffectOfMealId(givenMealId);
+        addSideEffectsDto.setSideEffectByIcdAndStrength(List.of
+                (new SideEffects("", "Bauchschmerzen", 10.00)));
+
+        // WHEN
+        when(mongoOperation.findOne(anyObject(), eq(Meal.class))).thenReturn(givenMeal);
+
+        sideEffectService.updateMealsWithSideEffects(addSideEffectsDto);
+
+        // THEN
+        verify(idUtils).generateId();
+    }
+
+
+    @Test
     @DisplayName("Situation: Sideeffect is NOT in DB")
     void updateMealsWithSideEffectsIsNotInDb() {
         try {
@@ -82,6 +104,7 @@ class SideEffectServiceTest {
             assertThat(e.getStatus(), is(HttpStatus.BAD_REQUEST));
         }
     }
+
 
     @Test
     @DisplayName("Tests if SideEffect is not in DB and returns false")

@@ -59,14 +59,12 @@ public class SideEffectService {
 
 
         List<SideEffects> createNewSideEffectByIcdAndStrengthWithId = addSideEffectsDto.getSideEffectByIcdAndStrength();
-        for (SideEffects x : createNewSideEffectByIcdAndStrengthWithId) {
-            x.setId(idUtils.generateId());
-        }
+        for (SideEffects singleSideEffect : createNewSideEffectByIcdAndStrengthWithId) {
+            singleSideEffect.setId(idUtils.generateId()); }
         foundMealToUpdate.setSideEffects(createNewSideEffectByIcdAndStrengthWithId);
 
         if (addSideEffectsDto.getSideEffectByIcdAndStrength().size() > 0) {
-            foundMealToUpdate.setHasSideEffect(true);
-        }
+            foundMealToUpdate.setHasSideEffect(true); }
         mongoOperation.save(foundMealToUpdate);
     }
 
