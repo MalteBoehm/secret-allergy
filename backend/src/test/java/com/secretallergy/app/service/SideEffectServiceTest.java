@@ -4,15 +4,17 @@ import com.secretallergy.app.dao.SideEffectMongoDao;
 import com.secretallergy.app.dto.AddSideEffectsDto;
 import com.secretallergy.app.model.Meal;
 import com.secretallergy.app.model.SideEffect;
-import com.secretallergy.app.model.SideEffects;
 import com.secretallergy.app.utils.IdUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 import static org.mockito.Mockito.*;
 
 class SideEffectServiceTest {
@@ -49,6 +51,7 @@ class SideEffectServiceTest {
     }
 
     @Test
+    @DisplayName("Situation: Sideeffect is in DB")
     void updateMealsWithSideEffects() {
         //GIVEN
         String givenMealId = "1";
@@ -64,6 +67,19 @@ class SideEffectServiceTest {
 
         // THEN
         verify(mongoOperation).save(givenMeal);
+    }
+
+    @Test
+    @DisplayName("Situation: Sideeffect is NOT in DB")
+    void updateMealsWithSideEffectsIsNotInDb() {
+        try {
+            // WHEN
+            when(mongoOperation.findOne(anyObject(), eq(Meal.class))).thenReturn(null);
+            sideEffectService.updateMealsWithSideEffects(addSideEffectsDto);
+        } catch (ResponseStatusException e){
+            // THEN
+            assertThat(e.getStatus(), is(HttpStatus.BAD_REQUEST));
+        }
     }
 
     @Test

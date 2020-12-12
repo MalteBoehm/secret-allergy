@@ -6,15 +6,19 @@ import com.secretallergy.app.model.Meal;
 import com.secretallergy.app.model.SideEffect;
 import com.secretallergy.app.model.SideEffects;
 import com.secretallergy.app.utils.IdUtils;
+import lombok.Builder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
 
+@Builder
 @Service
 public class SideEffectService {
 
@@ -50,11 +54,12 @@ public class SideEffectService {
         Query query = new Query();
         query.addCriteria(Criteria.where("_id").is(idOfMeal));
 
-        Meal foundMealToUpdate = mongoOperation.findOne(query, Meal.class);
-        assert foundMealToUpdate != null;
+        Meal foundMealToUpdate = Optional.ofNullable(mongoOperation.findOne(query, Meal.class))
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
+
 
         List<SideEffects> createNewSideEffectByIcdAndStrengthWithId = addSideEffectsDto.getSideEffectByIcdAndStrength();
-        for (SideEffects x: createNewSideEffectByIcdAndStrengthWithId) {
+        for (SideEffects x : createNewSideEffectByIcdAndStrengthWithId) {
             x.setId(idUtils.generateId());
         }
         foundMealToUpdate.setSideEffects(createNewSideEffectByIcdAndStrengthWithId);
