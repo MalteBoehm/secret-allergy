@@ -6,6 +6,4 @@ import java.util.List;
 
 
 public interface ProductMongoDao extends PagingAndSortingRepository<Product, String> {
-
-    List<Product> findBy(String productName);
 }
