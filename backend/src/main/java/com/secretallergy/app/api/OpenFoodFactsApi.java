@@ -35,7 +35,7 @@ public class OpenFoodFactsApi {
             String imageUrl = jsonObject.keySet()
                                         .contains("image_url")?
                                             jsonObject.getString("image_url"):
-                                            "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png";
+                                            jsonObject.getString("image_front_url");
             ArrayList<String> ingredients_text_de = new ArrayList<>(
                     Arrays.asList(
                             jsonObject.keySet()
