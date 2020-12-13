@@ -15,7 +15,7 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
-
+backend/src/main/resources/static
 # macOS
 .DS_Store
 HELP.md
