@@ -28,4 +28,4 @@ Live Demo:
 Tech Stack
 ----------
 
-Java / Maven / Spring Web / Spring Security / JWT / JUnit / Lombock/ Python/ MongoDB / JavaScript / React Native / Styled-Components / REST API / Docker / Git /Heroku
+Java / Maven / Spring Web / Spring Security / JWT / JUnit / Lombok/ Python/ MongoDB / JavaScript / React Native / Styled-Components / REST API / Docker / Git /Heroku
