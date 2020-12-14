@@ -131,44 +131,45 @@ public class MealService {
 
     private List<String> filterIngredients(List<String> ingredientsOfProduct) {
         val filterWords = new ArrayList<>(List.of(
-                "Teig"," - ", "Konservierungsstoff","U ","- Kuhmilch" ,"Konservierungsstoffe", "Würze",
-                "Stabilisator", "Stabilisatoren", "Antioxidationsmittel", "Antioxidationsmitteln",
+                "-Käse", "Milano", "Konservierungsstoffe", "zerkleinerte", "Säuerungstel", "Extrakt aus", "Krebstieren und Soja enthalten", "Kann Spuren von Fisch", "Teig", " - ", "Konservierungsstoff", "U ", "- Kuhmilch", "Konservierungsstoffe", "Würze",
+                "Stabilisator", "Stabilisatoren", "Antioxidationsmittel", "Antioxidationsmitteln", "Schnittfester", "KÄSE  ",
                 "Gesamtmilchbestandteile", "im", "schnittfester", "von", " Produkt", "Überzugsmittel", "enthält", "pasteurisierte Kuhmilch", "Trinkwasser",
-                "Gesamtkakaobestandteile", "aufgeschlossenes", "Gesamtfettanteil", "Stabilisator", "Hergestellt", "mit", "mikrobiellem",
-                "davon", "Pflanzenfett", "Käse", "fettarmes", "Pflanzenfett", "Fisch", "  Käse ", " Käse", "Trennmittel",
+                 "aufgeschlossenes", "Gesamtfettanteil", "Stabilisator", "Hergestellt", "mit", "mikrobiellem",
+                "davon", "Pflanzenfett", "Käse ", "fettarmes", "Pflanzenfett", " Fisch","  Fisch", "  Käse ", " Käse", "Trennmittel",
                 "aufgeschlossenes", "Pflanzeneiweiß", "eingelegte", "raffiniertes", "frittierte", "halbierte", "gehobelter",
-                "UKäseMilch", "Wasser", "Gesamtfettgehalt", "davon", "und", "aufgeschlossenes", "Kräuter", "laktosefreier",
-                "Säuerungsmittel", "enthalten", "Spuren", "Kann", "gegrillte", "Gewürze", "gU", "Gewürzextrakt", "Rauch", "Krebstieren und Soja enthalten", ":", ";", ".", "_", "%",
+                "UKäseMilch", "Wasser", "Gesamtfettgehalt", "davon", "und", "aufgeschlossenes", "Kräuter ", "laktosefreier",
+                "Säuerungsmittel", "enthalten", "Spuren", "Kann", "gegrillte", "Gewürze ", "gU", "Gewürzextrakt", "Rauch", "Krebstieren und Soja enthalten", ":", ";", ".", "_", "%",
                 "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"));
 
         val killDuplicatesList = new HashSet<String>();
-// Check IngredientsOfProductsList for UppercaseUppercase, but a , and split it to new list /todo
         val upperCaseWordsSplitIngredientsList = splitUpperCaseWordsToListItems(ingredientsOfProduct);
 
         // Jede Zutat in der Liste wird
 
         for (val ingredient : upperCaseWordsSplitIngredientsList) {
             // 1. von doppelten white-space bereinigt
-            val singleCleanedIngredient = ingredient.strip().replaceAll("^[\s]w*|(,\s)w*|(\s{2,})w*|$([\s])w*", "");
             // 2. Ingredient String soll von Filter Wörtern bereinigt werden
-            String ingredientWithNoFilterWord = singleCleanedIngredient;
+            String ingredientWithNoFilterWord = ingredient.strip().replaceAll("^[\s]w*|(,\s)w*|(\s{2,})w*|$([\s])w*", "");
             // 3. Jedes Filter Wort wird auf Match überprüft
             for (val filterWord : filterWords) {
                 //4. Wenn das Wort nicht ausschließlich ein Filter-Wort wird es weiter bereinigt
-                if (!ingredientWithNoFilterWord.equalsIgnoreCase(filterWord)) {
+                if (!ingredientWithNoFilterWord.trim().equalsIgnoreCase(filterWord)) {
                     // 5. Wenn das Wort ein richtiges Wort ist
                     if (ingredientWithNoFilterWord.length() > 3) {
                         // 6. Wenn das Wort bisher noch nicht hinzugefügt wurde (keine Duplikate)
                         if (!killDuplicatesList.contains(ingredientWithNoFilterWord)) {
                             // 7a. Wenn das Wort ein Filter-Wort hat soll das Filter-Wort ersetzt werden
-                            if (singleCleanedIngredient.contains(filterWord)) {
-                                ingredientWithNoFilterWord = ingredientWithNoFilterWord.replaceAll(filterWord, "");
+                            if (ingredientWithNoFilterWord.toLowerCase().contains(filterWord.toLowerCase())) {
+                                ingredientWithNoFilterWord = ingredientWithNoFilterWord.toLowerCase().replaceAll(filterWord.toLowerCase(), "");
+
                             }
                         }
                     }
                 }
             }
-            killDuplicatesList.add(ingredientWithNoFilterWord.strip());
+            // 8. Lette Mal nach Filtern
+            val upperCaseWordsSplitIngredientsSecondTimeAfterFiltering = splitUpperCaseWordsToListItems(Collections.singletonList(ingredientWithNoFilterWord));
+            killDuplicatesList.addAll(upperCaseWordsSplitIngredientsSecondTimeAfterFiltering);
         }
 
         // Letzter Check das keine Wörter Dupliziert sind
@@ -176,7 +177,7 @@ public class MealService {
         val cleanList = new ArrayList<String>();
         for (val item : uniqueList) {
             if (!item.isEmpty() && !filterWords.contains(item)) {
-                cleanList.add(item);
+                cleanList.add(item.trim());
             }
         }
         return cleanList;
@@ -187,7 +188,7 @@ public class MealService {
         val ingredientListWithSplitUpperCase = new ArrayList<String>();
         for (var word : listOfIngredients) {
             for (int i = 1; i < word.length(); i++) {
-                List<String> splitUpperCaseWordArray = Arrays.asList(word.replaceAll("([a-z])([A-Z])", "$1,$2").split(","));
+                List<String> splitUpperCaseWordArray = Arrays.asList(word.replaceAll("([a-z])([A-Z])","$1 \\, $2").split(","));
                 ingredientListWithSplitUpperCase.addAll(splitUpperCaseWordArray);
             }
         }
