@@ -12,7 +12,7 @@ This Apps is a food- and also a complaint -diary. This means that the app makes 
 Track Meals and Side effects
 ----------------------------
 
-![](https://t2493587.p.clickup-attachments.com/t2493587/07a42160-9537-4be4-ae24-1266bfee5686/image.png)
+![img](https://t2493587.p.clickup-attachments.com/t2493587/07a42160-9537-4be4-ae24-1266bfee5686/image.png)
 
 
 
@@ -21,7 +21,7 @@ Track Meals and Side effects
 Live Demo:
 ----------
 
-![](https://t2493587.p.clickup-attachments.com/t2493587/613c7224-575f-46ed-8440-1d864c045382/secretAllergy.gif)
+![img](https://t2493587.p.clickup-attachments.com/t2493587/613c7224-575f-46ed-8440-1d864c045382/secretAllergy.gif)
 
 
 
