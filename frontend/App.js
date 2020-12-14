@@ -1,7 +1,5 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
-import LiveSearchProvider from "./src/context/LiveSearchProvider";
-import SearchInputContextProvider from "./src/context/SearchInputContextProvider";
 import ProtectedRoute from "./src/security/ProtectedRoute";
 import AuthContextProvider from "./src/context/AuthContextProvider";
 
