@@ -9,7 +9,9 @@ import com.secretallergy.app.model.*;
 import com.secretallergy.app.utils.IdUtils;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 
 import java.time.LocalDate;
@@ -41,6 +43,10 @@ public class MealService {
 
 
     public Meal addMealToUser(AddMealDto addMealDto) {
+
+        Optional.ofNullable(addMealDto
+                .getAddMealListOfProducts())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
 
         val date = LocalDate.now();
         val currentDate = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -125,39 +131,55 @@ public class MealService {
 
     private List<String> filterIngredients(List<String> ingredientsOfProduct) {
         val filterWords = new ArrayList<>(List.of(
-                "Teig", "Konservierungsstoff", "Konservierungsstoffe",
+                "Teig", "Konservierungsstoff", "Konservierungsstoffe", "Würze",
                 "Stabilisator", "Stabilisatoren", "Antioxidationsmittel", "Antioxidationsmitteln",
-                "Gesamtmilchbestandteile", "im", "von", " Produkt", "Überzugsmittel",
-                "Gesamtkakaobestandteile", "aufgeschlossenes", "Gesamtfettanteil",
-                "davon", "Pflanzenfett", "Käse", "fettarmes", "Pflanzenfett", "Fisch",
+                "Gesamtmilchbestandteile", "im", "von", " Produkt", "Überzugsmittel", "enthält", "pasteurisierte Kuhmilch", "Trinkwasser",
+                "Gesamtkakaobestandteile", "aufgeschlossenes", "Gesamtfettanteil", "Stabilisator", "Hergestellt", "mit", "mikrobiellem",
+                "davon", "Pflanzenfett", "Käse", "fettarmes", "Pflanzenfett", "Fisch", "  Käse ", " Käse", "Trennmittel",
                 "aufgeschlossenes", "Pflanzeneiweiß", "eingelegte", "raffiniertes", "frittierte", "halbierte", "gehobelter",
-                "UKäseMilch", "Wasser", "Gesamtfettgehalt", "davon", "und", "aufgeschlossenes", "     ", "Kräuter",
-                "Säuerungsmittel", "enthalten", "Spuren", "Kann", "gegrillte", "Gewürze", "gU", "Krebstieren und Soja enthalten",
-                "", ":", ";", ".", "_", ")", "(", "%",
+                "UKäseMilch", "Wasser", "Gesamtfettgehalt", "davon", "und", "aufgeschlossenes", "Kräuter", "laktosefreier",
+                "Säuerungsmittel", "enthalten", "Spuren", "Kann", "gegrillte", "Gewürze", "gU", "Gewürzextrakt", "Rauch", "Krebstieren und Soja enthalten", ":", ";", ".", "_", "%",
                 "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"));
 
-        List<String> checkForDuplicatesList = new ArrayList<>();
+        val checkForDuplicatesList = new HashSet<String>();
 // Check IngredientsOfProductsList for UppercaseUppercase, but a , and split it to new list /todo
         val upperCaseWordsSplitIngredientsList = splitUpperCaseWordsToListItems(ingredientsOfProduct);
 
-        for (val ingredient : upperCaseWordsSplitIngredientsList) {
-            val singleCleanedIngredient = ingredient.replaceAll("^[\s]w*|(,\s)w*|(\s{2,})w*|$([\s])w*", "");
+        // Jede Zutat in der Liste wird
 
-            // Compares every ingredient to each filter word
+        for (val ingredient : upperCaseWordsSplitIngredientsList) {
+            // 1. von doppelten whitespace bereinigt
+            val singleCleanedIngredient = ingredient.strip().replaceAll("^[\s]w*|(,\s)w*|(\s{2,})w*|$([\s])w*", "");
+
+            // 2. Ingredient String soll von Filter Wörtern bereinigt werden
+            String ingredientWithNoFilterWord = singleCleanedIngredient;
+
+            // 3. Jedes Filter Wort wird auf Match überprüft
             for (val filterWord : filterWords) {
-                if (!singleCleanedIngredient.equalsIgnoreCase(filterWord)) {
-                    if (singleCleanedIngredient.length() > 3) {
-                        if (!checkForDuplicatesList.contains(singleCleanedIngredient)) {
-                            var ingredientWithNoFilterWord = singleCleanedIngredient.replaceAll(filterWord, "");
-                            checkForDuplicatesList.add(ingredientWithNoFilterWord);
+
+                //4. Wenn das Wort nicht ausschließlich ein filtwort wird es weiter bereinigt
+                if (!ingredientWithNoFilterWord.equalsIgnoreCase(filterWord)) {
+
+                    // 5. Wenn das Wort ein richtiges Wort ist
+                    if (ingredientWithNoFilterWord.length() > 3) {
+                        // 6. Wenn das Wort bisher noch nicht hinfzugeügt wurde (keine Duplikate)
+                        if (!checkForDuplicatesList.contains(ingredientWithNoFilterWord)) {
+
+                            // 7a. Wenn das Wort ein Filterwort hat soll das Filterwort ersetzt werden
+                            if (singleCleanedIngredient.contains(filterWord)) {
+                                ingredientWithNoFilterWord = ingredientWithNoFilterWord.replaceAll(filterWord, "");
+                            }
                         }
                     }
                 }
             }
+            checkForDuplicatesList.add(ingredientWithNoFilterWord.strip());
         }
+
+        // Letzter Check das keine Wörter Dupliziert sind
         val uniqueList = new ArrayList<>(checkForDuplicatesList);
-        List<String> cleanList = new ArrayList<>();
-        for (String item : uniqueList) {
+        val cleanList = new ArrayList<String>();
+        for (val item : uniqueList) {
             if (!item.isEmpty() && !filterWords.contains(item)) {
                 cleanList.add(item);
             }
@@ -166,9 +188,8 @@ public class MealService {
     }
 
 
-
     private List<String> splitUpperCaseWordsToListItems(List<String> listOfIngredients) {
-        List<String> ingredientListWithSplitUpperCase = new ArrayList<>();
+        val ingredientListWithSplitUpperCase = new ArrayList<String>();
         for (var word : listOfIngredients) {
             for (int i = 1; i < word.length(); i++) {
                 List<String> splitUpperCaseWordArray = Arrays.asList(word.replaceAll("([a-z])([A-Z])", "$1,$2").split(","));
