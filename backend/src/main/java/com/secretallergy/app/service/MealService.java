@@ -131,9 +131,9 @@ public class MealService {
 
     private List<String> filterIngredients(List<String> ingredientsOfProduct) {
         val filterWords = new ArrayList<>(List.of(
-                "Teig", "Konservierungsstoff", "Konservierungsstoffe", "Würze",
+                "Teig"," - ", "Konservierungsstoff","U ","- Kuhmilch" ,"Konservierungsstoffe", "Würze",
                 "Stabilisator", "Stabilisatoren", "Antioxidationsmittel", "Antioxidationsmitteln",
-                "Gesamtmilchbestandteile", "im", "von", " Produkt", "Überzugsmittel", "enthält", "pasteurisierte Kuhmilch", "Trinkwasser",
+                "Gesamtmilchbestandteile", "im", "schnittfester", "von", " Produkt", "Überzugsmittel", "enthält", "pasteurisierte Kuhmilch", "Trinkwasser",
                 "Gesamtkakaobestandteile", "aufgeschlossenes", "Gesamtfettanteil", "Stabilisator", "Hergestellt", "mit", "mikrobiellem",
                 "davon", "Pflanzenfett", "Käse", "fettarmes", "Pflanzenfett", "Fisch", "  Käse ", " Käse", "Trennmittel",
                 "aufgeschlossenes", "Pflanzeneiweiß", "eingelegte", "raffiniertes", "frittierte", "halbierte", "gehobelter",
@@ -141,31 +141,26 @@ public class MealService {
                 "Säuerungsmittel", "enthalten", "Spuren", "Kann", "gegrillte", "Gewürze", "gU", "Gewürzextrakt", "Rauch", "Krebstieren und Soja enthalten", ":", ";", ".", "_", "%",
                 "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"));
 
-        val checkForDuplicatesList = new HashSet<String>();
+        val killDuplicatesList = new HashSet<String>();
 // Check IngredientsOfProductsList for UppercaseUppercase, but a , and split it to new list /todo
         val upperCaseWordsSplitIngredientsList = splitUpperCaseWordsToListItems(ingredientsOfProduct);
 
         // Jede Zutat in der Liste wird
 
         for (val ingredient : upperCaseWordsSplitIngredientsList) {
-            // 1. von doppelten whitespace bereinigt
+            // 1. von doppelten white-space bereinigt
             val singleCleanedIngredient = ingredient.strip().replaceAll("^[\s]w*|(,\s)w*|(\s{2,})w*|$([\s])w*", "");
-
             // 2. Ingredient String soll von Filter Wörtern bereinigt werden
             String ingredientWithNoFilterWord = singleCleanedIngredient;
-
             // 3. Jedes Filter Wort wird auf Match überprüft
             for (val filterWord : filterWords) {
-
-                //4. Wenn das Wort nicht ausschließlich ein filtwort wird es weiter bereinigt
+                //4. Wenn das Wort nicht ausschließlich ein Filter-Wort wird es weiter bereinigt
                 if (!ingredientWithNoFilterWord.equalsIgnoreCase(filterWord)) {
-
                     // 5. Wenn das Wort ein richtiges Wort ist
                     if (ingredientWithNoFilterWord.length() > 3) {
-                        // 6. Wenn das Wort bisher noch nicht hinfzugeügt wurde (keine Duplikate)
-                        if (!checkForDuplicatesList.contains(ingredientWithNoFilterWord)) {
-
-                            // 7a. Wenn das Wort ein Filterwort hat soll das Filterwort ersetzt werden
+                        // 6. Wenn das Wort bisher noch nicht hinzugefügt wurde (keine Duplikate)
+                        if (!killDuplicatesList.contains(ingredientWithNoFilterWord)) {
+                            // 7a. Wenn das Wort ein Filter-Wort hat soll das Filter-Wort ersetzt werden
                             if (singleCleanedIngredient.contains(filterWord)) {
                                 ingredientWithNoFilterWord = ingredientWithNoFilterWord.replaceAll(filterWord, "");
                             }
@@ -173,11 +168,11 @@ public class MealService {
                     }
                 }
             }
-            checkForDuplicatesList.add(ingredientWithNoFilterWord.strip());
+            killDuplicatesList.add(ingredientWithNoFilterWord.strip());
         }
 
         // Letzter Check das keine Wörter Dupliziert sind
-        val uniqueList = new ArrayList<>(checkForDuplicatesList);
+        val uniqueList = new ArrayList<>(killDuplicatesList);
         val cleanList = new ArrayList<String>();
         for (val item : uniqueList) {
             if (!item.isEmpty() && !filterWords.contains(item)) {
