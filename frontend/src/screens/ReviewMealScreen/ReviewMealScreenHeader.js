@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Grid, Row, Col } from "react-native-easy-grid";
 import { Button, FlatList, StyleSheet, Text, View } from "react-native";
 import { moderateScale } from "../../styles/globalstyles";

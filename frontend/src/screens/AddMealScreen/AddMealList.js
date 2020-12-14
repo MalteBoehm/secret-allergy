@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Row } from "react-native-easy-grid";
 import { ListItem, Avatar, CheckBox } from "react-native-elements";
 import {

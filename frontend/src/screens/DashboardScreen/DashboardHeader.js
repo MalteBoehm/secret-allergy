@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Image, StyleSheet, Text } from "react-native";
+import { Image } from "react-native";
 import { Col, Row } from "react-native-easy-grid";
 import { moderateScale } from "../../styles/globalstyles";
 import { LinearGradient } from "expo-linear-gradient";

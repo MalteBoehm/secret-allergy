@@ -4,7 +4,6 @@ import styled from 'styled-components/native';
 import ReviewMealScreenHeader from "./ReviewMealScreen/ReviewMealScreenHeader";
 import ReviewMealScreenModal from "./ReviewMealScreen/ReviewMealScreenModal";
 import {moderateScale} from "../styles/globalstyles";
-import { FlatList } from "react-native";
 
 
 export default function ReviewMealScreen({ navigation, route }) {

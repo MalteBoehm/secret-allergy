@@ -1,5 +1,5 @@
 import { Grid, Row } from "react-native-easy-grid";
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { StyleSheet, ScrollView } from "react-native";
 import styled from "styled-components/native";
 import { moderateScale } from "../../styles/globalstyles";

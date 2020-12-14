@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col, Grid } from "react-native-easy-grid";
 import styled from "styled-components/native";
-import { FlatList, Text, StyleSheet, View, Image } from "react-native";
+import { FlatList, Text, StyleSheet, View } from "react-native";
 import Emoji from "react-native-emoji";
 import { moderateScale } from "../../../styles/globalstyles";
 import { ListItem } from "react-native-elements";
