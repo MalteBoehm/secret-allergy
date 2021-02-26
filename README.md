@@ -1,4 +1,4 @@
-Secret-Allergy
+Secret-Allergy - Refactoring to Flutter
 ==============
 
 Allergies are a huge problem in our two-class society. The majority of people with allergies don't have access to doctors who can actually help them to find out which allergies they got. After all, doctors often ask the patient to create a food-diary.
